@@ -1,0 +1,119 @@
+.property-1default-foG {
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 0.1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin-bottom: 0.7rem;
+    overflow: hidden;
+    padding: 0.7rem 0.6rem 0.5rem 0.5rem;
+    position: relative;
+    width: 100%;
+  
+    .login-grn {
+      color: #828282;
+      flex-shrink: 0;
+      font-family: Roboto, "Source Sans Pro";
+      margin-bottom: 5.3rem;
+      font-size: 2.9191rem;
+      font-weight: 700;
+      line-height: 0.1725;
+      white-space: nowrap;
+    }
+    .frame-49-jq4 {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      width: 100%;
+  
+      .frame-49-eSE {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0.5rem;
+        flex-shrink: 0;
+        width: 100%;
+  
+        .search-bar-Zp6 {
+          background-color: #ffffff;
+          border: solid 0.1rem #c2c2c2;
+          border-radius: 40rem;
+          font-size: 1.1076rem;
+          box-sizing: border-box;
+          flex-shrink: 0;
+          height: 4.1rem;
+  
+          padding: 0.8rem 1.5rem 4.5rem 2.5rem;
+          margin-bottom: 1.5rem;
+          width: 100%;
+          .email-address-MNa {
+            color: #4f4f4f;
+            font-family: Roboto, "Source Sans Pro";
+            font-size: 1.076rem;
+            font-weight: 400;
+            line-height: 0.1725;
+            margin-bottom:0.5rem;
+            white-space: nowrap;
+          }
+          .email-input{
+            outline:none;
+            font-size: 1.3rem;
+            -webkit-box-shadow: 0 0 0 30px white inset;
+  
+          }
+        }
+  
+      }
+      .dont-have-an-account-sign-up-here-A74 {
+        align-items: baseline;
+        color: #828282;
+        display: flex;
+        flex-shrink: 0;
+        font-family: Roboto, "Source Sans Pro";
+        font-size: 1.5076rem;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 1.1725;
+        margin-left: 0.7rem;
+        white-space: nowrap;
+  
+        .dont-have-an-account-sign-up-here-A74-sub-1 {
+          color: #828282;
+          font-family: Roboto, "Source Sans Pro";
+          font-size: 1.5076rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 1.1725;
+          text-decoration-line: underline;
+        }
+      }
+    }
+    .submit-huc {
+      align-items: center;
+      background-color: #4f4f4f;
+      border-radius: 40rem;
+      color: #ffffff;
+      display: flex;
+      flex-shrink: 0;
+      font-family: Roboto, "Source Sans Pro";
+      font-size: 2.12rem;
+      font-weight: 400;
+      height: 4.8rem;
+      justify-content: center;
+      line-height: 0.1725;
+      white-space: nowrap;
+      margin-bottom: 1rem;
+      margin-top: 2.5rem;
+      width: 100%;
+    }
+  }
+  .error-login {
+    color: red;
+    font-weight: bold;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+  }
+  
