@@ -1,47 +1,47 @@
 .login-page-FTx {
-    background-color
-    : 
-    #ffffff;
-    height
-    : 
-    128.2rem;
-    overflow
-    : 
-    hidden;
-    position
-    : 
-    relative;
-    width
-    : 
-    100%;
-    .unsplash-rfabslv3bd8-iZQ {
-      background-image: url("../Images/LoginBackground.jpg");
-      height: 100%;
-      width:100%;
-      margin:0;
-      padding:0;
-  
-      background-position:center;
-      background-repeat: no-repeat;
-      background-attachment:fixed;
-      background-size:cover;
-    }
-  .login-J3k {
-    align-items: center;
-    background-color: #ffffff;
-    border-radius: 2.5rem;
-    box-shadow: 0 0.1237rem 0.9858rem rgba(0, 0, 0, 0.0756838098), 0 0.3127rem 2.4932rem rgba(0, 0, 0, 0.0931405798), 0 0.638rem 5.0859rem rgba(0, 0, 0, 0.1194749326), 0 1.3141rem 10.476rem rgba(0, 0, 0, 0.178156957), 0 3.6rem 28.7rem rgba(0, 0, 0, 0.3100000024);
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    height: 42.7rem;
-    left: 57.1rem;
-    overflow: hidden;
-    padding: 0.7rem 3.6rem 0.5rem 3.7rem;
-    position: absolute;
-    top: 1.8rem;
-    width: 30.1rem;
-  
+  background-color
+  : 
+  #ffffff;
+  height
+  : 
+  128.2rem;
+  overflow
+  : 
+  hidden;
+  position
+  : 
+  relative;
+  width
+  : 
+  100%;
+  .unsplash-rfabslv3bd8-iZQ {
+    background-image: url("../Images/LoginBackground.jpg");
+    height: 100%;
+    width:100%;
+    margin:0;
+    padding:0;
+
+    background-position:center;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size:cover;
   }
-  }
-  
+.login-J3k {
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 2.5rem;
+  box-shadow: 0 0.1237rem 0.9858rem rgba(0, 0, 0, 0.0756838098), 0 0.3127rem 2.4932rem rgba(0, 0, 0, 0.0931405798), 0 0.638rem 5.0859rem rgba(0, 0, 0, 0.1194749326), 0 1.3141rem 10.476rem rgba(0, 0, 0, 0.178156957), 0 3.6rem 28.7rem rgba(0, 0, 0, 0.3100000024);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 42.7rem;
+  left: 74rem;
+  overflow: hidden;
+  padding: 0.7rem 3.6rem 0.5rem 3.7rem;
+  position: absolute;
+  top: 1.8rem;
+  width: 30.1rem;
+  justify-content: center; /* Center vertically */
+
+}
+}

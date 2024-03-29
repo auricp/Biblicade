@@ -1,7 +1,5 @@
 import "./LoginRegisterNavbar.css";
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-import { useParams } from "react-router-dom";
 import React from "react";
 import logo from "../Images/logo.png";
 function LoginRegisterNav() {

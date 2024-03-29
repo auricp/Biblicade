@@ -9,6 +9,7 @@ function Nav() {
   const { user, setUser } = useContext(UserContext);
   const { dispatch } = useFormData();
   const userEmail = user?.email;
+
   function handleLogout() {
     dispatch({ type: "LOGOUT" });
     setUser(null);
@@ -48,7 +49,7 @@ function Nav() {
             </div>
             <img
               loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/0c1d4bb4-e80e-4e78-8391-79dc5e262a64?"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/49e2106b4d2d73e8db380f38875f6e70f095001df80651b242f1e82da27ee13b?apiKey=c7b8aa40bb064f6f8fcb00de2b00394b&"
               className="img-4"
             />
           </div>
@@ -62,16 +63,15 @@ function Nav() {
                 />
               </Link>
             )}
-            <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/248ce8f4-51d8-4320-a68c-8957a496b0bd?"
-              className="img-6"
-            />
-            <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/97d36e33-6f9a-4165-916f-a11683446465?"
-              className="img-7"
-            />
+            {userEmail && (
+              <Link to={`/Favourites/` + user.email}>
+                <img
+                  loading="lazy"
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/97d36e33-6f9a-4165-916f-a11683446465?"
+                  className="img-7"
+                />
+              </Link>
+            )}
             <div className="div-25">
               {userEmail && (
                 <Link to="/">

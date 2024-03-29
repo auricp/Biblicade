@@ -7,9 +7,9 @@ const userList = [
     userType: "Regular",
   },
   {
-    email: "poteR@email.com",
-    firstName: "Karen",
-    lastName: "Poter",
+    email: "admin@email.com",
+    firstName: "James",
+    lastName: "Madison",
     password: "pass",
     userType: "Admin",
   }
