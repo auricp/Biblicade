@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import "./RegistrationForm.css";
 import {Link,useNavigate} from "react-router-dom";
 import userList from '../Components/userList';
+import Axios from 'axios'
 
 function RegistrationForm(){
     const navigate = useNavigate();
@@ -111,6 +112,17 @@ function RegistrationForm(){
             }
         }
     }
+    
+const displayInfo = () => {
+
+    console.log(formData.firstName + formData.lastName + formData.email + formData.password);
+};
+
+const addDeveloper = () => {
+    Axios.post('http://localhost:3001/create', {fname: formData.firstName, lname: formData.lastName, email: formData.email, password: formData.password, phone: formData.phoneNumber}).then(() => {
+        console.log("Success!");
+    });
+};
     return(
 <div class="property-1register-5Fg" id="161:5477">
 <Link to="../Login">
@@ -165,9 +177,11 @@ function RegistrationForm(){
 <span class="already-have-account-reg-1">Log in here.</span>
 </Link>
 </p>
-<button type="submit" class="submit-cLi" id="30:2352" onClick={handleSubmit}>Create Account</button>
+<button type="submit" class="submit-cLi" id="30:2352" onClick={addDeveloper}>Create Account</button>
 <span class="error-register">{error}</span>
 </div>
     );
+
+
 }
 export default RegistrationForm;
