@@ -32,12 +32,22 @@ function Nav() {
           <div className="div-8">
             <div className="div-9">
               <div className="div-10">
-                <div className="div-12">Search games</div>
+                <div className="div-11">
+                  <input
+                    className="div-12"
+                    type="text"
+                    placeholder="Search games..."
+                  />
+                </div>
               </div>
               <div className="div-13">
                 <div className="div-14" />
                 <div className="div-15">
-                  <div className="div-16">Genre</div>
+                  <input
+                    className="div-16"
+                    type="text"
+                    placeholder="Genre"
+                  />
                 </div>
               </div>
               <div className="div-17">
