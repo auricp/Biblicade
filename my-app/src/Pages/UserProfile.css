@@ -1,0 +1,81 @@
+/* Profile card container */
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Profile image */
+  .profile-image {
+    margin-bottom: 20px;
+  }
+  
+  .profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  /* Profile details */
+  .profile-details {
+    text-align: center;
+  }
+  
+  /* Profile name */
+  .profile-name {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  /* Profile age */
+  .profile-age {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  /* Profile email */
+  .profile-email {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  /* Editable fields */
+  .first-name-input,
+  .last-name-input,
+  .profile-age-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  /* Edit profile button */
+  .edit-profile-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-profile-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Error message */
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  

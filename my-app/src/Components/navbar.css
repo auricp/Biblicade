@@ -227,6 +227,7 @@ button {
   color: var(--Gray-2, #4f4f4f);
   align-self: start;
   margin-top: 7px;
+  padding-left: 8px;
   flex-grow: 1;
   white-space: nowrap;
   font: 400 15px/18px Roboto, -apple-system, Roboto, Helvetica, sans-serif;

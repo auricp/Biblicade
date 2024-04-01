@@ -32,7 +32,6 @@ function Nav() {
           <div className="div-8">
             <div className="div-9">
               <div className="div-10">
-                <div className="div-11">Game Title</div>
                 <div className="div-12">Search games</div>
               </div>
               <div className="div-13">
