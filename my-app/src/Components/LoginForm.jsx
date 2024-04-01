@@ -1,9 +1,12 @@
 import React,{useState,useContext} from 'react';
+import Axios from 'axios'
 import "./LoginForm.css";
 import {Link,useNavigate} from "react-router-dom";
-import userList from '../Components/userList';
+//import userList from '../Components/userList';
 import {UserContext} from "../Context/usercontext";
+//import userList from '../Components/RegistrationForm';
 function LoginForm(){
+    const [userList, setUserList] = useState([]);
     const {setUser}= useContext(UserContext);
     const navigate = useNavigate();
     const[error,setError] =useState('');
@@ -25,8 +28,14 @@ function LoginForm(){
             setError('All fields must be filled');
         }
         else{
+            // receive all users information
+            Axios.get('http://localhost:3001/users').then((response) => {
+                setUserList(response.data);
+            });
+            // find the inputted information
             const user = userList.find((u)=> u.email === formData.email && u.password=== formData.password);
             if(user){
+                console.log('Successfully logged in with email: ' + user.email);
                 setUser(user);
                 setError('');
                 navigate('/');

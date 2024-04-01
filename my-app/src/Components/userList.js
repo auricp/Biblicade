@@ -1,3 +1,4 @@
+
 const userList = [
   {
     email: "test",
@@ -14,4 +15,5 @@ const userList = [
     userType: "Admin",
   }
 ];
+
 export default userList;
