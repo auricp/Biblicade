@@ -16,30 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `registertest`
+-- Table structure for table `developer`
 --
 
-DROP TABLE IF EXISTS `registertest`;
+DROP TABLE IF EXISTS `developer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `registertest` (
-  `firstname` varchar(45) NOT NULL,
-  `lastname` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
-  `password` varchar(45) DEFAULT NULL,
-  `phone` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`firstname`)
+CREATE TABLE `developer` (
+  `name` varchar(45) NOT NULL,
+  `type` varchar(45) DEFAULT NULL,
+  `location` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `registertest`
+-- Dumping data for table `developer`
 --
 
-LOCK TABLES `registertest` WRITE;
-/*!40000 ALTER TABLE `registertest` DISABLE KEYS */;
-INSERT INTO `registertest` VALUES ('Gojo','Ballin','gojoballin@gmail.com','thegoat','1234567'),('Shadow','Headgehog','shadowdagoat@gmail.com','Yomama','123-456-7890'),('Test','Test2','TEstytest@test.com','1234','1234567');
-/*!40000 ALTER TABLE `registertest` ENABLE KEYS */;
+LOCK TABLES `developer` WRITE;
+/*!40000 ALTER TABLE `developer` DISABLE KEYS */;
+INSERT INTO `developer` VALUES ('AJ',NULL,NULL);
+/*!40000 ALTER TABLE `developer` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
