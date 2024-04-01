@@ -1,0 +1,6 @@
+The database file is to be used in mySQL workbench using the import setting after setting up your workspace. Should import this databse by:
+1. Go to your local instance in the workbench
+2. Click on the 'Server' option at the top
+3. From the dropdown menu click 'Data Import'
+4. From this choose the location of the database file on your machine
+5. Click the 'Import Progress' tab and click 'Start Import'

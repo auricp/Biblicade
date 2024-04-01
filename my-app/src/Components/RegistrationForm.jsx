@@ -5,6 +5,8 @@ import userList from '../Components/userList';
 import Axios from 'axios'
 
 function RegistrationForm(){
+    // Adding functionality for getting backend info to frontend
+    const [userList, setUserList] = useState([]);
     const navigate = useNavigate();
     const[regularColor,setregularColor]=useState('#99C1FC');
     const[adminColor,setadminColor]=useState('#99C1FC');
@@ -114,15 +116,26 @@ function RegistrationForm(){
     }
     
 const displayInfo = () => {
-
     console.log(formData.firstName + formData.lastName + formData.email + formData.password);
 };
 
+// function to add a user 
 const addDeveloper = () => {
     Axios.post('http://localhost:3001/create', {fname: formData.firstName, lname: formData.lastName, email: formData.email, password: formData.password, phone: formData.phoneNumber}).then(() => {
         console.log("Success!");
     });
 };
+
+// fucntion to get all users
+// response contains whatever we get from our backend
+const getUsers = () => {
+    Axios.get('http://localhost:3001/users').then((response) => {
+        setUserList(response.data);
+    });
+
+}
+
+
     return(
 <div class="property-1register-5Fg" id="161:5477">
 <Link to="../Login">
@@ -179,9 +192,18 @@ const addDeveloper = () => {
 </p>
 <button type="submit" class="submit-cLi" id="30:2352" onClick={addDeveloper}>Create Account</button>
 <span class="error-register">{error}</span>
+<p>-------------------------------</p>
+
+<button onClick={getUsers}>Show all Users</button>
+{userList.map((val, key) => {
+    return <div> {val.firstname}</div>
+})}
+
 </div>
     );
 
 
 }
 export default RegistrationForm;
+
+// new getUsers button  

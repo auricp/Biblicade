@@ -32,7 +32,17 @@ app.post('/create', (req, res) => {
         }
     });
     
-})
+});
+
+app.get('/users', (req, res) => {
+    db.query("SELECT * FROM registertest", (err,result) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+});
 
 app.listen(3001, ()=> {
     console.log("Server is working on port 3001");
