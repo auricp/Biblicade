@@ -79,12 +79,12 @@ function UserProfile(){
         <div>
             <div className="profile-card">
                 <div className="profile-image">
-                <img
-                    loading="lazy"
-                    srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/734ab845e17875a038275432e1c2502332f3743f3e3411b52e8f5b00c5163a32?apiKey=c7b8aa40bb064f6f8fcb00de2b00394b&"
-                    className="profile-img"
-                    alt="Profile Image"
-                />
+                    <img
+                        loading="lazy"
+                        srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/734ab845e17875a038275432e1c2502332f3743f3e3411b52e8f5b00c5163a32?apiKey=c7b8aa40bb064f6f8fcb00de2b00394b&"
+                        className="profile-img"
+                        alt="Profile Image"
+                    />
                 </div>
                 <div className="profile-details">
                 {/* Editable first name */}
