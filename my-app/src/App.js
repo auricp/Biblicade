@@ -10,6 +10,7 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import UserProfile from "./Pages/UserProfile";
 import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { FormDataProvider } from "./Context/formdatacontext";
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
 }
 function Content({ openPopup }) {
   const { LoginRegisterPage, setLoginRegister } = useContext(PageContext);
+  const { email } = useParams();
   const location = useLocation();
   useEffect(() => {
     handleSwitch();
@@ -56,6 +58,11 @@ function Content({ openPopup }) {
     } else {
       setLoginRegister(false);
     }
+    if (location.pathname === `/UserProfile/${email}`) {
+      setLoginRegister("UserProfilePage", true);
+    } else {
+      setLoginRegister("UserProfilePage", false);
+    }
   };
   return (
     <>
@@ -63,7 +70,9 @@ function Content({ openPopup }) {
       {location.pathname === "/" && <HomePage openPopup={openPopup} />}
       {location.pathname === "/Login" && <Login />}
       {location.pathname === "/Register" && <Register />}
-      {location.pathname === "/UserProfile/:email" && <UserProfile />}
+      {location.pathname === `/UserProfile/${email}` && (
+        <UserProfile openPopup={openPopup} />
+      )}
     </>
   );
 }
