@@ -51,17 +51,12 @@ function Content({ openPopup }) {
   const location = useLocation();
   useEffect(() => {
     handleSwitch();
-  }, [location.pathname, setLoginRegister]);
+  }, [location.pathname]);
   const handleSwitch = () => {
     if (location.pathname === "/Login" || location.pathname === "/Register") {
       setLoginRegister(true);
     } else {
       setLoginRegister(false);
-    }
-    if (location.pathname === `/UserProfile/${email}`) {
-      setLoginRegister("UserProfilePage", true);
-    } else {
-      setLoginRegister("UserProfilePage", false);
     }
   };
   return (
