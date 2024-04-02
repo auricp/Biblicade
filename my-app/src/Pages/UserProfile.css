@@ -40,6 +40,46 @@
     font-size: 18px;
     margin-bottom: 10px;
   }
+
+  .first-name-input,
+    .last-name-input {
+    width: 20rem;
+    height: 5.2227rem;
+    padding: 1.29rem 3.288rem 1.633rem 3.288rem;
+    font-size: 16px;
+    text-align: center;
+    border: solid 0.0645rem #c2c2c2;
+    border-radius: 25.7911rem;
+    box-sizing: border-box;
+    font: 700 22px/62px Roboto, -apple-system, Roboto, Helvetica, sans-serif; 
+    left: 0rem;
+    margin:0;
+    }
+    .name-input-titles {
+    color: #4f4f4f;
+    font-family: Roboto, 'Source Sans Pro';
+    font-size: 0.9721rem;
+    font-weight: 400;
+    /* height: 1.2rem; */
+    left: 12.5rem;
+    top: -3.5rem;
+    /* margin-left: 5%;
+    margin-right: 15%; */
+    position: relative;
+    white-space: nowrap;
+    /* width: 5.6rem; */
+    }
+    .age-input-title {
+    color: #4f4f4f;
+    font-family: Roboto, 'Source Sans Pro';
+    font-size: 0.9721rem;
+    font-weight: 400;
+    position: relative;
+    white-space: nowrap;
+    left: 7rem;
+    top: -3.3rem;
+    /* width: 5.6rem; */
+    }
   
   /* Profile email */
   .profile-email {

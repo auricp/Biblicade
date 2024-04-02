@@ -131,6 +131,7 @@ const addDeveloper = () => {
 const getUsers = () => {
     Axios.get('http://localhost:3001/users').then((response) => {
         setUserList(response.data);
+        console.log("working");
     });
 
 }

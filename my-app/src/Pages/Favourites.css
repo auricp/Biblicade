@@ -1,0 +1,30 @@
+.favourite-games {
+    align-items: center;
+    background-color: #ffffff;
+    border: solid 0.0589rem #828282;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+
+    padding: 2.003rem 0rem 0.703rem 4.5rem;
+    width: 107%;
+
+    .favourite-games-list {
+        align-items: center;
+        color: #828282;
+        display: flex;
+        flex-shrink: 0;
+        font-family: Roboto, 'Source Sans Pro';
+        font-size: 2.0617rem;
+        font-weight: 700;
+        height: 2.5rem;
+        justify-content: center;
+        line-height: 1.1725;
+        margin: 0rem 77.033rem 0.978rem 0.111rem;
+        overflow: hidden;
+        position: relative;
+        white-space: nowrap;
+        width: 100%;
+    }
+}

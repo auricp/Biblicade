@@ -9,6 +9,7 @@ import HomePage from "./Pages/HomePage";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import UserProfile from "./Pages/UserProfile";
+import Favourites from "./Pages/Favourites";
 import { useLocation } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { FormDataProvider } from "./Context/formdatacontext";
@@ -37,6 +38,10 @@ function App() {
               <Route
                 path={"/UserProfile/:email"}
                 element={<Content openPopup={openPop} />}
+              />
+              <Route
+                  path={"/Favourites/:email"}
+                  element={<Content openPopup={openPop} />}
               />
             </Routes>
           </Router>
@@ -68,6 +73,7 @@ function Content({ openPopup }) {
       {location.pathname === `/UserProfile/${email}` && (
         <UserProfile openPopup={openPopup} />
       )}
+      {location.pathname === `/Favourites/${email}` && <Favourites />}
     </>
   );
 }
