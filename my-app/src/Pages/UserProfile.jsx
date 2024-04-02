@@ -4,16 +4,17 @@ import Axios from 'axios'
 import {Link,useNavigate} from "react-router-dom";
 import { UserContext } from "../Context/usercontext";
 import { useParams } from 'react-router-dom';
-import userList from '../Components/userList';
+import UserList from '../Components/userList';
 
 function UserProfile(){
+    const userList = UserList();
     const { email } = useParams();
     const user = userList.find((u)=>u.email === email);
     const { userC } = useContext(UserContext);
     const cemail = userC?.email;
 
-    const firstName = user?.firstName;
-    const lastName = user?.lastName;
+    const firstName = user.firstname;
+    const lastName = user.lastname;
     let myprofile;
 
     if(cemail === email){
@@ -96,7 +97,7 @@ function UserProfile(){
                     className="first-name-input"
                     />
                 ) : (
-                    <h2 className="profile-name">{`${newFirstName} ${newLastName}`}</h2>
+                    <h2 className="profile-name">{`${user.firstname} ${user.lastname}`}</h2>
                 )}
                 {/* Editable last name */}
                 {editMode ? (

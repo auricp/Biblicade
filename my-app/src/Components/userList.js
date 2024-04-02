@@ -1,19 +1,11 @@
-
-const userList = [
-  {
-    email: "test",
-    firstName: "Test",
-    lastName: "Gamer",
-    password: "pass",
-    userType: "Regular",
-  },
-  {
-    email: "admin@email.com",
-    firstName: "James",
-    lastName: "Madison",
-    password: "pass",
-    userType: "Admin",
-  }
-];
-
-export default userList;
+import React,{useState,useContext} from 'react';
+import Axios from 'axios'
+function UserList(){
+  const [userList, setUserList] = useState([]);
+  Axios.get('http://localhost:3001/users').then((response) => {
+    setUserList(response.data);
+  })
+  console.log(userList);
+  return userList;
+};
+export default UserList;
