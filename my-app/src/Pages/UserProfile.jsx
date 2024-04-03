@@ -46,8 +46,18 @@ function UserProfile() {
                     alt="Profile Image"
                 />
             </div>
-            <h1>{user.firstname} {user.lastname}</h1>
-            <p>Email: {email}</p>
+            <h1>
+                {user ? (
+                    <>
+                        <p>{user.firstname} {user.lastname}</p>
+                    </>
+                ) : (
+                    <p>Loading...</p>
+                )}
+            </h1>
+            <div className='profile-email'>
+                <p>Email: {email}</p>
+            </div>
             {(user && user.email === email) && (
                 <button onClick={editMode ? handleSave : toggleEditMode} className="edit-profile-button">
                     <div className="edit-profile">
