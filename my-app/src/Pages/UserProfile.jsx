@@ -46,7 +46,7 @@ function UserProfile() {
                     alt="Profile Image"
                 />
             </div>
-            <h1>
+            <h1 className='profile-details'>
                 {user ? (
                     <>
                         <p>{user.firstname} {user.lastname}</p>

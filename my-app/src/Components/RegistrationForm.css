@@ -1,4 +1,4 @@
-.property-1register-5Fg {
+.register {
   align-items: center;
   background-color: #ffffff;
   border-radius: 0.1rem;
@@ -123,7 +123,7 @@
       width: 90%;
 
     }
-    .email-address-MNa {
+    .inputfields {
       color: #4f4f4f;
       font-family: Roboto, "Source Sans Pro";
       font-size: 1.076rem;
@@ -159,7 +159,7 @@
     height: 3.8046rem;
     margin: 0rem 0rem 2.795rem 0rem;
 
-    .price-Mte {
+    .regular {
       border: solid 0.0702rem #c2c2c2;
       border-radius: 28.0608rem;
       box-sizing: border-box;
@@ -180,11 +180,11 @@
 
 
     }
-    .price-Mte:hover {
+    .regular:hover {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
       background-color:#120132;
     }
-    .or-Kyt {
+    .or {
       color: rgb(0, 0, 0);
       flex-shrink: 0;
       font-family: Roboto, 'Source Sans Pro';
@@ -193,7 +193,7 @@
       line-height: 1.1725;
       white-space: nowrap;
     }
-    .price-SYi {
+    .admin {
       border: solid 0.0702rem #c2c2c2;
       border-radius: 28.0608rem;
       box-sizing: border-box;
@@ -215,12 +215,12 @@
 
 
     }
-    .price-SYi:hover {
+    .admin:hover {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
       background-color:#303201;
     }
   }
-  .already-have-account-reg {
+  .already-have-account {
     align-items: baseline;
     color: #828282;
     display: flex;
@@ -234,7 +234,7 @@
     white-space: nowrap;
 
   }
-  .already-have-account-reg-1{
+  .loginlink{
     color: #828282;
     font-family: Roboto, "Source Sans Pro";
     font-size: 1.5076rem;
