@@ -11,7 +11,7 @@ function HomePage(){
             className="img"
             alt="banner"
             />
-            <div className="header">
+            <div className="banner-text">
                 <div className="title">Welcome to Biblicade</div>
                 <div className="subtitle-wrapper">
                     <div className="subtitle">
