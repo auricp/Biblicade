@@ -37,7 +37,7 @@ function UserProfile() {
     };
 
     return (
-        <div>
+        <div className="profile-card">
             <div className="profile-image">
                 <img
                     loading="lazy"
@@ -46,16 +46,8 @@ function UserProfile() {
                     alt="Profile Image"
                 />
             </div>
-            <h1>User Profile</h1>
+            <h1>{user.firstname} {user.lastname}</h1>
             <p>Email: {email}</p>
-            {user ? (
-                <>
-                    <p>First Name: {user.firstname}</p>
-                    <p>Last Name: {user.lastname}</p>
-                </>
-            ) : (
-                <p>Loading...</p>
-            )}
             {(user && user.email === email) && (
                 <button onClick={editMode ? handleSave : toggleEditMode} className="edit-profile-button">
                     <div className="edit-profile">
