@@ -1,26 +1,44 @@
-.banner {
+.header {
+    position: relative;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    align-self: center;
-    margin: 20px;
-    margin-top: 122px;
-    max-width: 100%;
-    padding: 50px 20px;
-    border-bottom: 2px solid var(--Gray-4, #bdbdbd);
+    justify-content: center;
+    min-height: 447px;
+    width: 100%;
+    padding: 80px 60px;
+    overflow: hidden;
+    color: white; /* Set text color to white */
   }
-  
+
   @media (max-width: 991px) {
-    .banner {
-      margin-top: 40px;
-      flex-direction: column;
-      align-items: center;
+    .header {
+        margin-top: 40px;
     }
   }
 
-.banner-img {
-    padding-top: 45px;
-    padding-bottom: 45px;
-    scale: 0.7;
-}
+  .title {
+    align-self: center;
+    font: 400 40px Roboto, sans-serif;
+    margin-bottom: 86px;
+  }
+  
+  .subtitle {
+    align-self: center;
+    font: 200 30px Roboto, sans-serif;
+  }
+
+  .subtitle-wrapper {
+    background-color: rgb(138, 167, 221);
+    padding: 20px; /* Adjust padding as needed */
+    border-radius: 5px; /* Add border radius for rounded corners */
+  }
+  
+  .img {
+    position: absolute;
+    inset: 0;
+    height: 60%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }

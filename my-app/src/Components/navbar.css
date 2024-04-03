@@ -168,20 +168,18 @@ button {
 }
 
 .div-11 {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding: 21.5px;
-  background-color: rgba(43, 175, 74, 0); /* Initial background color */
-  transition: background-color 0.3s; /* Smooth transition for the color change */
-  width: 200px;
-  border-radius: 200px;
+  color: var(--Gray-2, #4f4f4f);
+  white-space: nowrap;
+  padding-left: 8px;
+  font-weight: 700px;
+  font: 400 15px/18px Roboto, -apple-system, Roboto, Helvetica, sans-serif;
 }
 @media (max-width: 991px) {
   .div-11 {
     white-space: initial;
   }
 }
+
 .div-12 {
   color: var(--Gray-3, #828282);
   white-space: nowrap;
@@ -245,7 +243,7 @@ button {
 .div-17:hover {
   background-color: #f5f5f5; /* New background color on hover */
 }
-@media (max-width: 909px) {
+@media (max-width: 991px) {
   .div-17 {
     justify-content: center;
   }
@@ -316,7 +314,7 @@ button {
   aspect-ratio: 1;
   object-fit: contain;
   object-position: center;
-  width: auto;
+  width: 44px;
   overflow: hidden;
   align-self: stretch;
   max-width: 100%;
