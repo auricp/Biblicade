@@ -35,21 +35,6 @@
       }
     }
   }
-
-  .additional-filters {
-    color: #828282;
-    cursor: pointer;
-    flex-shrink: 0;
-    font-family: Roboto, "Source Sans Pro";
-    font-size: 1.25rem;
-
-    font-weight: 400;
-    line-height: 0;
-    text-decoration-line: underline;
-    margin-top: 4.5rem;
-    margin-right: 0.9rem;
-    white-space: nowrap;
-  }
 }
 
 .group-6 {

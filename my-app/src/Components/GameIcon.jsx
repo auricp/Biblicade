@@ -1,5 +1,5 @@
 import React, { useState, useEffect,useContext} from "react";
-import "./GameCard.css";
+import "./GameIcon.css";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { PageContext } from "../Context/pagecontext";
 import userList from "./userList";
@@ -10,7 +10,7 @@ import { useFormData } from '../Context/formdatacontext';
 import {Link,useNavigate} from 'react-router-dom';
 import { toast } from "react-toastify";
 
-function GameCard({ openPopup,game }) {
+function GameIcon({ openPopup,game }) {
   const navigate = useNavigate();
   const {formData,dispatch} = useFormData();
   const { pageStates} = useContext(PageContext);
