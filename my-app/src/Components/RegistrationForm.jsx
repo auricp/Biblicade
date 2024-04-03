@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import "./RegistrationForm.css";
 import {Link,useNavigate} from "react-router-dom";
-import userList from '../Components/userList';
 import Axios from 'axios'
 
 function RegistrationForm(){
@@ -24,7 +23,7 @@ function RegistrationForm(){
         lastName: '',
         password: '',
         reEnterPassword: '',
-        Birthday: '',
+        birthday: '',
     });
     const[isregular,setIsregular] = useState(true);
     const clearError=()=>{
@@ -45,21 +44,10 @@ function RegistrationForm(){
             [name]: value,
         });
     }
-    const handleregular=()=>{
-        setIsregular(true);
-        setregularColor('#120132');
-        setadminColor('#99C1FC');
-        clearError();
-    }
-    const handleadmin=()=>{
-        setIsregular(false);
-        setadminColor('#120132');
-        setregularColor('#99C1FC');
-        clearError();
-    }
+    
     const handleSubmit=(e)=>{
         e.preventDefault();
-        if(formData.email.length ===0 || formData.firstName.length ===0 || formData.lastName.length ===0 || formData.password.length ===0 || formData.reEnterPassword.length ===0 || formData.Birthday.length ===0){
+        if(formData.email.length ===0 || formData.firstName.length ===0 || formData.lastName.length ===0 || formData.password.length ===0 || formData.reEnterPassword.length ===0 || formData.birthday.length ===0){
             
             setError('All fields must be filled');
             if(formData.email.length===0){
@@ -77,7 +65,7 @@ function RegistrationForm(){
             if(formData.reEnterPassword.length===0){
                 setReEnterColor('red');
             }
-            if(formData.Birthday.length===0){
+            if(formData.birthday.length===0){
                 setBirthColor('red');
             }
         }
@@ -90,8 +78,8 @@ function RegistrationForm(){
             setError('Email is not in a valid format');
             setEmailColor('red');
         }   
-        else if (!/^\d{4}-\d{2}-\d{2}$/.test(formData.Birthday)) {
-            setError('Birthday is not in a valid format (YYYY-MM-DD)');
+        else if (!/^\d{4}-\d{2}-\d{2}$/.test(formData.birthday)) {
+            setError('Birthday is not in a valid format');
             setBirthColor('red');
         }
         else{
@@ -121,7 +109,7 @@ const displayInfo = () => {
 
 // function to add a user 
 const addDeveloper = () => {
-    Axios.post('http://localhost:3001/create', {fname: formData.firstName, lname: formData.lastName, email: formData.email, password: formData.password, Birth: formData.Birthday}).then(() => {
+    Axios.post('http://localhost:3001/create', {fname: formData.firstName, lname: formData.lastName, email: formData.email, password: formData.password, Birth: formData.birthday}).then(() => {
         console.log("Success!");
     });
 };
@@ -171,27 +159,19 @@ const getUsers = () => {
 
 <div class ="search-bar-reg-5" style={{borderColor: BirthColor}}>
 <p class="inputfields">Birthday</p>
-<input  class="email-input" id="30:2357" name="Birthday" placeholder= "YYYY-MM-DD" value={formData.Birthday} onChange={handleTextInput}></input>
+<input className="email-input" id="30:2357" name="birthday" placeholder="YYYY-MM-DD" value={formData.birthday} onChange={handleTextInput}></input>
 </div>
 
 </div>
-<p class="select-account-type-9Xg" id="161:5490">Select Account Type</p>
-<div class="frame-49-ejL" id="163:5557">
 
-<button type ="submit"class="regular" id="30:2368" style={{backgroundColor:regularColor,borderColor:selectColor}}checked={isregular} onClick={handleregular}>Regular</button>
-
-<p class="or" id="163:5556">or</p>
-
-<button type ="submit"class="admin" id="30:2369"  style={{backgroundColor:adminColor,borderColor:selectColor}} checked={!isregular} onClick={handleadmin}>Admin</button>
-
-</div>
 <p class="already-have-account" id="161:5195">
 <span class="already-have-account">Already Have an Account?&#160;</span>
 <Link to="../Login">
 <span class="loginlink">Log in.</span>
 </Link>
 </p>
-<button type="submit" class="submit-cLi" id="30:2352" onClick={addDeveloper}>Create Account</button>
+<button type="submit" class="submit-cLi" id="30:2352" onClick={handleSubmit}>Create Account</button>
+
 <span class="error-register">{error}</span>
 <p>-------------------------------</p>
 
