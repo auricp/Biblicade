@@ -10,6 +10,9 @@ export const Favourites = () => {
             <div class="favourite-games-list">
               Favourited Games
             </div>
+            <div class="wishlists">
+              Wishlists
+            </div>
             
           </div>
     </>
