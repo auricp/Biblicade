@@ -21,9 +21,9 @@ app.post('/create', (req, res) => {
     const lname = req.body.lname;
     const email = req.body.email;
     const password = req.body.password;
-    const phone = req.body.phone;
+    const birthday = req.body.birthday;
     
-    db.query('INSERT INTO registertest (firstname,lastname,email,password,phone) VALUES (?,?,?,?,?)', [fname, lname, email, password, phone], 
+    db.query('INSERT INTO registertest (firstname,lastname,email,password,birthday) VALUES (?,?,?,?,?)', [fname, lname, email, password, birthday], 
     (err, result) => {
         if (err) {
             console.log(err)
