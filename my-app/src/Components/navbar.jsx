@@ -46,7 +46,7 @@ function Nav() {
                   <input
                     className="div-16"
                     type="text"
-                    placeholder="Genre"
+                    placeholder="Search genres..."
                   />
                 </div>
               </div>
