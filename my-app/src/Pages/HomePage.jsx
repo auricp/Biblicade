@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import Games from '../Components/Games';
+import Axios from 'axios';
 import "./HomePage.css"
 
-
 function HomePage(){
+    const [games, setGames] = useState([]);
+
+    // function to get all games
+    // response contains whatever we get from our backend
+    const getGames = () => {
+        Axios.get('http://localhost:3001/games').then((response) => {
+            setGames(response.data);
+            console.log("working");
+        });
+        
+    }
+
+    // Call getGames when the component mounts
+    useEffect(() => {
+        getGames();
+    }, []);
+
     return(
         <div>
             <img
@@ -18,8 +36,10 @@ function HomePage(){
                         Discover your next favourite game
                     </div>
                 </div>
+            </div> 
+            <div>
+            <Games games={getGames()} />
             </div>
-            
       </div>
 
     );
