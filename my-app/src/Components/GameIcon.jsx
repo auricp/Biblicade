@@ -10,7 +10,7 @@ import { useFormData } from '../Context/formdatacontext';
 import {Link,useNavigate} from 'react-router-dom';
 import { toast } from "react-toastify";
 
-function GameIcon({ openPopup,game }) {
+function GameIcon({ openPopup, game }) {
   const navigate = useNavigate();
   const {formData,dispatch} = useFormData();
   const { pageStates} = useContext(PageContext);
@@ -19,6 +19,7 @@ function GameIcon({ openPopup,game }) {
   const [image, setImage] = useState(null);
   const [isHovered,setHovered] = useState(false);
   const gameId = game.id;
+
   const isgameInFavourites = ()=>{
     const uL = userList.find((u)=>u.email ===user?.email);
     return uL && uL.favourites && uL.favourites.includes(gameId);
@@ -158,4 +159,4 @@ function GameIcon({ openPopup,game }) {
     </div>
   );
 }
-export default gameCard;
+export default GameIcon;

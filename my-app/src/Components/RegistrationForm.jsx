@@ -118,7 +118,7 @@ const handleCreateAccount = (e) => {
 };
 
 
-// fucntion to get all users
+// function to get all users
 // response contains whatever we get from our backend
 const getUsers = () => {
     Axios.get('http://localhost:3001/users').then((response) => {
