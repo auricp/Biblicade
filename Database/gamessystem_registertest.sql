@@ -27,7 +27,7 @@ CREATE TABLE `registertest` (
   `lastname` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
-  `phone` varchar(45) DEFAULT NULL,
+  `birthday` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`firstname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -38,7 +38,7 @@ CREATE TABLE `registertest` (
 
 LOCK TABLES `registertest` WRITE;
 /*!40000 ALTER TABLE `registertest` DISABLE KEYS */;
-INSERT INTO `registertest` VALUES ('Gojo','Ballin','gojoballin@gmail.com','thegoat','1234567'),('Shadow','Headgehog','shadowdagoat@gmail.com','Yomama','123-456-7890'),('Test','Test2','TEstytest@test.com','1234','1234567');
+INSERT INTO `registertest` VALUES ('Gojo','Ballin','gojoballin@gmail.com','thegoat','1989-12-07'),('Shadow','Headgehog','shadowdagoat@gmail.com','Yomama','1951-03-14'),('Test','Test2','TEstytest@test.com','1234','2000-11-03');
 /*!40000 ALTER TABLE `registertest` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-01 14:38:19
+-- Dump completed on 2024-04-03 20:16:42
