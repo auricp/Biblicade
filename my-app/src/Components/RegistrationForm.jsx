@@ -7,8 +7,6 @@ function RegistrationForm(){
     // Adding functionality for getting backend info to frontend
     const [userList, setUserList] = useState([]);
     const navigate = useNavigate();
-    const[regularColor,setregularColor]=useState('#99C1FC');
-    const[adminColor,setadminColor]=useState('#99C1FC');
     const[emailColor,setEmailColor]=useState('#c2c2c2');
     const[fNameColor,setFNameColor]=useState('#c2c2c2');
     const[lNameColor,setLNameColor]=useState('#c2c2c2');
@@ -94,7 +92,6 @@ function RegistrationForm(){
                     firstName:formData.firstName,
                     lastName:formData.lastName,
                     password:formData.password,
-                    userType: isregular ? 'regular': 'admin',
                 };
                 userList.push(userInfo);
                 setError('');
@@ -113,6 +110,13 @@ const addDeveloper = () => {
         console.log("Success!");
     });
 };
+
+const handleCreateAccount = (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+    handleSubmit(e);
+    addDeveloper();
+};
+
 
 // fucntion to get all users
 // response contains whatever we get from our backend
@@ -163,15 +167,13 @@ const getUsers = () => {
 </div>
 
 </div>
-
 <p class="already-have-account" id="161:5195">
 <span class="already-have-account">Already Have an Account?&#160;</span>
 <Link to="../Login">
 <span class="loginlink">Log in.</span>
 </Link>
 </p>
-<button type="submit" class="submit-cLi" id="30:2352" onClick={handleSubmit}>Create Account</button>
-
+<button type="submit" class="submit-cLi" id="30:2352" onClick={(e) => handleCreateAccount(e)}>Create Account</button>
 <span class="error-register">{error}</span>
 <p>-------------------------------</p>
 
