@@ -39,7 +39,6 @@ const Games = ({ openPopup }) => {
                 <div className="icon-title" title={game.title}>
                   {truncateText(game.title, 25)}
                 </div>
-                <div className="icon-price">${game.price}</div>
               </div>
             </Link>
           </li>

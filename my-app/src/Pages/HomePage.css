@@ -33,6 +33,10 @@
     padding: 20px; /* Adjust padding as needed */
     border-radius: 5px; /* Add border radius for rounded corners */
   }
+
+  .icon-container:hover img {
+    transform: scale(1.1);
+  }
   
   .img {
     position: absolute;
