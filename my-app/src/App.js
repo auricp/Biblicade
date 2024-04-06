@@ -6,6 +6,7 @@ import { PageProvider, PageContext } from "./Context/pagecontext";
 import Nav from "./Components/navbar";
 import LoginRegisterNav from "./Components/LoginRegisterNavbar";
 import HomePage from "./Pages/HomePage";
+import Search from "./Pages/Search";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import UserProfile from "./Pages/UserProfile";
@@ -30,6 +31,7 @@ function App() {
           <Router>
             <Routes>
               <Route path="/" element={<Content openPopup={openPop} />} />
+              <Route path="/Search" element={<Search searchQuery="placeholder" />} />
               <Route path="/Login" element={<Content openPopup={openPop} />} />
               <Route
                 path="/Register"
@@ -68,6 +70,7 @@ function Content({ openPopup }) {
     <>
       {LoginRegisterPage ? <LoginRegisterNav /> : <Nav />}
       {location.pathname === "/" && <HomePage openPopup={openPopup} />}
+      {location.pathname === "/Search" && <Search />}
       {location.pathname === "/Login" && <Login />}
       {location.pathname === "/Register" && <Register />}
       {location.pathname === `/UserProfile/${email}` && (
