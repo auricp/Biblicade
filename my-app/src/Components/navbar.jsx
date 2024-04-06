@@ -1,14 +1,29 @@
 import "./navbar.css";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState} from "react";
 import { UserContext } from "../Context/usercontext";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../Images/logo.png";
 import { useFormData } from "../Context/formdatacontext";
 
 function Nav() {
   const { user, setUser } = useContext(UserContext);
   const { dispatch } = useFormData();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHome = location.pathname === "/";
   const userEmail = user?.email;
+
+  // Handle search when search icon is clicked
+  const handleSearch = (searchQuery) => {
+    navigate(`/search?searchvalue=${searchQuery}`);
+  };
+
+  const handleEnterPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleSearch(event.target.value.toLowerCase());
+    }
+  };
 
   function handleLogout() {
     dispatch({ type: "LOGOUT" });
@@ -37,6 +52,8 @@ function Nav() {
                     className="div-12"
                     type="text"
                     placeholder="Search games..."
+                    onFocus={(e) => (e.target.value = "")} // Delete current text when input field is selected
+                    onKeyDown={(e) => handleEnterPress(e)}
                   />
                 </div>
               </div>
@@ -47,20 +64,23 @@ function Nav() {
                     className="div-16"
                     type="text"
                     placeholder="Search genres..."
+                    onFocus={(e) => (e.target.value = "")} // Delete current text when input field is selected
+                    onKeyDown={(e) => handleEnterPress(e)}
                   />
                 </div>
               </div>
-              <div className="div-17">
-                <div className="div-18">
-                </div>
-                <div className="div-20" />
-              </div>
             </div>
-            <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/49e2106b4d2d73e8db380f38875f6e70f095001df80651b242f1e82da27ee13b?apiKey=c7b8aa40bb064f6f8fcb00de2b00394b&"
-              className="img-4"
-            />
+            <button onClick={() => {
+              const gameSearchQuery = document.querySelector('.div-12').value;
+              const genreSearchQuery = document.querySelector('.div-16').value;
+              handleSearch(`${gameSearchQuery} ${genreSearchQuery}`);
+            }}>
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/49e2106b4d2d73e8db380f38875f6e70f095001df80651b242f1e82da27ee13b?apiKey=c7b8aa40bb064f6f8fcb00de2b00394b&"
+                className="img-4"
+              />
+            </button>
           </div>
           <div className="div-24">
             {userEmail && (
