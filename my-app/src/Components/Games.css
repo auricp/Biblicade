@@ -1,0 +1,51 @@
+.featured {
+    padding-top: 10%;
+    background: white;
+}
+
+.game-icon {
+    margin-top: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Align items horizontally in the center */
+    margin: 1%;
+}
+
+.game-image {
+    margin-top: 50%;
+    width: 500px; /* Adjust the width as needed */
+    height: 500px; /* Maintain aspect ratio */
+    border: 10px solid black; /* Example border style */
+    border-radius: 50px; /* Example border radius */
+    /* Add more styles as needed */
+  }
+
+.game-title {
+    font-size: 50px;
+    margin-top: 5%;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+}
+
+a:link {
+    color: black;
+  }
+  
+  /* Visited link */
+  a:visited {
+    color: purple;
+  }
+  
+  /* Mouse over link */
+  a:hover {
+    color: red;
+  }
+  
+  /* Selected link */
+  a:active {
+    color: green;
+  }
+
+  a{
+    text-decoration: none;
+  }

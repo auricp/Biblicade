@@ -15,7 +15,8 @@ function Nav() {
 
   // Handle search when search icon is clicked
   const handleSearch = (searchQuery) => {
-    navigate(`/search?searchvalue=${searchQuery}`);
+    const path = `${searchQuery}`;
+    navigate(path);
   };
 
   const handleEnterPress = (event) => {

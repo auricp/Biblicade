@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
+import './Games.css'
+import images from './images.js'
 
 const Games = ({ openPopup }) => {
+  const withus = ".."
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -25,25 +28,19 @@ const Games = ({ openPopup }) => {
     }
     return text.substring(0, maxLength) + "...";
   };
-
+  const gameImages = {
+    "With Us": require('../Images/Games/beatblitz.jpg')
+  }
   return (
     <ul className="featured">
-      {!isLoading &&
-        games.map((game) => (
-          <li className="game-icon" key={game.gameID}>
-            <Link to={`/gamePage/${game.title}`}>
-              <div className="icon-container">
-                <img src={game.imageLocation} alt="game" />
-              </div>
-              <div className="icon-info">
-                <div className="icon-title" title={game.title}>
-                  {truncateText(game.title, 25)}
-                </div>
-              </div>
-            </Link>
-          </li>
-        ))}
-    </ul>
+    {!isLoading &&
+      games.map((game) => (
+        <li className="game-icon" key={game.gameID}>
+          <img src={images[game.title]} alt={game.title} className='game-image'/>
+          <a className='game-title' href={`/gamePage/${game.title}`}>{game.title}</a>
+        </li>
+      ))}
+  </ul>
   );
 };
 
