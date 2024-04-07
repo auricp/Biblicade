@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Games from '../Components/Games';
 import Axios from 'axios';
 import "./HomePage.css"
+import RecommendAlgorithm from "../Components/RecommendAlgorithm";
 
 function HomePage(){
     const [games, setGames] = useState([]);
@@ -38,7 +39,9 @@ function HomePage(){
                 </div>
             </div> 
             <div>
+            <RecommendAlgorithm />
             <Games games={getGames()} />
+            
             </div>
       </div>
 
