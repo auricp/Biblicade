@@ -5,7 +5,7 @@ import "../Components/RecommendAlgorithm.css"
 export default function RecommendAlgorithm() {
   return (
     <div id="MainContainer_RecAlg">
-        <h2>Recommend Algorithm</h2>
+        <h2>Recommend Algorithm (work in progress by Gavin)</h2>
         <p>This is where Games will be suggested based on preferences and history</p>
     </div>
   )

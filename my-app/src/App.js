@@ -14,6 +14,7 @@ import Favourites from "./Pages/Favourites";
 import { useLocation } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { FormDataProvider } from "./Context/formdatacontext";
+import AssessmentPage from "./Pages/AssessmentPage";
 
 function App() {
   const [isPopOpen, setPopOpen] = useState(false);
@@ -47,6 +48,11 @@ function App() {
               <Route 
                   path={"/GamePage/:title"}
                   element={<GamePage/>}
+              />
+              {/* in progress right now */}
+              <Route 
+                  path={"/AssessmentPage/:email"}
+                  element={<AssessmentPage/>}
               />
             </Routes>
           </Router>

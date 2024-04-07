@@ -13,8 +13,8 @@
 
 .game-image {
     margin-top: 50%;
-    width: 500px; /* Adjust the width as needed */
-    height: 500px; /* Maintain aspect ratio */
+    width: 250px; /* Adjust the width as needed */
+    height: 250px; /* Maintain aspect ratio */
     border: 10px solid black; /* Example border style */
     border-radius: 50px; /* Example border radius */
     /* Add more styles as needed */
@@ -48,4 +48,45 @@ a:link {
 
   a{
     text-decoration: none;
+  }
+
+  .featured {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .game-icon {
+    width: 23%;
+    margin-bottom: 20px;
+  }
+  
+  .icon-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .icon-container:hover img {
+    transform: scale(1.1);
+  }
+  
+  .icon-info {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .icon-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  .collage-container {
+    position: relative;
+    height: 600px;
+    margin: 0 auto; 
+    width: 80%;
   }
