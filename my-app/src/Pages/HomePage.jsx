@@ -40,7 +40,7 @@ function HomePage(){
             </div> 
             <div>
             <RecommendAlgorithm />
-            <Games games={getGames()} />
+            <Games games={games} />
             
             </div>
       </div>

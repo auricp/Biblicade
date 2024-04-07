@@ -37,7 +37,8 @@ const Games = ({ openPopup }) => {
       games.map((game) => (
         <li className="game-icon" key={game.gameID}>
           <img src={images[game.title]} alt={game.title} className='game-image'/>
-          <a className='game-title' href={`/gamePage/${game.title}`}>{game.title}</a>
+          {/* <a className='game-title' href={`/gamePage/${game.title}`}>{game.title}</a> */}
+          <Link to={`/GamePage/${game.title}`} className='game-title'>{game.title}</Link>
         </li>
       ))}
   </ul>
