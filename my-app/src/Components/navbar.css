@@ -494,3 +494,29 @@ button {
     padding-left: 37px;
   }
 }
+suggested-games {
+  position: relative;
+}
+
+.suggested-games ul {
+  position: absolute;
+  top: 70%;
+  left: 37%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  width: 10%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border-radius: 20px;
+}
+
+.suggested-games ul li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.suggested-games ul li:last-child {
+  border-bottom: none;
+}

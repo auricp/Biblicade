@@ -1,9 +1,10 @@
 import "./navbar.css";
-import React, { useContext, useState} from "react";
+import React, { useContext, useState, useEffect} from "react";
 import { UserContext } from "../Context/usercontext";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../Images/logo.png";
 import { useFormData } from "../Context/formdatacontext";
+import Axios from 'axios';
 
 function Nav() {
   const { user, setUser } = useContext(UserContext);
@@ -12,24 +13,70 @@ function Nav() {
   const navigate = useNavigate();
   const isHome = location.pathname === "/";
   const userEmail = user?.email;
+  const [games, setGameList] = useState([]);
+  const [gameNames, setGameNames] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [suggestedGames, setSuggestedGames] = useState([]);
+
+
+  // getting all game names
+  useEffect(() => {
+    Axios.get('http://localhost:3001/games').then((response) => {
+      setGameList(response.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    const names = games.map(game => game.title);
+    setGameNames(names)
+  
+  });
+
+  const handleInputChange = (event) => {
+    const { value } = event.target;
+    setSearchQuery(value);
+
+    // Filter game names based on the input value
+    const filteredGames = gameNames.filter((name) =>
+      name.toLowerCase().includes(value.toLowerCase())
+    );
+
+    filteredGames.sort((a, b) => {
+      // Find the index of the search query in each game name
+      const indexA = a.toLowerCase().indexOf(value.toLowerCase());
+      const indexB = b.toLowerCase().indexOf(value.toLowerCase());
+  
+      // Sort based on the index, with smaller indexes (stronger match) first
+      return indexA - indexB;
+    });
+
+    const limitedGames = filteredGames.slice(0,3);
+    setSuggestedGames(limitedGames);
+  };
+
+  // now need to get all game names
+  console.log(gameNames);
+
 
   // Handle search when search icon is clicked
   const handleSearch = (searchQuery) => {
-    const path = `${searchQuery}`;
+    const path = `/GamePage/${searchQuery}`;
     navigate(path);
   };
+
 
   const handleEnterPress = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
-      handleSearch(event.target.value.toLowerCase());
+      //handleSearch(event.target.value.toLowerCase());
     }
   };
 
   function handleLogout() {
     dispatch({ type: "LOGOUT" });
     setUser(null);
-  }
+  };
+
 
   return (
     <div className="div">
@@ -53,10 +100,25 @@ function Nav() {
                     className="div-12"
                     type="text"
                     placeholder="Search games..."
+                    value={searchQuery}
+                    onChange={handleInputChange}
                     onFocus={(e) => (e.target.value = "")} // Delete current text when input field is selected
                     onKeyDown={(e) => handleEnterPress(e)}
                   />
+                  
                 </div>
+                {/* Conditionally render suggested games */}
+                {suggestedGames.length > 0 && (
+                  <div className="suggested-games">
+                    <ul>
+                      {suggestedGames.map((game, index) => (
+                        <li key={index}>
+                          <Link to={`/GamePage/${game}`}>{game}</Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
               <div className="div-13">
                 <div className="div-14" />
@@ -74,7 +136,7 @@ function Nav() {
             <button onClick={() => {
               const gameSearchQuery = document.querySelector('.div-12').value;
               const genreSearchQuery = document.querySelector('.div-16').value;
-              handleSearch(`${gameSearchQuery} ${genreSearchQuery}`);
+              handleSearch(`${gameSearchQuery}`);
             }}>
               <img
                 loading="lazy"
