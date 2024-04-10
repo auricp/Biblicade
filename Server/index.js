@@ -34,6 +34,52 @@ app.post('/create', (req, res) => {
     
 });
 
+app.post('/comments', (req, res) => {
+    const game = req.body.game;
+    const comment = req.body.comment;
+    
+    db.query('INSERT INTO comments (game,comment) VALUES (?,?)', [game,comment],
+    (err, result) => {
+        if (err) {
+            console.log(err)
+        }else {
+            res.send("Values Inserted successfully")
+        }
+    });
+
+});
+
+
+app.post('/preferences', (req, res) => {
+    const email = req.body.email;
+    const genre = req.body.genre;
+
+    db.query('INSERT INTO preferences (email,genre) VALUES (?,?)', [email,genre],
+    (err, result) => {
+        if (err) {
+            console.log(err)
+        }else {
+            res.send("Values Inserted successfully")
+        }
+    });
+
+});
+app.get('/comments/:title', (req, res) => {
+    const title = encodeURIComponent(req.params.title);
+    console.log(title)
+    db.query("SELECT comment FROM comments WHERE game = ?", [title], (err, result) => {
+        if (err) {
+            console.log(err);
+            res.status(500).json({ error: 'Error querying database' });
+        } else {
+            const commentString = result.map((row) => row.comment);
+            console.log(commentString);
+            res.send(commentString);
+        }
+    });
+});
+
+
 app.get('/users', (req, res) => {
     db.query("SELECT * FROM registertest", (err,result) => {
         if (err) {

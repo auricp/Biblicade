@@ -27,8 +27,7 @@ function Nav() {
   useEffect(() => {
     const names = games.map(game => game.title);
     setGameNames(names)
-  
-  });
+  }, [games]);
 
   const handleInputChange = (event) => {
     const { value } = event.target;
@@ -52,8 +51,6 @@ function Nav() {
     setSuggestedGames(limitedGames);
   };
 
-  // now need to get all game names
-  console.log(gameNames);
 
 
   // Handle search when search icon is clicked
