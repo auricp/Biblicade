@@ -46,6 +46,7 @@ const GamePage = () => {
   const handleCommentInputChange = (event) => {
     setCommentInput(event.target.value);
   };
+  
   console.log(comments);
   const submitComment = () => {
     // use post to insert it

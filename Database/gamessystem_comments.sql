@@ -16,29 +16,26 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `wishlists`
+-- Table structure for table `comments`
 --
 
-DROP TABLE IF EXISTS `wishlists`;
+DROP TABLE IF EXISTS `comments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `wishlists` (
-  `wishlistID` int NOT NULL,
-  `wishlistName` varchar(45) NOT NULL,
-  `gameID` int DEFAULT NULL,
-  `title` varchar(45) DEFAULT NULL,
-  `genre` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`wishlistID`,`wishlistName`)
+CREATE TABLE `comments` (
+  `game` varchar(40) DEFAULT NULL,
+  `comment` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `wishlists`
+-- Dumping data for table `comments`
 --
 
-LOCK TABLES `wishlists` WRITE;
-/*!40000 ALTER TABLE `wishlists` DISABLE KEYS */;
-/*!40000 ALTER TABLE `wishlists` ENABLE KEYS */;
+LOCK TABLES `comments` WRITE;
+/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` VALUES ('With%20Us','Hello'),('With%20Us','Great game!'),('With%20Us','This game lowkey sucks'),('With%20Us','I wish this game was better'),('With%20Us','This game sucks!!!'),('With%20Us','My friends are garbage at this!'),('With%20Us','Great game frfr'),('With%20Us','Hola'),('Monster','Monster is FIRE'),('Monster','I highkey Love this game!');
+/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

@@ -38,7 +38,7 @@ CREATE TABLE `registertest` (
 
 LOCK TABLES `registertest` WRITE;
 /*!40000 ALTER TABLE `registertest` DISABLE KEYS */;
-INSERT INTO `registertest` VALUES ('Gojo','Ballin','gojoballin@gmail.com','thegoat','1989-12-07'),('Shadow','Headgehog','shadowdagoat@gmail.com','Yomama','1951-03-14'),('Test','Test2','TEstytest@test.com','1234','2000-11-03');
+INSERT INTO `registertest` VALUES ('Gojo','Ballin','gojoballin@gmail.com','thegoat','1989-12-07'),('NewTest','Testy','try@gmail.com','1234',NULL),('Shadow','Headgehog','shadowdagoat@gmail.com','Yomama','1951-03-14'),('Test','Test2','TEstytest@test.com','1234','2000-11-03');
 /*!40000 ALTER TABLE `registertest` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-03 20:16:42
+-- Dump completed on 2024-04-10 14:36:09

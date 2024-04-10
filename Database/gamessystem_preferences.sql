@@ -16,29 +16,26 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `wishlists`
+-- Table structure for table `preferences`
 --
 
-DROP TABLE IF EXISTS `wishlists`;
+DROP TABLE IF EXISTS `preferences`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `wishlists` (
-  `wishlistID` int NOT NULL,
-  `wishlistName` varchar(45) NOT NULL,
-  `gameID` int DEFAULT NULL,
-  `title` varchar(45) DEFAULT NULL,
+CREATE TABLE `preferences` (
+  `email` varchar(40) NOT NULL,
   `genre` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`wishlistID`,`wishlistName`)
+  PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `wishlists`
+-- Dumping data for table `preferences`
 --
 
-LOCK TABLES `wishlists` WRITE;
-/*!40000 ALTER TABLE `wishlists` DISABLE KEYS */;
-/*!40000 ALTER TABLE `wishlists` ENABLE KEYS */;
+LOCK TABLES `preferences` WRITE;
+/*!40000 ALTER TABLE `preferences` DISABLE KEYS */;
+/*!40000 ALTER TABLE `preferences` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
