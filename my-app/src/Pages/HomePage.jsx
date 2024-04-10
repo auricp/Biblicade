@@ -1,26 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { UserContext } from "../Context/usercontext";
 import Games from '../Components/Games';
 import Axios from 'axios';
 import "./HomePage.css"
 import RecommendAlgorithm from "../Components/RecommendAlgorithm";
 
+
 function HomePage(){
     const [games, setGames] = useState([]);
-
-    // function to get all games
-    // response contains whatever we get from our backend
+    const { user } = useContext(UserContext);
+    const userEmail = user?.email;
+    
+    // Function to get all games
     const getGames = () => {
         Axios.get('http://localhost:3001/games').then((response) => {
             setGames(response.data);
             console.log("working");
         });
-        
     }
 
     // Call getGames when the component mounts
     useEffect(() => {
         getGames();
     }, []);
+
 
     return(
         <div className="mainPane">
@@ -32,17 +35,25 @@ function HomePage(){
                             alt="banner" />
                 </div>
                 <div className="mainTitle">
-                    <h1>Welcome to Bibliocade!</h1>
+                    <h1>Welcome to Biblicade!</h1>
                     <p>Discover your next favourite game here.</p>
                 </div>
             </div>
 
             <div className="componentsMain">
-                <RecommendAlgorithm />
-                <h1 className="gamesCatalogueTitle">Game Catalogue</h1>
-                <Games games={games} />
+                {userEmail ? (
+                    <div>
+                        <RecommendAlgorithm />
+                    </div>
+                ):(
+                    <div>
+                        <h1 className="gamesCatalogueTitle">Game Catalogue</h1>
+                        <Games games={games} />
+                    </div>
+                )}
             </div>
         </div>
     );
 }
+
 export default HomePage;

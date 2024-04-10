@@ -22,12 +22,6 @@ const Games = ({ openPopup }) => {
       });
   }, []);
 
-  const truncateText = (text, maxLength) => {
-    if (text.length <= maxLength) {
-      return text;
-    }
-    return text.substring(0, maxLength) + "...";
-  };
   const gameImages = {
     "With Us": require('../Images/Games/beatblitz.jpg')
   }

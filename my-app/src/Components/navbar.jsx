@@ -1,7 +1,7 @@
 import "./navbar.css";
 import React, { useContext, useState, useEffect} from "react";
 import { UserContext } from "../Context/usercontext";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../Images/logo.png";
 import { useFormData } from "../Context/formdatacontext";
 import Axios from 'axios';
@@ -9,9 +9,7 @@ import Axios from 'axios';
 function Nav() {
   const { user, setUser } = useContext(UserContext);
   const { dispatch } = useFormData();
-  const location = useLocation();
   const navigate = useNavigate();
-  const isHome = location.pathname === "/";
   const userEmail = user?.email;
   const [games, setGameList] = useState([]);
   const [gameNames, setGameNames] = useState([]);
