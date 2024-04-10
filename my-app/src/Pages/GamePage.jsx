@@ -95,7 +95,7 @@ const GamePage = () => {
                 {/* Render comments */}
                 <div className="comments">
                     {comments.map((comment, index) => (
-                    <div key={index}>{comment.comment}</div>
+                    <div key={index}>{comment}</div>
                     ))}
                 </div>
                 {/**/}
