@@ -19,7 +19,7 @@ function UserList() {
     return Axios.get('http://localhost:3001/users').then(response => response.data);
 }
 
-const GamePage = () => {
+function GamePage ({ game }) {
     const { title } = useParams();
     const { email } = useParams();
     const [user, setUser] = useState(null);
@@ -28,6 +28,7 @@ const GamePage = () => {
     const [commentInput, setCommentInput] = useState('');
     const [comments, setComments] = useState([]);
     const [favorites, setFavorites] = useState([]); // State to store favorite games
+    const[error, setError] = useState(false);
 
   useEffect(() => {
     GameList().then(gameList => {
@@ -69,6 +70,12 @@ const GamePage = () => {
   
   console.log(comments);
   const submitComment = () => {
+    // Check if comment input is empty
+    if (commentInput.trim() === '') {
+        console.error('Comments cannot be blank.');
+        setError(true);
+        return; // Prevent further execution
+    }
     // use post to insert it
     const encodedTitle = encodeURIComponent(title); 
     Axios.post('http://localhost:3001/comments', {game: encodedTitle, comment: commentInput}).then(() => {
@@ -163,6 +170,12 @@ const GamePage = () => {
                     onChange={handleCommentInputChange}
                 ></textarea>
                 <button onClick={submitComment}>Submit</button>
+                {/* Error message */}
+                {error && (
+                    <div className="error-message">
+                    Comments cannot be blank.
+                    </div>
+                )}
                 {/* Render comments */}
                 <div className="comments">
                     {comments.map((comment, index) => (

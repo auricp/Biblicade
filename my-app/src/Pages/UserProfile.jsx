@@ -107,6 +107,13 @@ function UserProfile() {
                         </button>
                     </div>
                 )}
+
+                {/* Error message */}
+                {error && (
+                    <div className="error-message">
+                    Names cannot be blank.
+                    </div>
+                )}
             </div>
             <div className='preferences-column'>
                 <div className='divider'></div>
