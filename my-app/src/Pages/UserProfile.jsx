@@ -16,6 +16,7 @@ function UserProfile() {
     const [editMode, setEditMode] = useState(false); // Initialize editMode state to false
     const [user, setUser] = useState(null);
     const [birthday, setBirthday] = useState(null); // Initialize birthday state
+    const [genres, setGenres] = useState(null); // Initialize genre preferences
 
     useEffect(() => {
         // Fetch user list and find the current user
