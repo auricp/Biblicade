@@ -191,62 +191,8 @@ button {
     white-space: initial;
   }
 }
-.div-13 {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding: 21.5px;
-  background-color: rgba(43, 175, 74, 0); /* Initial background color */
-  transition: background-color 0.3s; /* Smooth transition for the color change */
-  width: 200px;
-  border-radius: 200px;
-}
 
-.div-13:hover {
-  background-color: #f5f5f5; /* New background color on hover */
-}
-.div-14 {
-  background-color: #bdbdbd;
-  width: 1px;
-  height: 42px;
-}
-.div-15 {
-  align-self: center;
-  display: flex;
-  gap: 5px;
-  margin: auto 0;
-}
 
-.div-16 {
-  color: var(--Gray-2, #4f4f4f);
-  align-self: start;
-  padding-left: 8px;
-  flex-grow: 1;
-  white-space: nowrap;
-  font: 400 15px/18px Roboto, -apple-system, Roboto, Helvetica, sans-serif;
-}
-@media (max-width: 991px) {
-  .div-16 {
-    white-space: initial;
-  }
-}
-.div-17 {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  border-radius: 200px;
-  background-color: rgba(67, 43, 175, 0); /* Initial background color */
-  transition: background-color 0.3s; /* Smooth transition for the color change */
-}
-.div-17:hover {
-  background-color: #f5f5f5; /* New background color on hover */
-}
-@media (max-width: 991px) {
-  .div-17 {
-    justify-content: center;
-  }
-}
 .div-18 {
   align-self: center;
   display: flex;

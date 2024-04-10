@@ -115,22 +115,9 @@ function Nav() {
                   </div>
                 )}
               </div>
-              <div className="div-13">
-                <div className="div-14" />
-                <div className="div-15">
-                  <input
-                    className="div-16"
-                    type="text"
-                    placeholder="Search genres..."
-                    onFocus={(e) => (e.target.value = "")} // Delete current text when input field is selected
-                    onKeyDown={(e) => handleEnterPress(e)}
-                  />
-                </div>
-              </div>
             </div>
             <button onClick={() => {
               const gameSearchQuery = document.querySelector('.div-12').value;
-              const genreSearchQuery = document.querySelector('.div-16').value;
               handleSearch(`${gameSearchQuery}`);
             }}>
               <img
