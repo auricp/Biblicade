@@ -1,125 +1,129 @@
 /* Profile card container */
 .profile-card {
-    display: flex;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  margin: 20px;
+  margin-top: 122px;
+  max-width: 100%;
+  padding: 50px 20px;
+  border-bottom: 2px solid var(--Gray-4, #bdbdbd);
+}
+
+@media (max-width: 991px) {
+  .profile-card {
+    margin-top: 40px;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px;
-    margin-top: 122px;
-    max-width: 100%;
-    padding: 50px 20px;
-    border-bottom: 2px solid var(--Gray-4, #bdbdbd);
+  }
 }
-  
-  /* Profile image */
-  .profile-image {
-    margin-bottom: 20px;
-  }
-  
-  .profile-img {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  /* Profile details */
-  .profile-details {
-    text-align: center;
-    margin-bottom: 3px;
-  }
-  
-  /* Profile name */
-  .profile-name {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  /* Profile age */
-  .profile-age {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
 
-  .first-name-input,
-    .last-name-input {
-    width: 20rem;
-    height: 5.2227rem;
-    padding: 1.29rem 3.288rem 1.633rem 3.288rem;
-    font-size: 16px;
-    text-align: center;
-    border: solid 0.0645rem #c2c2c2;
-    border-radius: 25.7911rem;
-    box-sizing: border-box;
-    font: 700 22px/62px Roboto, -apple-system, Roboto, Helvetica, sans-serif; 
-    left: 0rem;
-    margin:0;
-    }
-    .name-input-titles {
-    color: #4f4f4f;
-    font-family: Roboto, 'Source Sans Pro';
-    font-size: 0.9721rem;
-    font-weight: 400;
-    /* height: 1.2rem; */
-    left: 12.5rem;
-    top: -3.5rem;
-    /* margin-left: 5%;
-    margin-right: 15%; */
-    position: relative;
-    white-space: nowrap;
-    /* width: 5.6rem; */
-    }
-    .age-input-title {
-    color: #4f4f4f;
-    font-family: Roboto, 'Source Sans Pro';
-    font-size: 0.9721rem;
-    font-weight: 400;
-    position: relative;
-    white-space: nowrap;
-    left: 7rem;
-    top: -3.3rem;
-    /* width: 5.6rem; */
-    }
-  
-  /* Profile email */
-  .profile-email {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 20px;
+/* Profile image */
+.profile-image {
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.profile-img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+}
+
+/* Profile details */
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px; /* Adjust margin-top */
+  margin-left: 50px;
+}
+
+@media (max-width: 991px) {
+  .profile-details {
+    max-width: 100%;
+    margin-top: 20px;
   }
-  
-  /* Editable fields */
-  .first-name-input,
-  .last-name-input,
-  .profile-age-input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+}
+
+/* Profile name */
+.profile-name {
+  margin-bottom: 10px;
+  margin-top: -50px; /* Adjust margin-top */
+  color: var(--Gray-3, #1b1b1b);
+  white-space: nowrap;
+  font: 700 40px/40px Roboto, -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+@media (max-width: 991px) {
+  .profile-name {
+    font-size: 20px;
+    line-height: 52px;
+    white-space: initial;
   }
-  
-  /* Edit profile button */
-  .edit-profile-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+}
+
+/* Profile email */
+.profile-email {
+  margin-bottom: 10px;
+  margin-top: 5px;
+  color: var(--Gray-3, #828282);
+  white-space: nowrap;
+  font-size: 1.2em; /* Adjust the font size as needed */
+}
+
+/* Profile birthday */
+.profile-birthday {
+  margin-top: 18px;
+  white-space: nowrap;
+  font-size: 20px;
+}
+
+@media (max-width: 991px) {
+  .profile-birthday {
+    white-space: initial;
+    font-size: 15px;
   }
-  
-  .edit-profile-button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Error message */
-  .error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 10px;
-  }
-  
+}
+
+/* Editable fields */
+.first-name-input,
+.last-name-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Container for edit profile button */
+.edit-profile-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; 
+  margin-left: -80px; 
+}
+
+/* Edit profile button */
+.edit-profile-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-profile-button:hover {
+  background-color: #0056b3;
+}
+
+/* Error message */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}

@@ -15,12 +15,14 @@ function UserProfile() {
     const[error, setError] = useState(false);
     const [editMode, setEditMode] = useState(false); // Initialize editMode state to false
     const [user, setUser] = useState(null);
+    const [birthday, setBirthday] = useState(null); // Initialize birthday state
 
     useEffect(() => {
         // Fetch user list and find the current user
         UserList().then(userList => {
             const foundUser = userList.find(u => u.email === email);
             setUser(foundUser);
+            setBirthday(foundUser ? foundUser.birthday : null); // Set birthday if user is found
         }).catch(error => {
             console.error("Error fetching user list:", error);
         });
@@ -74,7 +76,7 @@ function UserProfile() {
                     alt="Profile Image"
                 />
             </div>
-            <h1 className='profile-details'>
+            <div className='profile-details'>
                 {user ? (
                     <>
                         {editMode ? (
@@ -83,23 +85,28 @@ function UserProfile() {
                                 <input type="text" value={newLastName} onChange={handleLastNameChange} />
                             </>
                         ) : (
-                            <p>{user.firstname} {user.lastname}</p>
+                            <p className="profile-name">{user.firstname} {user.lastname}</p>
                         )}
                     </>
                 ) : (
                     <p>Loading...</p>
                 )}
-            </h1>
-            <div className='profile-email'>
-                <p>Email: {email}</p>
-            </div>
-            {(user && user.email === email) && (
-                <button onClick={editMode ? handleSave : toggleEditMode} className="edit-profile-button">
-                    <div className="edit-profile">
-                        {editMode ? "Save" : "Edit Profile Information"}
+                <div className='profile-birthday'>
+                    <p>Birthday: {birthday}</p>
+                </div>
+                <div className='profile-email'>
+                    <p>Email: {email}</p>
+                </div>
+                {(user && user.email === email) && (
+                    <div className="edit-profile-container">
+                        <button onClick={editMode ? handleSave : toggleEditMode} className="edit-profile-button">
+                            <div className="edit-profile">
+                                {editMode ? "Save" : "Edit Profile Information"}
+                            </div>
+                        </button>
                     </div>
-                </button>
-            )}
+                )}
+            </div>
         </div>
     );
 }
