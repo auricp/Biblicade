@@ -12,7 +12,8 @@ function UserList() {
 
 function UserProfile() {
     const { email } = useParams();
-    const [editMode, setEditMode] = useState(null);
+    const[error, setError] = useState(false);
+    const [editMode, setEditMode] = useState(false); // Initialize editMode state to false
     const [user, setUser] = useState(null);
 
     useEffect(() => {
@@ -25,14 +26,41 @@ function UserProfile() {
         });
     }, [email]);
 
+    const [newFirstName, setNewFirstName] = useState('First Name');
+    const [newLastName, setNewLastName] = useState('Last Name');
+
     const toggleEditMode = () => {
-        setEditMode(prevMode => !prevMode);
+        setEditMode(prevMode => !prevMode); // Toggle editMode state
     };
 
+    const handleFirstNameChange = (e) => {
+        setNewFirstName(e.target.value);
+    };
+    
+    const handleLastNameChange = (e) => {
+        setNewLastName(e.target.value);
+    };
+
+    // Function to handle the click event for saving changes
     const handleSave = () => {
-        // Logic to save changes
-        // Example: Axios.post('/api/save-profile', updatedData);
-        // After saving changes, toggle edit mode
+        // Perform save logic here
+
+        // check if the required fields are filled
+        if (newFirstName === '' || newLastName === '') {
+            setError(true);
+            return; // Do not proceed with saving if there is an error
+        }
+
+        // Update the user's first name and last name
+        setUser(prevUser => ({
+            ...prevUser,
+            firstname: newFirstName,
+            lastname: newLastName
+        }));
+
+        // If the save logic is successful, you can reset the error state
+        setError(false);
+        // Toggle edit mode after saving (optional)
         toggleEditMode();
     };
 
@@ -49,7 +77,14 @@ function UserProfile() {
             <h1 className='profile-details'>
                 {user ? (
                     <>
-                        <p>{user.firstname} {user.lastname}</p>
+                        {editMode ? (
+                            <>
+                                <input type="text" value={newFirstName} onChange={handleFirstNameChange} />
+                                <input type="text" value={newLastName} onChange={handleLastNameChange} />
+                            </>
+                        ) : (
+                            <p>{user.firstname} {user.lastname}</p>
+                        )}
                     </>
                 ) : (
                     <p>Loading...</p>
