@@ -83,23 +83,6 @@ const GamePage = () => {
             </div>
 
             <div className="lowerDetails">
-                        {/* Comment section */}
-                <div className="commentSection">
-                <h2>Comment Section</h2>
-                <textarea
-                    placeholder="Write your comment here..."
-                    value={commentInput}
-                    onChange={handleCommentInputChange}
-                ></textarea>
-                <button onClick={submitComment}>Submit</button>
-                {/* Render comments */}
-                <div className="comments">
-                    {comments.map((comment, index) => (
-                    <div key={index}>{comment}</div>
-                    ))}
-                </div>
-                {/**/}
-                </div>
                 <div className="leftPane">
                     <h3>{gameDetails.description}</h3>
                 </div>
@@ -123,6 +106,21 @@ const GamePage = () => {
                     
                     
                     
+                </div>
+            </div>
+            <div className="commentSection">
+                <h2>Comment Section</h2>
+                <textarea
+                    placeholder="Write your comment here..."
+                    value={commentInput}
+                    onChange={handleCommentInputChange}
+                ></textarea>
+                <button onClick={submitComment}>Submit</button>
+                {/* Render comments */}
+                <div className="comments">
+                    {comments.map((comment, index) => (
+                    <div key={index}>{comment}</div>
+                    ))}
                 </div>
             </div>
         </div>

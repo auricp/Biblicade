@@ -115,3 +115,54 @@
 .releaseDateBold, .developerIDBold, .publisherIDBold {
     font-weight: bold;
 }
+
+/* Styles for comment section */
+.commentSection {
+    margin-top: 20px;
+    margin-left: 100px;
+  }
+  
+  .commentSection h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .commentSection textarea {
+    width: 1000px;
+    height: 100px;
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .commentSection button {
+    display: block; /* Change button to block element */
+    margin-top: 10px; /* Add margin-top to create space between textarea and button */
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .commentSection button:hover {
+    background-color: #0056b3;
+  }
+  
+  .comments {
+    margin-top: 20px;
+    width: 1000px;
+  }
+  
+  .comments div {
+    margin-bottom: 10px;
+    padding: 8px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
