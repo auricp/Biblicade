@@ -2,7 +2,7 @@
 .profile-card {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   align-self: center;
   margin: 20px;
@@ -23,8 +23,8 @@
 /* Profile image */
 .profile-image {
   margin-bottom: 20px;
-  align-items: center;
 }
+
 
 .profile-img {
   width: 300px;
@@ -126,4 +126,89 @@
   color: red;
   font-size: 14px;
   margin-top: 10px;
+}
+
+.div-47 {
+  gap: 20px;
+  display: flex;
+}
+@media (max-width: 991px) {
+  .div-47 {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0px;
+  }
+}
+
+.column-divide {
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  width: 50%;
+  margin-left: 0px;
+}
+@media (max-width: 991px) {
+  .column-divide {
+    width: 100%;
+  }
+}
+
+.preferences-column {
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  width: 50%;
+  margin-left: 20px;
+}
+
+@media (max-width: 991px) {
+  .preferences-column {
+    width: 100%;
+  }
+}
+
+.divider {
+  background-color: #bdbdbd;
+  width: 1px;
+  margin-left: -500px;
+  height: 500px;
+}
+.divider {
+  align-self: center;
+  display: flex;
+  gap: 5px;
+}
+
+.prefer-genres {
+  align-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  display: flex;
+  width: 407px;
+  margin-left: -600px;
+  margin-top: -210px;
+  max-width: 100%;
+  padding-right: 36px;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+@media (max-width: 991px) {
+  .prefer-genres {
+    padding-right: 20px;
+  }
+}
+
+.preferences {
+  color: var(--Gray-3, #272727);
+  white-space: nowrap;
+  align-items: center;
+  font: 700 30px/40px Roboto, sans-serif;
+}
+
+@media (max-width: 991px) {
+  .preferences {
+    max-width: 100%;
+    white-space: initial;
+  }
 }

@@ -107,6 +107,12 @@ function UserProfile() {
                     </div>
                 )}
             </div>
+            <div className='preferences-column'>
+                <div className='divider'></div>
+            </div>
+            <div className='prefer-genres'>
+                <div className="preferences">Preferred Genres</div>
+            </div>
         </div>
     );
 }
