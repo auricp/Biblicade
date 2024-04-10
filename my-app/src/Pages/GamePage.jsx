@@ -16,6 +16,8 @@ const GamePage = () => {
   const { title } = useParams();
   const [gameDetails, setGameDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [commentInput, setCommentInput] = useState('');
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     GameList().then(gameList => {
@@ -27,17 +29,44 @@ const GamePage = () => {
             setIsLoading(false);
         });
   }, [title]);
+  
 
-  if (isLoading) {
-    console.log(title);
+  useEffect(() => {
+    const encodedTitle = encodeURIComponent(title); 
+    //console.log(encodedTitle);
+    Axios.get(`http://localhost:3001/comments/${encodedTitle}`)
+        .then(response => {
+            setComments(response.data);
+        })
+        .catch(error => {
+            console.error('Couldnt fetch comments:', error);
+        });
+  }, [title]);
+
+  const handleCommentInputChange = (event) => {
+    setCommentInput(event.target.value);
+  };
+  console.log(comments);
+  const submitComment = () => {
+    // use post to insert it
+    const encodedTitle = encodeURIComponent(title); 
+    Axios.post('http://localhost:3001/comments', {game: encodedTitle, comment: commentInput}).then(() => {
+        setComments([...comments, commentInput]);
+        setCommentInput('');
+    });
+
+  };
+
+  if (isLoading || !gameDetails) {
+    //console.log(title);
     return <div>Loading... Please Wait</div>;
   }
+
+
 
   return (
     <div>
         <Nav />
-    
-
         <div className="gameDetailsPane">
             <div className="upperDetails">
                 <img className="gameImage" src={images[gameDetails.title]} alt={gameDetails.title} width={'250px'}/>
@@ -53,6 +82,23 @@ const GamePage = () => {
             </div>
 
             <div className="lowerDetails">
+                        {/* Comment section */}
+                <div className="commentSection">
+                <h2>Comment Section</h2>
+                <textarea
+                    placeholder="Write your comment here..."
+                    value={commentInput}
+                    onChange={handleCommentInputChange}
+                ></textarea>
+                <button onClick={submitComment}>Submit</button>
+                {/* Render comments */}
+                <div className="comments">
+                    {comments.map((comment, index) => (
+                    <div key={index}>{comment.comment}</div>
+                    ))}
+                </div>
+                {/**/}
+                </div>
                 <div className="leftPane">
                     <h3>{gameDetails.description}</h3>
                 </div>
