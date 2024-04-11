@@ -23,10 +23,10 @@ DROP TABLE IF EXISTS `wishlists`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `wishlists` (
-  `email` varchar(45) NOT NULL,
+  `email` varchar(45) DEFAULT NULL,
   `gameID` int DEFAULT NULL,
-  `game` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`email`)
+  `game` varchar(45) NOT NULL,
+  PRIMARY KEY (`game`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -36,7 +36,7 @@ CREATE TABLE `wishlists` (
 
 LOCK TABLES `wishlists` WRITE;
 /*!40000 ALTER TABLE `wishlists` DISABLE KEYS */;
-INSERT INTO `wishlists` VALUES ('shadowdagoat@gmail.com',1,'With%20Us');
+INSERT INTO `wishlists` VALUES ('shadowdagoat@gmail.com',4,'Digital%20Menace'),('shadowdagoat@gmail.com',5,'Meshin'),('shadowdagoat@gmail.com',1,'With%20Us');
 /*!40000 ALTER TABLE `wishlists` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-10 23:49:57
+-- Dump completed on 2024-04-10 23:57:03
