@@ -14,6 +14,9 @@ function LoginForm(){
         email: '',
         password: '',
     });
+    Axios.get('http://localhost:3001/users').then((response) => {
+        setUserList(response.data);
+    });
     const handleTextInput = (e)=>{
         setError('');
         const {name,value} =e.target;
@@ -29,9 +32,6 @@ function LoginForm(){
         }
         else{
             // receive all users information
-            Axios.get('http://localhost:3001/users').then((response) => {
-                setUserList(response.data);
-            });
             // find the inputted information
             const user = userList.find((u)=> u.email === formData.email && u.password=== formData.password);
             if(user){
