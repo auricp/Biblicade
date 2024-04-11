@@ -6,6 +6,7 @@ import Nav from "../Components/navbar";
 import "./GamePage.css";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { UserContext } from "../Context/usercontext";
+import AddToHistory from "../Components/AddToHistory.jsx";
 
 // Define UserList as a function component
 // copied auric da goat/ angie da slay here thanks bbg
@@ -86,11 +87,21 @@ function GamePage ({ game }) {
     Axios.delete(`http://localhost:3001/comments/${email}/${comment}/${encodedTitle}`)
       .then(() => {
         setComments(comments.filter(comment => comment.id !== email));
+        console.log("deleted!");
       })
       .catch(error => {
         console.error('Could not delete comment:', error);
       });
   };
+
+  const handleAddToHistory = () => {
+    // const encodedTitle = encodeURIComponent(title);
+    Axios.post('http://localhost:3001/history', { gameID: gameDetails.gameID, userID: user.userID }).then(() => {
+        console.log('Game added to history successfully');
+    }).catch(error => {
+        console.error('Error adding game to history:', error);
+    });
+};
 
   if (isLoading || !gameDetails) {
     //console.log(title);
@@ -134,8 +145,16 @@ function GamePage ({ game }) {
                         ) : (
                             <FavoriteIcon className="favorite-icon" onClick={handleAddToFavorites} />
                         )}
+                                                
                         <span className="add-fave">Add to Favourites</span>
+
+                        
                     </div>
+                    <div>
+                        <AddToHistory handleAddToHistory={handleAddToHistory} />
+                        {/* add logic for when pressed and if clicked again will delete from history */}
+                    </div>
+                    
                 </div>
                 <div className="ratingContainer">
                     <p className="gameRatingTit">Biblicade Score</p>

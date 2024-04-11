@@ -10,7 +10,7 @@ const db = mysql.createConnection({
     user: 'root',
     host: 'localhost',
     // password is either '', 'password'. or '471sqlbackend'
-    passwowrd: '',
+    password: 'root',
     database: 'gamessystem',
 });
 
@@ -40,6 +40,21 @@ app.post('/comments', (req, res) => {
     const email = req.body.email;
     
     db.query('INSERT INTO comments (game,comment,email) VALUES (?,?,?)', [game,comment,email],
+    (err, result) => {
+        if (err) {
+            console.log(err)
+        }else {
+            res.send("Values Inserted successfully")
+        }
+    });
+
+});
+
+app.post('/history', (req, res) => {
+    const game = req.body.gameID;
+    const user = req.body.userID;
+    
+    db.query('INSERT INTO gaming_history (userID,gameID) VALUES (?,?)', [user, game],
     (err, result) => {
         if (err) {
             console.log(err)
