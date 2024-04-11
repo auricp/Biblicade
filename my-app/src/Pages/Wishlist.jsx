@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import GameIcon from "../Components/GameIcon";
 
-function Wishlist(){
+export const Wishlists = ({ favorites }) => {
     return (
-    <>
-        <div class="user-wishlists">
-            <div class="list-wishlists">
-                Wishlists
+        <div className="wishlist-container">
+            <div className="">
+              <h2>Wishlist</h2>
+              <div className="game-icons">
+                {favorites && favorites.map((game, index) => (
+                    <GameIcon key={index} game={game} />
+                ))}
+              </div>
             </div>
         </div>
-    </>
     );
-}
-export default Wishlist;
+};
+
+export default Wishlists;

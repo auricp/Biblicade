@@ -143,15 +143,6 @@ function Nav() {
                 <FilterNone className="wishlists"></FilterNone>
               </Link>
             )}
-            {userEmail && (
-              <Link to={`/Favourites/` + user.email}>
-                <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/97d36e33-6f9a-4165-916f-a11683446465?"
-                  className="img-7"
-                />
-              </Link>
-            )}
             <div className="div-25">
               {userEmail && (
                 <Link to="/">
