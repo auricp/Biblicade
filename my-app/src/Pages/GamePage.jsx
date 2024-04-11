@@ -135,9 +135,9 @@ function GamePage () {
                     <p className="ageRest">For Ages {gameDetails.ageRestriction}+</p>
                     <div className="favorite-container">
                         {isGameInFavorites() ? (
-                            <FavoriteIcon className="favorite-icon" onClick={handleRemoveFromFavorites} />
+                            <FavoriteIcon className="favorite-icon" onClick={addToFavorites} />
                         ) : (
-                            <FavoriteIcon className="favorite-icon" onClick={handleAddToFavorites} />
+                            <FavoriteIcon className="favorite-icon" onClick={removeFromFavorites} />
                         )}
                                                 
                         <span className="add-fave">Add to Favourites</span>
