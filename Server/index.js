@@ -83,7 +83,7 @@ app.get('/comments/:title', (req, res) => {
 // deletion for comments
 app.delete('/comments/:email/:comment/:gameTitle', (req, res) => {
     const { email, comment, gameTitle } = req.params;
-    db.query('DELETE FROM comments WHERE game = ? AND comment = ? AND email = ?', [gameTitle, comment, email], (err, result) => {
+    db.query('DELETE FROM comments WHERE game = ? AND comment = ?', [title, comment], (err, result) => {
         if (err) {
             console.error(err);
             res.status(500).json({ error: 'Error deleting comment from database' });
