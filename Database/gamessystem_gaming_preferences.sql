@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Linux (x86_64)
 --
 -- Host: localhost    Database: gamessystem
 -- ------------------------------------------------------
@@ -40,6 +40,7 @@ CREATE TABLE `gaming_preferences` (
 
 LOCK TABLES `gaming_preferences` WRITE;
 /*!40000 ALTER TABLE `gaming_preferences` DISABLE KEYS */;
+INSERT INTO `gaming_preferences` VALUES (3,7,'like'),(3,9,'dislike'),(3,11,'like');
 /*!40000 ALTER TABLE `gaming_preferences` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-10 22:45:02
+-- Dump completed on 2024-04-11  0:02:07
