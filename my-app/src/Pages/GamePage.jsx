@@ -74,8 +74,6 @@ function GamePage () {
   };
 
   const deleteComment = (email, comment,title) => {
-    console.log(email);
-    console.log(comment);
     const encodedTitle = encodeURIComponent(title);
     Axios.delete(`http://localhost:3001/comments/${email}/${comment}/${encodedTitle}`)
       .then(() => {

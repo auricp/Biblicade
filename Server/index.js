@@ -98,6 +98,10 @@ app.get('/comments/:title', (req, res) => {
 // deletion for comments
 app.delete('/comments/:email/:comment/:gameTitle', (req, res) => {
     const { email, comment, gameTitle } = req.params;
+    const title = encodeURIComponent(gameTitle);
+    console.log(comment);
+    console.log(email);
+    console.log(title);
     db.query('DELETE FROM comments WHERE game = ? AND comment = ?', [title, comment], (err, result) => {
         if (err) {
             console.error(err);
