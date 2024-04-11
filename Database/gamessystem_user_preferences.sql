@@ -16,32 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `gaming_preferences`
+-- Table structure for table `user_preferences`
 --
 
-DROP TABLE IF EXISTS `gaming_preferences`;
+DROP TABLE IF EXISTS `user_preferences`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `gaming_preferences` (
+CREATE TABLE `user_preferences` (
   `userID` int NOT NULL,
-  `gameID` int NOT NULL,
-  `userRating` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`userID`,`gameID`),
-  KEY `userID_idx` (`userID`),
-  KEY `gameID_idx` (`gameID`),
-  KEY `fk_gaming_preferences_1_idx` (`gameID`),
-  KEY `fk_gaming_preferences_2_idx` (`userID`)
+  `preferredRatingScore` int DEFAULT NULL,
+  PRIMARY KEY (`userID`),
+  CONSTRAINT `userID` FOREIGN KEY (`userID`) REFERENCES `registertest` (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `gaming_preferences`
+-- Dumping data for table `user_preferences`
 --
 
-LOCK TABLES `gaming_preferences` WRITE;
-/*!40000 ALTER TABLE `gaming_preferences` DISABLE KEYS */;
-INSERT INTO `gaming_preferences` VALUES (3,1,''),(3,3,'like'),(3,4,'like'),(3,5,'dislike'),(3,7,'like'),(3,8,'like'),(3,9,'dislike'),(3,11,'like'),(3,12,'like'),(3,14,'dislike'),(3,15,'like'),(3,16,'like'),(3,19,'dislike');
-/*!40000 ALTER TABLE `gaming_preferences` ENABLE KEYS */;
+LOCK TABLES `user_preferences` WRITE;
+/*!40000 ALTER TABLE `user_preferences` DISABLE KEYS */;
+INSERT INTO `user_preferences` VALUES (3,20);
+/*!40000 ALTER TABLE `user_preferences` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

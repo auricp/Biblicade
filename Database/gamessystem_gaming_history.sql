@@ -36,7 +36,7 @@ CREATE TABLE `gaming_history` (
 
 LOCK TABLES `gaming_history` WRITE;
 /*!40000 ALTER TABLE `gaming_history` DISABLE KEYS */;
-INSERT INTO `gaming_history` VALUES (3,11),(3,11),(3,11),(3,11),(3,6),(3,1);
+INSERT INTO `gaming_history` VALUES (3,11),(3,11),(3,11),(3,11),(3,6),(3,1),(3,9),(3,7);
 /*!40000 ALTER TABLE `gaming_history` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-11  0:02:07
+-- Dump completed on 2024-04-11 12:05:07
