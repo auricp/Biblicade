@@ -37,8 +37,9 @@ app.post('/create', (req, res) => {
 app.post('/comments', (req, res) => {
     const game = req.body.game;
     const comment = req.body.comment;
+    const email = req.body.email;
     
-    db.query('INSERT INTO comments (game,comment) VALUES (?,?)', [game,comment],
+    db.query('INSERT INTO comments (game,comment,email) VALUES (?,?,?)', [game,comment,email],
     (err, result) => {
         if (err) {
             console.log(err)
@@ -67,18 +68,31 @@ app.post('/preferences', (req, res) => {
 app.get('/comments/:title', (req, res) => {
     const title = encodeURIComponent(req.params.title);
     console.log(title)
-    db.query("SELECT comment FROM comments WHERE game = ?", [title], (err, result) => {
+    db.query("SELECT comment, email FROM comments WHERE game = ?", [title], (err, result) => {
         if (err) {
             console.log(err);
             res.status(500).json({ error: 'Error querying database' });
         } else {
-            const commentString = result.map((row) => row.comment);
-            console.log(commentString);
-            res.send(commentString);
+            //const commentString = result.map((row) => row.comment);
+            const commentsWithEmail = result.map((row) => ({ comment: row.comment, email: row.email }));
+            res.send(commentsWithEmail);
         }
     });
 });
 
+// deletion for comments
+app.delete('/comments/:email/:comment/:gameTitle', (req, res) => {
+    const { email, comment, gameTitle } = req.params;
+    db.query('DELETE FROM comments WHERE game = ? AND comment = ? AND email = ?', [gameTitle, comment, email], (err, result) => {
+        if (err) {
+            console.error(err);
+            res.status(500).json({ error: 'Error deleting comment from database' });
+        } else {
+            console.log('Comment deleted successfully');
+            res.status(200).send('Comment deleted successfully');
+        }
+    });
+});
 
 app.get('/users', (req, res) => {
     db.query("SELECT * FROM registertest", (err,result) => {
