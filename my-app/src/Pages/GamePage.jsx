@@ -4,7 +4,6 @@ import Axios from "axios";
 import images from '../Components/images.js';
 import Nav from "../Components/navbar";
 import "./GamePage.css";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import FilterNone from "@mui/icons-material/FilterNone";
 import { UserContext } from "../Context/usercontext";
 import AddToHistory from "../Components/AddToHistory.jsx";
@@ -24,7 +23,7 @@ function GamePage () {
     const [commentInput, setCommentInput] = useState('');
     const [comments, setComments] = useState([]);
     const [commentEmail, setCommentEmail] = useState([]);
-    const [favorites, setFavorites] = useState([]); // State to store favorite games
+    const [wish, setWish] = useState([]); // State to store favorite games
     const[error, setError] = useState(false);
     const { user } = useContext(UserContext);
     const userEmail = user?.email;
@@ -102,26 +101,19 @@ function GamePage () {
     return <div>Loading... Please Wait</div>;
   }
 
-
-    // Add game to favorites
-    const addToFavorites = () => {
-        setFavorites(prevFavorites => [...prevFavorites, gameDetails]);
-        // Add clicked class
-        document.querySelector('.favorite-icon').classList.add('clicked');
+    const handleAddToWishlist = () => {
+        // Check if the game is already in the wishlist
+        if (wish.some(game => game.title === gameDetails.title)) {
+            console.log('Game already in wishlist.');
+            return;
+        }
+        // Add the game to the wishlist
+        setWish([...wish, gameDetails]);
+        console.log('Game added to wishlist successfully'); 
     };
 
-    // Remove game from favorites
-    const removeFromFavorites = () => {
-        setFavorites(prevFavorites => prevFavorites.filter(game => game.title !== gameDetails.title));
-        // Remove clicked class
-        document.querySelector('.favorite-icon').classList.remove('clicked');
-    };
 
   
-    const isGameInFavorites = () => {
-        return favorites.some(game => game.title === gameDetails.title);
-    };
-
   return (
     <div>
         <Nav />
@@ -138,7 +130,7 @@ function GamePage () {
                     </div>
                     {userEmail && (
                         <div className="wishlist-container">
-                            <FilterNone></FilterNone>
+                            <FilterNone onClick={handleAddToWishlist} />
                             <span className="add-wish">Add to Wishlist</span>
                         </div>
                     )}
