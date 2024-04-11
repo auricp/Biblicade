@@ -28,71 +28,71 @@ function GamePage () {
     const { user } = useContext(UserContext);
     const userEmail = user?.email;
 
-  useEffect(() => {
-    GameList().then(gameList => {
-        const foundGame = gameList.find(u => u.title === title);
-        setGameDetails(foundGame);
-        setIsLoading(false);
-        }).catch(error => {
-            console.error("Error fetching game list:", error);
+    useEffect(() => {
+        GameList().then(gameList => {
+            const foundGame = gameList.find(u => u.title === title);
+            setGameDetails(foundGame);
             setIsLoading(false);
-        });
-  }, [title]);
+            }).catch(error => {
+                console.error("Error fetching game list:", error);
+                setIsLoading(false);
+            });
+    }, [title]);
   
 
-  useEffect(() => {
-    const encodedTitle = encodeURIComponent(title); 
-    //console.log(encodedTitle);
-    Axios.get(`http://localhost:3001/comments/${encodedTitle}`)
-        .then(response => {
-            setCommentEmail(response.data);
+    useEffect(() => {
+        const encodedTitle = encodeURIComponent(title); 
+        //console.log(encodedTitle);
+        Axios.get(`http://localhost:3001/comments/${encodedTitle}`)
+            .then(response => {
+                setCommentEmail(response.data);
+            })
+            .catch(error => {
+                console.error('Couldnt fetch comments:', error);
+            });
+    }, [title]);
+
+
+    const handleCommentInputChange = (event) => {
+        setCommentInput(event.target.value);
+    };
+  
+    const submitComment = () => {
+        // Check if comment input is empty
+        if (commentInput.trim() === '') {
+            console.error('Comments cannot be blank.');
+            setError(true);
+            return; // Prevent further execution
+        }
+        // use post to insert it
+        const encodedTitle = encodeURIComponent(title); 
+        Axios.post('http://localhost:3001/comments', {game: encodedTitle, comment: commentInput, email: userEmail}).then(() => {
+            setComments([...comments, commentInput]);
+            setCommentInput('');
+        });
+
+    };
+
+    const deleteComment = (email, comment,title) => {
+        const encodedTitle = encodeURIComponent(title);
+        Axios.delete(`http://localhost:3001/comments/${email}/${comment}/${encodedTitle}`)
+        .then(() => {
+            setComments(comments.filter(comment => comment.id !== email));
+            console.log("deleted!");
         })
         .catch(error => {
-            console.error('Couldnt fetch comments:', error);
+            console.error('Could not delete comment:', error);
         });
-  }, [title]);
+    };
 
-
-  const handleCommentInputChange = (event) => {
-    setCommentInput(event.target.value);
-  };
-  
-  const submitComment = () => {
-    // Check if comment input is empty
-    if (commentInput.trim() === '') {
-        console.error('Comments cannot be blank.');
-        setError(true);
-        return; // Prevent further execution
-    }
-    // use post to insert it
-    const encodedTitle = encodeURIComponent(title); 
-    Axios.post('http://localhost:3001/comments', {game: encodedTitle, comment: commentInput, email: userEmail}).then(() => {
-        setComments([...comments, commentInput]);
-        setCommentInput('');
-    });
-
-  };
-
-  const deleteComment = (email, comment,title) => {
-    const encodedTitle = encodeURIComponent(title);
-    Axios.delete(`http://localhost:3001/comments/${email}/${comment}/${encodedTitle}`)
-      .then(() => {
-        setComments(comments.filter(comment => comment.id !== email));
-        console.log("deleted!");
-      })
-      .catch(error => {
-        console.error('Could not delete comment:', error);
-      });
-  };
-
-  const handleAddToHistory = () => {
-    // const encodedTitle = encodeURIComponent(title);
-    Axios.post('http://localhost:3001/history', { gameID: gameDetails.gameID, userID: user.userID }).then(() => {
-        console.log('Game added to history successfully');
-    }).catch(error => {
-        console.error('Error adding game to history:', error);
-    });
-};
+    const handleAddToHistory = () => {
+        // const encodedTitle = encodeURIComponent(title);
+        Axios.post('http://localhost:3001/history', { gameID: gameDetails.gameID, userID: user.userID }).then(() => {
+            console.log('Game added to history successfully');
+        }).catch(error => {
+            console.error('Error adding game to history:', error);
+        });
+    };
 
   if (isLoading || !gameDetails) {
     //console.log(title);

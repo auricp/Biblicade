@@ -204,6 +204,20 @@ app.get('/games', (req, res) => {
     })
 });
 
+app.get('/wishlist', (req, res) => {
+    // Query the wishlist data from the database
+    db.query('SELECT * FROM wishlists', (err, result) => {
+        if (err) {
+            console.error('Error fetching wishlist:', err);
+            res.status(500).send("Error fetching wishlist from database");
+        } else {
+            // Send the wishlist data as a response
+            res.send(result);
+        }
+    });
+});
+
+
 app.listen(3001, ()=> {
     console.log("Server is working on port 3001");
 });

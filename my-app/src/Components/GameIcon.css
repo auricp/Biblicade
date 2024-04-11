@@ -1,14 +1,63 @@
-.game-card-P14 {
-    align-items: flex-start;
-    background-color: #ffffff;
-    border: solid 0.0483rem #bdbdbd;
-    border-radius: 0.9665rem;
-    box-sizing: border-box;
-    display: flex;
-    flex-shrink: 0;
-    height: 100%;
-    width: 600px;
-    overflow: hidden;
-    padding-right: 3.495rem;
-    position: relative;
+
+
+.featured {
+  padding-top: 10%;
+  background: white;
+}
+
+.game-icons {
+  margin-top: 100%;
+  margin-left: 300px;
+  display: flex;
+  flex-direction: column;
+  margin: 1%;
+}
+
+.game-images {
+  margin-top: 50%;
+  width: 250px; /* Adjust the width as needed */
+  height: 250px; /* Maintain aspect ratio */
+  border: 10px solid black; /* Example border style */
+  border-radius: 50px; /* Example border radius */
+  /* Add more styles as needed */
+}
+
+.game-titles {
+  font-size: 50px;
+  margin-top: 5%;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+}
+
+a:link {
+    color: black;
   }
+  
+  /* Visited link */
+  a:visited {
+    color: purple;
+  }
+  
+  /* Mouse over link */
+  a:hover {
+    color: red;
+  }
+  
+  /* Selected link */
+  a:active {
+    color: green;
+  }
+
+  a{
+    text-decoration: none;
+  }
+
+  .featured {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
