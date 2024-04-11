@@ -134,7 +134,6 @@ function GamePage () {
                     <h1 className="gameTitle">{gameDetails.title}</h1>
                     <h2 className="gameGenre">{gameDetails.genre}</h2>
                     <p className="ageRest">For Ages {gameDetails.ageRestriction}+</p>
-<<<<<<< HEAD
                     <div className="favorite-container">
                         {isGameInFavorites() ? (
                             <FavoriteIcon className="favorite-icon" onClick={handleRemoveFromFavorites} />
@@ -151,7 +150,6 @@ function GamePage () {
                         {/* add logic for when pressed and if clicked again will delete from history */}
                     </div>
                     
-=======
                     {userEmail && (
                         <div className="favorite-container">
                             {isGameInFavorites() ? (
@@ -168,7 +166,6 @@ function GamePage () {
                             <span className="add-wish">Add to Wishlist</span>
                         </div>
                     )}
->>>>>>> 1a194b550b87624f2b7c466eee8759673cf38109
                 </div>
                 <div className="ratingContainer">
                     <p className="gameRatingTit">Biblicade Score</p>
