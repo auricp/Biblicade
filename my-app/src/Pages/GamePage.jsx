@@ -7,6 +7,7 @@ import "./GamePage.css";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FilterNone from "@mui/icons-material/FilterNone";
 import { UserContext } from "../Context/usercontext";
+import AddToHistory from "../Components/AddToHistory.jsx";
 
 // Define UserList as a function component
 // copied auric da goat/ angie da slay here thanks bbg
@@ -81,11 +82,21 @@ function GamePage () {
     Axios.delete(`http://localhost:3001/comments/${email}/${comment}/${encodedTitle}`)
       .then(() => {
         setComments(comments.filter(comment => comment.id !== email));
+        console.log("deleted!");
       })
       .catch(error => {
         console.error('Could not delete comment:', error);
       });
   };
+
+  const handleAddToHistory = () => {
+    // const encodedTitle = encodeURIComponent(title);
+    Axios.post('http://localhost:3001/history', { gameID: gameDetails.gameID, userID: user.userID }).then(() => {
+        console.log('Game added to history successfully');
+    }).catch(error => {
+        console.error('Error adding game to history:', error);
+    });
+};
 
   if (isLoading || !gameDetails) {
     //console.log(title);
@@ -122,6 +133,22 @@ function GamePage () {
                     <h1 className="gameTitle">{gameDetails.title}</h1>
                     <h2 className="gameGenre">{gameDetails.genre}</h2>
                     <p className="ageRest">For Ages {gameDetails.ageRestriction}+</p>
+                    <div className="favorite-container">
+                        {isGameInFavorites() ? (
+                            <FavoriteIcon className="favorite-icon" onClick={handleRemoveFromFavorites} />
+                        ) : (
+                            <FavoriteIcon className="favorite-icon" onClick={handleAddToFavorites} />
+                        )}
+                                                
+                        <span className="add-fave">Add to Favourites</span>
+
+                        
+                    </div>
+                    <div>
+                        <AddToHistory handleAddToHistory={handleAddToHistory} />
+                        {/* add logic for when pressed and if clicked again will delete from history */}
+                    </div>
+                    
                     {userEmail && (
                         <div className="favorite-container">
                             {isGameInFavorites() ? (
