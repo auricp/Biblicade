@@ -133,32 +133,10 @@ function GamePage () {
                     <h1 className="gameTitle">{gameDetails.title}</h1>
                     <h2 className="gameGenre">{gameDetails.genre}</h2>
                     <p className="ageRest">For Ages {gameDetails.ageRestriction}+</p>
-                    <div className="favorite-container">
-                        {isGameInFavorites() ? (
-                            <FavoriteIcon className="favorite-icon" onClick={addToFavorites} />
-                        ) : (
-                            <FavoriteIcon className="favorite-icon" onClick={removeFromFavorites} />
-                        )}
-                                                
-                        <span className="add-fave">Add to Favourites</span>
-
-                        
-                    </div>
                     <div>
                         <AddToHistory handleAddToHistory={handleAddToHistory} />
                         {/* add logic for when pressed and if clicked again will delete from history */}
                     </div>
-                    
-                    {userEmail && (
-                        <div className="favorite-container">
-                            {isGameInFavorites() ? (
-                                <FavoriteIcon className="favorite-icon" onClick={removeFromFavorites} />
-                            ) : (
-                                <FavoriteIcon className="favorite-icon" onClick={addToFavorites} />
-                            )}
-                            <span className="add-fave">Add to Favourites</span>
-                        </div>
-                    )}
                     {userEmail && (
                         <div className="wishlist-container">
                             <FilterNone></FilterNone>
