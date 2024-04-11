@@ -104,17 +104,16 @@ function GamePage () {
   }
 
 
-    const handleAddToFavorites = () => {
-        if (!favorites.includes(gameDetails)) {
-            setFavorites([...favorites, gameDetails]);
-        }
+    // Add game to favorites
+    const addToFavorites = () => {
+        setFavorites(prevFavorites => [...prevFavorites, gameDetails]);
         // Add clicked class
         document.querySelector('.favorite-icon').classList.add('clicked');
     };
 
-    const handleRemoveFromFavorites = () => {
-        const updatedFavorites = favorites.filter(game => game.title !== gameDetails.title);
-        setFavorites(updatedFavorites);
+    // Remove game from favorites
+    const removeFromFavorites = () => {
+        setFavorites(prevFavorites => prevFavorites.filter(game => game.title !== gameDetails.title));
         // Remove clicked class
         document.querySelector('.favorite-icon').classList.remove('clicked');
     };
@@ -136,9 +135,9 @@ function GamePage () {
                     <p className="ageRest">For Ages {gameDetails.ageRestriction}+</p>
                     <div className="favorite-container">
                         {isGameInFavorites() ? (
-                            <FavoriteIcon className="favorite-icon" onClick={handleRemoveFromFavorites} />
+                            <FavoriteIcon className="favorite-icon" onClick={addToFavorites} />
                         ) : (
-                            <FavoriteIcon className="favorite-icon" onClick={handleAddToFavorites} />
+                            <FavoriteIcon className="favorite-icon" onClick={removeFromFavorites} />
                         )}
                                                 
                         <span className="add-fave">Add to Favourites</span>
@@ -153,9 +152,9 @@ function GamePage () {
                     {userEmail && (
                         <div className="favorite-container">
                             {isGameInFavorites() ? (
-                                <FavoriteIcon className="favorite-icon" onClick={handleRemoveFromFavorites} />
+                                <FavoriteIcon className="favorite-icon" onClick={removeFromFavorites} />
                             ) : (
-                                <FavoriteIcon className="favorite-icon" onClick={handleAddToFavorites} />
+                                <FavoriteIcon className="favorite-icon" onClick={addToFavorites} />
                             )}
                             <span className="add-fave">Add to Favourites</span>
                         </div>
