@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../Images/logo.png";
 import { useFormData } from "../Context/formdatacontext";
 import Axios from 'axios';
+import FilterNone from "@mui/icons-material/FilterNoneOutlined";
 
 function Nav() {
   const { user, setUser } = useContext(UserContext);
@@ -135,6 +136,11 @@ function Nav() {
                   src="https://cdn.builder.io/api/v1/image/assets/TEMP/ef4d5567-e4d6-40e8-9039-f16f190f3684?"
                   className="img-5"
                 />
+              </Link>
+            )}
+            {userEmail && (
+              <Link to={`/Wishlists/` + user.email}>
+                <FilterNone className="wishlists"></FilterNone>
               </Link>
             )}
             {userEmail && (

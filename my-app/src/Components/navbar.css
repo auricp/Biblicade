@@ -466,3 +466,7 @@ suggested-games {
 .suggested-games ul li:last-child {
   border-bottom: none;
 }
+
+.wishlists{
+  fill: 1px solid #c3c3c3;
+}

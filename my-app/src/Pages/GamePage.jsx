@@ -15,12 +15,6 @@ function GameList() {
     return Axios.get('http://localhost:3001/games').then(response => response.data);
 }
 
-// Define UserList as a function component
-function UserList() {
-    // Fetch user list and return it as a promise
-    return Axios.get('http://localhost:3001/users').then(response => response.data);
-}
-
 function GamePage () {
     const { title } = useParams();
     const { email } = useParams();
