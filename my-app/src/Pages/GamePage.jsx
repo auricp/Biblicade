@@ -74,11 +74,10 @@ function GamePage () {
 
   };
 
-  const deleteComment = (email, comment) => {
+  const deleteComment = (email, comment,title) => {
     console.log(email);
     console.log(comment);
     const encodedTitle = encodeURIComponent(title);
-    console.log(encodedTitle);
     Axios.delete(`http://localhost:3001/comments/${email}/${comment}/${encodedTitle}`)
       .then(() => {
         setComments(comments.filter(comment => comment.id !== email));
@@ -193,7 +192,7 @@ function GamePage () {
                     <div key={index}>
                     <span>{comment.comment}</span>
                     {comment.email === userEmail && (
-                        <button onClick={() => deleteComment(comment.email, comment.comment)}>Delete</button>
+                        <button onClick={() => deleteComment(comment.email, comment.comment, title)}>Delete</button>
                     )}
                     </div>
                     ))}
