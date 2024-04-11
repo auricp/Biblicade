@@ -16,28 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `developer`
+-- Table structure for table `gaming_preferences`
 --
 
-DROP TABLE IF EXISTS `developer`;
+DROP TABLE IF EXISTS `gaming_preferences`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `developer` (
-  `name` varchar(45) NOT NULL,
-  `type` varchar(45) DEFAULT NULL,
-  `location` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`name`)
+CREATE TABLE `gaming_preferences` (
+  `userID` int DEFAULT NULL,
+  `gameID` int DEFAULT NULL,
+  `userRating` varchar(45) DEFAULT NULL,
+  KEY `userID_idx` (`userID`),
+  KEY `gameID_idx` (`gameID`),
+  KEY `fk_gaming_preferences_1_idx` (`gameID`),
+  KEY `fk_gaming_preferences_2_idx` (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `developer`
+-- Dumping data for table `gaming_preferences`
 --
 
-LOCK TABLES `developer` WRITE;
-/*!40000 ALTER TABLE `developer` DISABLE KEYS */;
-INSERT INTO `developer` VALUES ('AJ',NULL,NULL);
-/*!40000 ALTER TABLE `developer` ENABLE KEYS */;
+LOCK TABLES `gaming_preferences` WRITE;
+/*!40000 ALTER TABLE `gaming_preferences` DISABLE KEYS */;
+/*!40000 ALTER TABLE `gaming_preferences` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
