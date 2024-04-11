@@ -168,7 +168,10 @@ export default function RecommendAlgorithm({ user, start }) {
   const userID = user.userID;
   // const implicitPreferredGenres = new Histogram();
   const recommendHeap = new MaxHeap();
-  var currentGame = gamesList[Math.floor(Math.random()*gamesList.length)];
+  // var currentGame = gamesList[Math.floor(Math.random()*gamesList.length)];
+  var randomNumber = Math.floor(Math.random()*gamesList.length);
+  var currentGame = gamesList[randomNumber];
+  var currentGameID = randomNumber;
 
   const getHistory = () => {
     Axios.get(`http://localhost:3001/history/${userID}`).then((response) => {
@@ -324,7 +327,17 @@ export default function RecommendAlgorithm({ user, start }) {
       // console.log(currentStandards);
     };
 
-    const handleChanges = () => {
+    const sendOpinions = (opinion) => {
+      console.log(userID, currentGameID+1, opinion)
+
+      Axios.post(`http://localhost:3001/gamePreferences/${userID}`, { gameFK: currentGameID+1, userFK: userID, opinionFK: opinion }).then(() => {
+          console.log('Game added to preferences successfully');
+      }).catch(error => {
+          console.error('Error adding game to preferences:', error);
+      });
+    }
+
+    const handleChanges = (opinion) => {
 
       // setUpdateChanges(updateChanges+1);
       userAssessment();
@@ -343,6 +356,8 @@ export default function RecommendAlgorithm({ user, start }) {
       if (currentGame === null) {
         setIsLoading(false);
       }
+      // sync with Servers
+      sendOpinions(opinion);
     }
 
     const gameAssessment = (starting, ending) => {
@@ -389,15 +404,15 @@ export default function RecommendAlgorithm({ user, start }) {
       </div>
 
       <div className="preferenceButtons">
-        <div className="preferenceBot" onClick={handleChanges}>
+        <div className="preferenceBot" onClick={() => {handleChanges('like')}}>
           <p>Like</p>
         </div>
 
-        <div className="preferenceBot" onClick={handleChanges}>
+        <div className="preferenceBot" onClick={() => {handleChanges('')}}>
           <p>Maybe</p>
         </div>
 
-        <div className="preferenceBot" onClick={handleChanges}>
+        <div className="preferenceBot" onClick={() => {handleChanges('dislike')}}>
           <p>Dislike</p>
         </div>
       </div>

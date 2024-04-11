@@ -100,6 +100,22 @@ app.get('/gamePreferences/:userID', (req, res) => {
     });
 });
 
+app.post('/gamePreferences/:userID', (req, res) => {
+    const game = req.body.gameFK;
+    const user = req.body.userFK;
+    const opin = req.body.opinionFK;
+    
+    db.query('INSERT INTO gaming_preferences (userID,gameID,userRating) VALUES (?,?,?)', [user, game, opin],
+    (err, result) => {
+        if (err) {
+            console.log(err)
+        }else {
+            res.send("Values Inserted successfully")
+        }
+    });
+
+});
+
 app.get('/userPreferences/:userID', (req, res) => {
     // const userID = req.body.userID;
     const userID = encodeURIComponent(req.params.userID);
