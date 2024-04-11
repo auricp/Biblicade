@@ -1,4 +1,110 @@
 #MainContainer_RecAlg {
-    background-color: aqua;
+    background: linear-gradient(to bottom, rgb(67, 66, 99), rgb(22, 22, 22));background-color: aqua;
     min-height: 750px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin: -15% 0% 0% 0%;
+}
+
+
+.gameImage {
+    margin: 2% 2% 2% 7%;
+    border-radius: 12px;
+    max-height: 330px;
+    min-height: 330px;
+}
+
+.gameSpecificItems {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: whitesmoke;
+    font-size: 2em;
+    margin: 0px;
+}
+
+.gameTitleH3 {
+    margin: 0px;
+    font-weight: bold;
+    font-size: 1.5em;
+    
+}
+
+.gameSpecificItems p {
+    margin: 0px;
+}
+
+.gameSpecificItems img {
+    margin: 25px 0px;
+}
+
+.recommendAlgoHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: whitesmoke;
+    font-size: 2em;
+    margin: 0px;
+}
+
+.recommendAlgoHeader h2 {
+    margin: 0px;
+}
+
+.recommendAlgoHeader p {
+    margin: 0px;
+}
+
+.preferenceButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 33%;
+
+    margin-top: 20px;
+}
+
+.preferenceBot {
+    background-color: rgb(84, 144, 233);
+    /* margin: 0px 35px; */
+    padding: 0px 35px;
+    border-radius: 12px;
+}
+
+.preferenceBot:hover {
+    background-color: whitesmoke;
+    color: rgb(84, 144, 233);
+}
+
+.preferenceButtons2 {
+    /* display: flex; */
+    /* flex-direction: row; */
+    align-items: center;
+    text-align: center;
+
+    width: 33%;
+
+    margin-top: 3%;
+    
+}
+
+.preferenceBot2{
+    background-color: rgb(84, 144, 233);
+    /* margin: 0px 35px; */
+    padding: 30px 35px;
+    border-radius: 180px;
+    font-size: 3em;
+}
+
+.preferenceBot2:hover {
+    background-color: whitesmoke;
+    color: rgb(84, 144, 233);
 }

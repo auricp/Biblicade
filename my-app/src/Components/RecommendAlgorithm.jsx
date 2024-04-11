@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import "../Components/RecommendAlgorithm.css"
+import "../Components/RecommendAlgorithm.css";
+import images from "./images";
+import { Link } from "react-router-dom";
 
 class Histogram {
   constructor() {
@@ -166,6 +168,7 @@ export default function RecommendAlgorithm({ user, start }) {
   const userID = user.userID;
   // const implicitPreferredGenres = new Histogram();
   const recommendHeap = new MaxHeap();
+  var currentGame = gamesList[Math.floor(Math.random()*gamesList.length)];
 
   const getHistory = () => {
     Axios.get(`http://localhost:3001/history/${userID}`).then((response) => {
@@ -237,7 +240,7 @@ export default function RecommendAlgorithm({ user, start }) {
       // fetch user preferences data
       getUserData();    
       
-      setIsLoading(true);
+      // setIsLoading(true);
     }, [updateChanges]);
 
     useEffect(() => {
@@ -325,12 +328,25 @@ export default function RecommendAlgorithm({ user, start }) {
 
       // setUpdateChanges(updateChanges+1);
       userAssessment();
-      gameAssessment();
-      console.log(recommendHeap.getMax());
+      const startIndex = (gameIDCounter < 3) ? 0 : (gameIDCounter - 3);
+      const endIndex = Math.min(gameIDCounter, gamesList.length);
+      setGameIDCounter(gameIDCounter+3);
+      gameAssessment(startIndex, endIndex);
+      // console.log(recommendHeap.extractMax());
+      // console.log(recommendHeap);
+      try {
+        currentGame = recommendHeap.extractMax()[0];
+      } catch {
+        setIsLoading(false);
+      }
+      setIsLoading(true);
+      if (currentGame === null) {
+        setIsLoading(false);
+      }
     }
 
-    const gameAssessment = () => {
-      for (let i = 0; i < gamesList.length; i++) {
+    const gameAssessment = (starting, ending) => {
+      for (let i = starting; i < ending; i++) {
         const game = gamesList[i];
         let likeliness = 0;
         if (currentStandards[0] > game.ageRestriction) {
@@ -356,48 +372,48 @@ export default function RecommendAlgorithm({ user, start }) {
       }
     };
 
-    if (isLoading || !gamesList) {
+    if ((isLoading || !recommendHeap.isEmpty())) {
       //console.log(title);
       return <div id="MainContainer_RecAlg">
-      <h2>Recommend Algorithm (work in progress by Gavin)</h2>
-      <p>This is where Games will be suggested based on preferences and history</p>
-
+          <div className="recommendAlgoHeader">
+            <h2>Recommend Algorithm (work in progress by Gavin)</h2>
+            <p>These games are suggested based on your gaming preferences and history</p>
+          </div>
       <div>
-        <div>
-          
-          <p>{userID}</p>
+        <div className="gameSpecificItems">
+
+          <img className="gameImage" src={images[currentGame.title]} alt={currentGame.title} width={'250px'}/>
+          <Link to={`/GamePage/${currentGame.title}`} className='gameTitleH3'>{currentGame.title}</Link>
+          <p>{currentGame.genre}</p>
         </div>
       </div>
 
-      <div onClick={handleChanges}>
-        <p>Like</p>
-      </div>
+      <div className="preferenceButtons">
+        <div className="preferenceBot" onClick={handleChanges}>
+          <p>Like</p>
+        </div>
 
-      <div onClick={handleChanges}>
-        <p>Maybe</p>
-      </div>
+        <div className="preferenceBot" onClick={handleChanges}>
+          <p>Maybe</p>
+        </div>
 
-      <div onClick={handleChanges}>
-        <p>Dislike</p>
+        <div className="preferenceBot" onClick={handleChanges}>
+          <p>Dislike</p>
+        </div>
       </div>
   </div>
     }
   
   return (
     <div id="MainContainer_RecAlg">
-        <h2>Recommend Algorithm (work in progress by Gavin)</h2>
-        <p>This is where Games will be suggested based on preferences and history</p>
-
-        <div onClick={handleChanges}>
-          <p>Like</p>
-        </div>
-
-        <div onClick={handleChanges}>
-          <p>Maybe</p>
-        </div>
-
-        <div onClick={handleChanges}>
-          <p>Dislike</p>
+        <div className="recommendAlgoHeader">
+            <h2>Recommend Algorithm (work in progress by Gavin)</h2>
+            <p>These games are suggested based on your gaming preferences and history</p>
+          </div>
+        <div className="preferenceButtons2">
+          <div className="preferenceBot2" onClick={handleChanges}>
+            <p>Give me the First Game!</p>
+          </div>
         </div>
     </div>
   )

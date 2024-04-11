@@ -9,7 +9,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 150%;
   object-fit: cover;
 }
 
@@ -17,10 +17,13 @@
   color: white;
   font-size: 2em;
   top: 0;
-  margin-top: 500px;
+  margin-top: 390px;
   width: 100%;
   position: absolute;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .mainPane {
@@ -37,4 +40,30 @@
   text-align: center;
   margin: 2% 0px -7% 0px;
   padding: 0;
+}
+
+.preferenceButton {
+  width: 33%;
+  border-radius: 25px;
+  padding: 2% 0px;
+  font-size: 1.5em;
+
+  color: whitesmoke;
+  background-color: rgb(84, 144, 233);
+}
+
+
+
+.preferenceButton:hover {
+  background-color: whitesmoke;
+  color: rgb(84, 144, 233);
+  
+}
+
+.mainTitle p {
+  margin: auto 0px 2% 0px;
+}
+
+.gamesCatalogueTitle {
+  margin-top: 30%;
 }
