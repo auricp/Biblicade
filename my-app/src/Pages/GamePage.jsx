@@ -103,6 +103,7 @@ function GamePage () {
         // Check if the game is already in the wishlist
         if (wish.some(game => game.title === gameDetails.title)) {
             console.log('Game already in wishlist.');
+            setError(true);
             return;
         }
         // use post to insert it
