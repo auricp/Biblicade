@@ -81,7 +81,7 @@ function Nav() {
           <div className="div-4">
             <Link to="/">
               <img
-                class="group-6-T94"
+                className="group-6-T94"
                 src={logo}
                 alt={logo}
                 id="I141:2772;1:110"
