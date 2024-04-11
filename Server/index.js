@@ -10,7 +10,7 @@ const db = mysql.createConnection({
     user: 'root',
     host: 'localhost',
     // password is either '', 'password'. or '471sqlbackend'
-    password: 'root',
+    password: '',
     database: 'gamessystem',
 });
 
@@ -60,6 +60,42 @@ app.post('/history', (req, res) => {
             console.log(err)
         }else {
             res.send("Values Inserted successfully")
+        }
+    });
+
+});
+
+app.get('/history/:userID', (req, res) => {
+    // const userID = req.body.userID;
+    const userID = encodeURIComponent(req.params.userID);
+
+    // SELECT title FROM game WHERE gameID IN (SELECT gameID FROM gaming_history WHERE userID = ?)
+    db.query("SELECT * FROM game WHERE gameID IN (SELECT gameID FROM gaming_history WHERE userID = ?)", [userID], (err, result) => {
+        if (err) {
+            console.error("Error querying database:", err);
+            return res.status(500).json({ error: 'Error querying database' });
+        } else {
+            // Send all the results in the response
+            // add more paramaters later
+            const titles = result.map(row => ({gameID: row.gameID, title: row.title, score: row.ratingScore, ageRest: row.ageRestriction, genre: row.genre}));
+            res.json(titles);
+        }
+    });
+
+});
+
+app.get('/gamePreferences/:userID', (req, res) => {
+    // const userID = req.body.userID;
+    const userID = encodeURIComponent(req.params.userID);
+
+    db.query("SELECT * FROM (game JOIN gaming_preferences ON (game.gameID = gaming_preferences.gameID)) WHERE userID = ?", [userID], (err, result) => {
+        if (err) {
+            console.error("Error querying database:", err);
+            return res.status(500).json({ error: 'Error querying database' });
+        } else {
+            // Send all the results in the response
+            const titles = result.map(row => ({opinion: row.userRating, gameID: row.gameID, title: row.title, score: row.ratingScore, ageRest: row.ageRestriction, genre: row.genre}));
+            res.json(titles);
         }
     });
 
