@@ -5,6 +5,7 @@ import images from '../Components/images.js';
 import Nav from "../Components/navbar";
 import "./GamePage.css";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import FilterNone from "@mui/icons-material/FilterNone";
 import { UserContext } from "../Context/usercontext";
 
 // Define UserList as a function component
@@ -135,6 +136,10 @@ function GamePage ({ game }) {
                             <FavoriteIcon className="favorite-icon" onClick={handleAddToFavorites} />
                         )}
                         <span className="add-fave">Add to Favourites</span>
+                    </div>
+                    <div className="wishlist-container">
+                        <FilterNone></FilterNone>
+                        <span className="add-wish">Add to Wishlist</span>
                     </div>
                 </div>
                 <div className="ratingContainer">
