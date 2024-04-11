@@ -21,7 +21,7 @@ function UserList() {
     return Axios.get('http://localhost:3001/users').then(response => response.data);
 }
 
-function GamePage ({ game }) {
+function GamePage () {
     const { title } = useParams();
     const { email } = useParams();
     const [gameDetails, setGameDetails] = useState(null);
@@ -98,6 +98,7 @@ function GamePage ({ game }) {
     return <div>Loading... Please Wait</div>;
   }
 
+
     const handleAddToFavorites = () => {
         if (!favorites.includes(gameDetails)) {
             setFavorites([...favorites, gameDetails]);
@@ -118,7 +119,6 @@ function GamePage ({ game }) {
         return favorites.some(game => game.title === gameDetails.title);
     };
 
-
   return (
     <div>
         <Nav />
@@ -129,18 +129,22 @@ function GamePage ({ game }) {
                     <h1 className="gameTitle">{gameDetails.title}</h1>
                     <h2 className="gameGenre">{gameDetails.genre}</h2>
                     <p className="ageRest">For Ages {gameDetails.ageRestriction}+</p>
-                    <div className="favorite-container">
-                        {isGameInFavorites() ? (
-                            <FavoriteIcon className="favorite-icon" onClick={handleRemoveFromFavorites} />
-                        ) : (
-                            <FavoriteIcon className="favorite-icon" onClick={handleAddToFavorites} />
-                        )}
-                        <span className="add-fave">Add to Favourites</span>
-                    </div>
-                    <div className="wishlist-container">
-                        <FilterNone></FilterNone>
-                        <span className="add-wish">Add to Wishlist</span>
-                    </div>
+                    {userEmail && (
+                        <div className="favorite-container">
+                            {isGameInFavorites() ? (
+                                <FavoriteIcon className="favorite-icon" onClick={handleRemoveFromFavorites} />
+                            ) : (
+                                <FavoriteIcon className="favorite-icon" onClick={handleAddToFavorites} />
+                            )}
+                            <span className="add-fave">Add to Favourites</span>
+                        </div>
+                    )}
+                    {userEmail && (
+                        <div className="wishlist-container">
+                            <FilterNone></FilterNone>
+                            <span className="add-wish">Add to Wishlist</span>
+                        </div>
+                    )}
                 </div>
                 <div className="ratingContainer">
                     <p className="gameRatingTit">Biblicade Score</p>
@@ -169,9 +173,6 @@ function GamePage ({ game }) {
                         <p className="publisherIDBold">Publisher</p>
                         <p>: {gameDetails.publisherID}</p>
                     </div>
-                    
-                    
-                    
                 </div>
             </div>
             <div className="commentSection">
