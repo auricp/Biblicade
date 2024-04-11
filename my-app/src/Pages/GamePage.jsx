@@ -4,7 +4,6 @@ import Axios from "axios";
 import images from '../Components/images.js';
 import Nav from "../Components/navbar";
 import "./GamePage.css";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import FilterNone from "@mui/icons-material/FilterNone";
 import { UserContext } from "../Context/usercontext";
 import AddToHistory from "../Components/AddToHistory.jsx";
@@ -24,7 +23,7 @@ function GamePage () {
     const [commentInput, setCommentInput] = useState('');
     const [comments, setComments] = useState([]);
     const [commentEmail, setCommentEmail] = useState([]);
-    const [favorites, setFavorites] = useState([]); // State to store favorite games
+    const [wish, setWish] = useState([]); // State to store favorite games
     const[error, setError] = useState(false);
     const { user } = useContext(UserContext);
     const userEmail = user?.email;
@@ -74,11 +73,8 @@ function GamePage () {
 
   };
 
-  const deleteComment = (email, comment) => {
-    console.log(email);
-    console.log(comment);
+  const deleteComment = (email, comment,title) => {
     const encodedTitle = encodeURIComponent(title);
-    console.log(encodedTitle);
     Axios.delete(`http://localhost:3001/comments/${email}/${comment}/${encodedTitle}`)
       .then(() => {
         setComments(comments.filter(comment => comment.id !== email));
@@ -103,26 +99,25 @@ function GamePage () {
     return <div>Loading... Please Wait</div>;
   }
 
-
-    // Add game to favorites
-    const addToFavorites = () => {
-        setFavorites(prevFavorites => [...prevFavorites, gameDetails]);
-        // Add clicked class
-        document.querySelector('.favorite-icon').classList.add('clicked');
-    };
-
-    // Remove game from favorites
-    const removeFromFavorites = () => {
-        setFavorites(prevFavorites => prevFavorites.filter(game => game.title !== gameDetails.title));
-        // Remove clicked class
-        document.querySelector('.favorite-icon').classList.remove('clicked');
+    const handleAddToWishlist = () => {
+        // Check if the game is already in the wishlist
+        if (wish.some(game => game.title === gameDetails.title)) {
+            console.log('Game already in wishlist.');
+            setError(true);
+            return;
+        }
+        // use post to insert it
+        const encodedTitle = encodeURIComponent(title); 
+        // Add the game to the wishlist
+        Axios.post('http://localhost:3001/wishlist', {email: userEmail, gameID: gameDetails.gameID, game: encodedTitle}).then(() => {
+            setWish([...wish, gameDetails]);
+            console.log('Game added to wishlist successfully'); 
+        }).catch(error => {
+            console.error('Error adding game to wishlist:', error);
+        });
     };
 
   
-    const isGameInFavorites = () => {
-        return favorites.some(game => game.title === gameDetails.title);
-    };
-
   return (
     <div>
         <Nav />
@@ -139,7 +134,7 @@ function GamePage () {
                     </div>
                     {userEmail && (
                         <div className="wishlist-container">
-                            <FilterNone></FilterNone>
+                            <FilterNone className="wishlist-icon" onClick={handleAddToWishlist} />
                             <span className="add-wish">Add to Wishlist</span>
                         </div>
                     )}
@@ -193,7 +188,7 @@ function GamePage () {
                     <div key={index}>
                     <span>{comment.comment}</span>
                     {comment.email === userEmail && (
-                        <button onClick={() => deleteComment(comment.email, comment.comment)}>Delete</button>
+                        <button onClick={() => deleteComment(comment.email, comment.comment, title)}>Delete</button>
                     )}
                     </div>
                     ))}

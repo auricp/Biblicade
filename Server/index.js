@@ -65,40 +65,24 @@ app.post('/history', (req, res) => {
 
 });
 
-app.get('/history/:userID', (req, res) => {
-    // const userID = req.body.userID;
-    const userID = encodeURIComponent(req.params.userID);
+app.post('/wishlist', (req, res) => {
+    const game = req.body.game;
+    const gameID = req.body.gameID;
+    const email = req.body.email;
+    
+    // Check if gameID or game is null, and set them to empty string if so
+    const safeGameID = gameID || '';
+    const safeGame = game || '';
 
-    // SELECT title FROM game WHERE gameID IN (SELECT gameID FROM gaming_history WHERE userID = ?)
-    db.query("SELECT * FROM game WHERE gameID IN (SELECT gameID FROM gaming_history WHERE userID = ?)", [userID], (err, result) => {
+    db.query('INSERT INTO wishlists (email, gameID, game) VALUES (?, ?, ?)', [email, safeGameID, safeGame],
+    (err, result) => {
         if (err) {
-            console.error("Error querying database:", err);
-            return res.status(500).json({ error: 'Error querying database' });
+            console.log(err);
+            res.status(500).send("Error inserting values into database");
         } else {
-            // Send all the results in the response
-            // add more paramaters later
-            const titles = result.map(row => ({gameID: row.gameID, title: row.title, score: row.ratingScore, ageRest: row.ageRestriction, genre: row.genre}));
-            res.json(titles);
+            res.send("Values Inserted successfully");
         }
     });
-
-});
-
-app.get('/gamePreferences/:userID', (req, res) => {
-    // const userID = req.body.userID;
-    const userID = encodeURIComponent(req.params.userID);
-
-    db.query("SELECT * FROM (game JOIN gaming_preferences ON (game.gameID = gaming_preferences.gameID)) WHERE userID = ?", [userID], (err, result) => {
-        if (err) {
-            console.error("Error querying database:", err);
-            return res.status(500).json({ error: 'Error querying database' });
-        } else {
-            // Send all the results in the response
-            const titles = result.map(row => ({opinion: row.userRating, gameID: row.gameID, title: row.title, score: row.ratingScore, ageRest: row.ageRestriction, genre: row.genre}));
-            res.json(titles);
-        }
-    });
-
 });
 
 
@@ -134,7 +118,11 @@ app.get('/comments/:title', (req, res) => {
 // deletion for comments
 app.delete('/comments/:email/:comment/:gameTitle', (req, res) => {
     const { email, comment, gameTitle } = req.params;
-    db.query('DELETE FROM comments WHERE game = ? AND comment = ? AND email = ?', [gameTitle, comment, email], (err, result) => {
+    const title = encodeURIComponent(gameTitle);
+    console.log(comment);
+    console.log(email);
+    console.log(title);
+    db.query('DELETE FROM comments WHERE game = ? AND comment = ?', [title, comment], (err, result) => {
         if (err) {
             console.error(err);
             res.status(500).json({ error: 'Error deleting comment from database' });
