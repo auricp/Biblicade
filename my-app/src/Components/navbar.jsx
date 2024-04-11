@@ -139,7 +139,7 @@ function Nav() {
               </Link>
             )}
             {userEmail && (
-              <Link to={`/Wishlists/` + user.email}>
+              <Link to={`/Wishlist/` + user.email}>
                 <FilterNone className="wishlists"></FilterNone>
               </Link>
             )}

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Wishlists(){
+function Wishlist(){
     return (
     <>
         <div class="user-wishlists">
@@ -11,4 +11,4 @@ function Wishlists(){
     </>
     );
 }
-export default Wishlists;
+export default Wishlist;
