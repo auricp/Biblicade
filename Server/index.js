@@ -65,6 +65,26 @@ app.post('/history', (req, res) => {
 
 });
 
+app.post('/wishlist', (req, res) => {
+    const game = req.body.game;
+    const gameID = req.body.gameID;
+    const email = req.body.email;
+    
+    // Check if gameID or game is null, and set them to empty string if so
+    const safeGameID = gameID || '';
+    const safeGame = game || '';
+
+    db.query('INSERT INTO wishlists (email, gameID, game) VALUES (?, ?, ?)', [email, safeGameID, safeGame],
+    (err, result) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Error inserting values into database");
+        } else {
+            res.send("Values Inserted successfully");
+        }
+    });
+});
+
 
 app.post('/preferences', (req, res) => {
     const email = req.body.email;

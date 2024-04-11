@@ -14,7 +14,6 @@ import Wishlist from "./Pages/Wishlist";
 import { useLocation } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { FormDataProvider } from "./Context/formdatacontext";
-import ParentComponent from "./Context/parentcontext";
 import AssessmentPage from "./Pages/AssessmentPage";
 
 function App() {
@@ -48,11 +47,7 @@ function App() {
               />
               <Route 
                   path={"/GamePage/:title"}
-                  element={
-                    <ParentComponent>
-                        <GamePage />
-                    </ParentComponent>
-                  }
+                  element={<GamePage/>}
               />
               {/* in progress right now */}
               <Route 

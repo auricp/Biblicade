@@ -105,11 +105,16 @@ function GamePage () {
             console.log('Game already in wishlist.');
             return;
         }
+        // use post to insert it
+        const encodedTitle = encodeURIComponent(title); 
         // Add the game to the wishlist
-        setWish([...wish, gameDetails]);
-        console.log('Game added to wishlist successfully'); 
+        Axios.post('http://localhost:3001/wishlist', {email: userEmail, gameID: gameDetails.gameID, game: encodedTitle}).then(() => {
+            setWish([...wish, gameDetails]);
+            console.log('Game added to wishlist successfully'); 
+        }).catch(error => {
+            console.error('Error adding game to wishlist:', error);
+        });
     };
-
 
   
   return (
@@ -128,7 +133,7 @@ function GamePage () {
                     </div>
                     {userEmail && (
                         <div className="wishlist-container">
-                            <FilterNone onClick={handleAddToWishlist} />
+                            <FilterNone className="wishlist-icon" onClick={handleAddToWishlist} />
                             <span className="add-wish">Add to Wishlist</span>
                         </div>
                     )}
