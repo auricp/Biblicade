@@ -100,6 +100,22 @@ app.get('/gamePreferences/:userID', (req, res) => {
     });
 });
 
+app.get('/userPreferences/:userID', (req, res) => {
+    // const userID = req.body.userID;
+    const userID = encodeURIComponent(req.params.userID);
+
+    db.query("SELECT * FROM user_preferences WHERE userID = ?", [userID], (err, result) => {
+        if (err) {
+            console.error("Error querying database:", err);
+            return res.status(500).json({ error: 'Error querying database' });
+        } else {
+            // Send all the results in the response
+            const userPrefs = result.map(row => ({userID: row.userID, prefScore: row.preferredRatingScore}));
+            res.json(userPrefs);
+        }
+    });
+});
+
 app.post('/wishlist', (req, res) => {
     const game = req.body.game;
     const gameID = req.body.gameID;
