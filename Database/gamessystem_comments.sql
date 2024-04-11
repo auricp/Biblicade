@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Linux (x86_64)
 --
 -- Host: localhost    Database: gamessystem
 -- ------------------------------------------------------
@@ -35,7 +35,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES ('With%20Us','New comment from shadow!','shadowdagoat@gmail.com'),('With%20Us','new comment from Shadow!','shadowdagoat@gmail.com'),('With%20Us','New comment','shadowdagoat@gmail.com');
+INSERT INTO `comments` VALUES ('With%20Us','New comment from shadow!','shadowdagoat@gmail.com'),('With%20Us','new comment from Shadow!','shadowdagoat@gmail.com'),('With%20Us','New comment','shadowdagoat@gmail.com'),('With%20Us','Hello','shadowdagoat@gmail.com');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-10 18:50:37
+-- Dump completed on 2024-04-10 21:52:42

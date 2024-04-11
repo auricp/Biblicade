@@ -16,28 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `developer`
+-- Table structure for table `gaming_history`
 --
 
-DROP TABLE IF EXISTS `developer`;
+DROP TABLE IF EXISTS `gaming_history`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `developer` (
-  `name` varchar(45) NOT NULL,
-  `type` varchar(45) DEFAULT NULL,
-  `location` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`name`)
+CREATE TABLE `gaming_history` (
+  `userID` int DEFAULT NULL,
+  `gameID` int DEFAULT NULL,
+  KEY `gameID_idx` (`gameID`),
+  KEY `userID_idx` (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `developer`
+-- Dumping data for table `gaming_history`
 --
 
-LOCK TABLES `developer` WRITE;
-/*!40000 ALTER TABLE `developer` DISABLE KEYS */;
-INSERT INTO `developer` VALUES ('AJ',NULL,NULL);
-/*!40000 ALTER TABLE `developer` ENABLE KEYS */;
+LOCK TABLES `gaming_history` WRITE;
+/*!40000 ALTER TABLE `gaming_history` DISABLE KEYS */;
+INSERT INTO `gaming_history` VALUES (3,11),(3,11),(3,11),(3,11);
+/*!40000 ALTER TABLE `gaming_history` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

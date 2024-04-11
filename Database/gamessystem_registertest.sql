@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Linux (x86_64)
 --
 -- Host: localhost    Database: gamessystem
 -- ------------------------------------------------------
@@ -23,13 +23,14 @@ DROP TABLE IF EXISTS `registertest`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `registertest` (
-  `firstname` varchar(45) NOT NULL,
+  `firstname` varchar(45) DEFAULT NULL,
   `lastname` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
   `birthday` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`firstname`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `userID` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`userID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +39,7 @@ CREATE TABLE `registertest` (
 
 LOCK TABLES `registertest` WRITE;
 /*!40000 ALTER TABLE `registertest` DISABLE KEYS */;
-INSERT INTO `registertest` VALUES ('Gojo','Ballin','gojoballin@gmail.com','thegoat','1989-12-07'),('NewTest','Testy','try@gmail.com','1234',NULL),('Shadow','Headgehog','shadowdagoat@gmail.com','Yomama','1951-03-14'),('Test','Test2','TEstytest@test.com','1234','2000-11-03');
+INSERT INTO `registertest` VALUES ('Gojo','Ballin','gojoballin@gmail.com','thegoat','1989-12-07',1),('NewTest','Testy','try@gmail.com','1234',NULL,2),('Shadow','Headgehog','shadowdagoat@gmail.com','Yomama','1951-03-14',3),('Test','Test2','TEstytest@test.com','1234','2000-11-03',4);
 /*!40000 ALTER TABLE `registertest` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-10 18:50:37
+-- Dump completed on 2024-04-10 21:52:42

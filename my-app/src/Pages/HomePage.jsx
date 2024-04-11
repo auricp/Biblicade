@@ -43,7 +43,7 @@ function HomePage(){
             <div className="componentsMain">
                 {userEmail ? (
                     <div>
-                        <RecommendAlgorithm />
+                        <RecommendAlgorithm user={user} games={games}/>
                     </div>
                 ):(
                     <div>
