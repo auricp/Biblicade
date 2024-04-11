@@ -24,7 +24,8 @@ DROP TABLE IF EXISTS `comments`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `comments` (
   `game` varchar(40) DEFAULT NULL,
-  `comment` varchar(100) DEFAULT NULL
+  `comment` varchar(100) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -34,7 +35,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES ('With%20Us','Hello'),('With%20Us','Great game!'),('With%20Us','This game lowkey sucks'),('With%20Us','I wish this game was better'),('With%20Us','This game sucks!!!'),('With%20Us','My friends are garbage at this!'),('With%20Us','Great game frfr'),('With%20Us','Hola'),('Monster','Monster is FIRE'),('Monster','I highkey Love this game!');
+INSERT INTO `comments` VALUES ('With%20Us','New comment from shadow!','shadowdagoat@gmail.com'),('With%20Us','new comment from Shadow!','shadowdagoat@gmail.com'),('With%20Us','New comment','shadowdagoat@gmail.com');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -47,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-10 14:36:08
+-- Dump completed on 2024-04-10 18:50:37
