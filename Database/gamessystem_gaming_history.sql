@@ -26,9 +26,7 @@ CREATE TABLE `gaming_history` (
   `userID` int DEFAULT NULL,
   `gameID` int DEFAULT NULL,
   KEY `gameID_idx` (`gameID`),
-  KEY `userID_idx` (`userID`),
-  CONSTRAINT `gameID` FOREIGN KEY (`gameID`) REFERENCES `game` (`gameID`),
-  CONSTRAINT `userID` FOREIGN KEY (`userID`) REFERENCES `registertest` (`userID`)
+  KEY `userID_idx` (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -38,7 +36,7 @@ CREATE TABLE `gaming_history` (
 
 LOCK TABLES `gaming_history` WRITE;
 /*!40000 ALTER TABLE `gaming_history` DISABLE KEYS */;
-INSERT INTO `gaming_history` VALUES (3,11),(3,11);
+INSERT INTO `gaming_history` VALUES (3,11),(3,11),(3,11),(3,11);
 /*!40000 ALTER TABLE `gaming_history` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-10 21:02:51
+-- Dump completed on 2024-04-10 21:52:42
