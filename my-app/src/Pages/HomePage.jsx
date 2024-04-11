@@ -10,6 +10,7 @@ function HomePage(){
     const [games, setGames] = useState([]);
     const { user } = useContext(UserContext);
     const userEmail = user?.email;
+    const [starterPage, setStarterPage] = useState(true);
     
     // Function to get all games
     const getGames = () => {
@@ -24,9 +25,13 @@ function HomePage(){
         getGames();
     }, []);
 
+    const handleStarting = () => {
+        setStarterPage(false);
+    }
 
     return(
         <div className="mainPane">
+            {(userEmail && starterPage) ? ( 
             <div>
                 <div className="imgContainer"> 
                     <img loading="lazy" 
@@ -37,13 +42,15 @@ function HomePage(){
                 <div className="mainTitle">
                     <h1>Welcome to Biblicade!</h1>
                     <p>Discover your next favourite game here.</p>
+                    <p onClick={handleStarting}>Get Started!</p>
                 </div>
-            </div>
+            </div>) : ( <></>)
+            }
 
             <div className="componentsMain">
-                {userEmail ? (
+                {(userEmail) ? (
                     <div>
-                        <RecommendAlgorithm user={user} games={games}/>
+                        <RecommendAlgorithm user={user} start={starterPage}/>
                     </div>
                 ):(
                     <div>
