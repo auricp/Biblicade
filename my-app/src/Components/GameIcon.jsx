@@ -1,44 +1,39 @@
-import React, { useState, useEffect, useContext} from "react";
-import "./GameIcon.css";
-import { PageContext } from "../Context/pagecontext";
-import { Axios } from "axios";
-import {Link,useNavigate} from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import Axios from "axios";
+import images from "./images.js";
 
 function GameIcon({ game }) {
-  const navigate = useNavigate();
-  const { pageStates} = useContext(PageContext);
-  const [isHovered,setHovered] = useState(false);
-  const gameId = game.id;
-  
-  const [games, setGames] = useState([]);
+    const [games, setGames] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-  // function to get all games
-  const getGames = () => {
-    Axios.get('http://localhost:3001/games').then((response) => {
-      setGames(response.data);
-      console.log("working");
-    });
-  }
+    useEffect(() => {
+        // Fetch games when the component mounts
+        Axios.get("http://localhost:3001/games")
+            .then((response) => {
+                setGames(response.data);
+                setIsLoading(false);
+            })
+            .catch((error) => {
+                console.error("Error fetching games:", error);
+                setIsLoading(false);
+            });
+    }, []);
 
-  useEffect(() => {
-    // Fetch games when the component mounts
-    getGames();
-  }, []);
+    // Filter games based on the user's wishlist
+    const filteredGames = games.filter((g) => game.includes(g.title));
 
-  return (
-    <div className="game-card-P14" id="141:5987">
-      {games.map((game) => (
-        <div key={game.gameID} className="game-card">
-          <Link to={`/gamePage/${game.title}`}>
-            <img src={game.imageLocation} alt={game.title} />
-          </Link>
-          <div className="game-info">
-            <Link to={`/gamePage/${game.gameID}`}>{game.title}</Link>
-            <p>Genre: {game.genre}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
+    return (
+        <ul className="featured">
+            {!isLoading &&
+                filteredGames.map((game) => (
+                    <li className="game-icon" key={game.gameID}>
+                        <img src={images[game.title]} alt={game.title} className="game-image" />
+                        <Link to={`/GamePage/${game.title}`} className="game-title">{game.title}</Link>
+                    </li>
+                ))}
+        </ul>
+    );
 }
+
 export default GameIcon;

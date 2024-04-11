@@ -4,7 +4,7 @@ import Axios from "axios";
 import './Games.css'
 import images from './images.js'
 
-const Games = ({ openPopup }) => {
+const Games = () => {
   const withus = ".."
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
