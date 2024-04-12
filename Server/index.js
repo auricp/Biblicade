@@ -220,14 +220,17 @@ app.get('/games', (req, res) => {
     })
 });
 
-app.get('/wishlist', (req, res) => {
-    // Query the wishlist data from the database
-    db.query('SELECT * FROM wishlists', (err, result) => {
+// GET endpoint to retrieve a user's wishlist based on their email
+app.get('/wishlist/:email', (req, res) => {
+    const email = req.params.email;
+
+    // Query the wishlist data for the specified user from the database
+    db.query('SELECT * FROM wishlists WHERE email = ?', [email], (err, result) => {
         if (err) {
             console.error('Error fetching wishlist:', err);
             res.status(500).send("Error fetching wishlist from database");
         } else {
-            // Send the wishlist data as a response
+            // Send the wishlist data for the specified user as a response
             res.send(result);
         }
     });
