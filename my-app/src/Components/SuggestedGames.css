@@ -1,5 +1,10 @@
 body{
     background: linear-gradient(to bottom right, #d3adf7, #ffffff);
+
+}
+h2{
+  font-size: 80px;
+  padding-left: 35%;
 }
   
   .game-icon {
@@ -8,19 +13,21 @@ body{
     flex-direction: column;
     align-items: center; /* Align items horizontally in the center */
     margin: 1%;
+    padding-left: 50%;
+    padding-top: 5%;
   }
   
   .game-image {
     margin-top: 50%;
-    width: 250px; /* Adjust the width as needed */
-    height: 250px; /* Maintain aspect ratio */
+    width: 400px; /* Adjust the width as needed */
+    height: 400px; /* Maintain aspect ratio */
     border: 10px solid black; /* Example border style */
     border-radius: 50px; /* Example border radius */
     /* Add more styles as needed */
   }
   
   .game-title {
-    font-size: 50px;
+    font-size: 70px;
     margin-top: 5%;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   
