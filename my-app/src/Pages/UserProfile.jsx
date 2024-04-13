@@ -202,7 +202,7 @@ function UserProfile() {
 
                         <div className="GamingPreferences">
                             <h3>Gaming Preferences</h3>
-                            <GamingPreferences preferences={gamingPreferences} />  
+                            <GamingPreferences preferences={gamingPreferences}  updatePrefData={setGamingPreferences}/>  
                         </div>
                     </div>
                 </div>

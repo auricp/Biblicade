@@ -164,6 +164,37 @@ app.post('/gamePreferences/:userID', (req, res) => {
 
 });
 
+// POST endpoint to update the opinion in gaming_preferences table
+app.post('/updateOpinion', (req, res) => {
+    const { userID, gameID, opinion } = req.body;
+
+    db.query('UPDATE gaming_preferences SET userRating = ? WHERE userID = ? AND gameID = ?', [opinion, userID, gameID], (err, result) => {
+        if (err) {
+            console.error('Error updating opinion:', err);
+            res.status(500).json({ error: 'Error updating opinion in database' });
+        } else {
+            console.log('Opinion updated successfully');
+            res.status(200).json({ message: 'Opinion updated successfully' });
+        }
+    });
+});
+
+// DELETE endpoint to remove preference from gaming_preferences table
+app.delete('/gaming_preferences/:userID/:gameID', (req, res) => {
+    const { userID, gameID } = req.params;
+
+    db.query('DELETE FROM gaming_preferences WHERE userID = ? AND gameID = ?', [userID, gameID], (err, result) => {
+        if (err) {
+            console.error('Error removing preference:', err);
+            res.status(500).json({ error: 'Error removing preference from database' });
+        } else {
+            console.log('Preference removed successfully');
+            res.status(200).json({ message: 'Preference removed successfully' });
+        }
+    });
+});
+
+
 app.get('/userPreferences/:userID', (req, res) => {
     // const userID = req.body.userID;
     const userID = encodeURIComponent(req.params.userID);
