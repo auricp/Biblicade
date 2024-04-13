@@ -15,6 +15,8 @@ import { useLocation } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { FormDataProvider } from "./Context/formdatacontext";
 import AssessmentPage from "./Pages/AssessmentPage";
+import SuggestedGames from "./Components/SuggestedGames";
+
 
 function App() {
   const [isPopOpen, setPopOpen] = useState(false);
@@ -54,6 +56,8 @@ function App() {
                   path={"/AssessmentPage/:email"}
                   element={<AssessmentPage/>}
               />
+              <Route path="/" element={<Nav />} />
+              <Route path="/SuggestedGames/:searchQuery" element={<SuggestedGames />} />
             </Routes>
           </Router>
         </UserProvider>
