@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import Axios from 'axios';
-import "./GamingPreferences.css";
+import './GamingHistory.css'
 
 export default function GamingHistory(props) {
     const history = props.historyData;
@@ -46,7 +46,7 @@ if (!history) {
             
             <td><Link to={`/GamePage/${gamesList.find(obj => obj.gameID === elt.gameID).title}`}>{gamesList.find(obj => obj.gameID === elt.gameID).title}</Link></td>
     
-            <td><p>Mark as Unwatched</p></td>
+            <td><p className='button'>Mark as Unwatched</p></td>
           </tr>
         ))}
       </tbody>

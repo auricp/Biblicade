@@ -1,4 +1,5 @@
 import React from 'react'
+import "./UserPreferences.css";
 
 export default function UserPreferences(props) {
     const userData = props.userInfo;
@@ -8,9 +9,9 @@ export default function UserPreferences(props) {
     }
 
   return (
-    <div>      
-        <p>{userData.prefScore}</p>
-        <p>Edit</p>
+    <div className='userPrefPane'>      
+        <p className='userPrefScore'>{userData.prefScore}</p>
+        <p className='userPrefButton'>Edit</p>
     </div>
   )
 }

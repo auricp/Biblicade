@@ -1,0 +1,12 @@
+
+.button  {
+    background-color: rgb(84, 144, 233);
+    border-radius: 12px;
+    align-self: center;
+    padding: 3%;
+    text-align: center;
+  }
+
+.button:hover  {
+    background-color: rgb(124, 128, 146);
+  }

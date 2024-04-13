@@ -41,6 +41,7 @@ export default function GamingPreferences(props) {
         <tr>
           <th>Game Title</th>
           <th>Opinion</th>
+          <th>Change to</th>
         </tr>
       </thead>
       <tbody>
@@ -48,6 +49,14 @@ export default function GamingPreferences(props) {
           <tr key={ind}>
             <td><Link to={`/GamePage/${gamesList.find(obj => obj.gameID === elt.gameID).title}`}>{gamesList.find(obj => obj.gameID === elt.gameID).title}</Link></td>
             <td>{elt.opinion}</td>    
+            <td>
+                <div className='buttons'>
+                    <p>like</p>
+                    <p>dislike</p>
+                    <p>maybe</p>
+                    <p>remove</p>
+                </div>
+            </td>
           </tr>
         ))}
       </tbody>

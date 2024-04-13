@@ -15,6 +15,8 @@ import { useLocation } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { FormDataProvider } from "./Context/formdatacontext";
 import AssessmentPage from "./Pages/AssessmentPage";
+import PublisherPage from "./Pages/PublisherPage";
+import DeveloperPage from "./Pages/DeveloperPage";
 
 function App() {
   const [isPopOpen, setPopOpen] = useState(false);
@@ -49,11 +51,20 @@ function App() {
                   path={"/GamePage/:title"}
                   element={<GamePage/>}
               />
+              <Route 
+                  path={"/PublisherPage/:id"}
+                  element={<PublisherPage/>}
+              />
+              <Route 
+                  path={"/DeveloperPage/:id"}
+                  element={<DeveloperPage/>}
+              />
               {/* in progress right now */}
               <Route 
                   path={"/AssessmentPage/:email"}
                   element={<AssessmentPage/>}
               />
+              
             </Routes>
           </Router>
         </UserProvider>

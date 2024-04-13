@@ -10,7 +10,7 @@ const db = mysql.createConnection({
     user: 'root',
     host: 'localhost',
     // password is either '', 'password'. or '471sqlbackend'
-    password: '',
+    password: 'root',
     database: 'gamessystem',
 });
 
@@ -50,19 +50,38 @@ app.post('/comments', (req, res) => {
 
 });
 
-app.post('/history', (req, res) => {
-    const game = req.body.gameID;
-    const user = req.body.userID;
+app.get('/publisher/:id', (req, res) => {
+    const id = encodeURIComponent(req.params.id); // Extract publisher ID from URL parameter
     
-    db.query('INSERT INTO gaming_history (userID,gameID) VALUES (?,?)', [user, game],
-    (err, result) => {
+    db.query("SELECT * FROM publisher WHERE publisherID = ?", [id], (err, result) => {
         if (err) {
-            console.log(err)
-        }else {
-            res.send("Values Inserted successfully")
+            console.error("Error fetching publisher details:", err);
+            res.status(500).send("Internal Server Error");
+        } else {
+            if (result.length > 0) {
+                res.status(200).json(result[0]); // Send publisher details as JSON response
+            } else {
+                res.status(404).send("Publisher not found");
+            }
         }
     });
+});
 
+app.get('/developer/:id', (req, res) => {
+    const id = encodeURIComponent(req.params.id); // Extract developer ID from URL parameter
+    
+    db.query("SELECT * FROM developer WHERE developerID = ?", [id], (err, result) => {
+        if (err) {
+            console.error("Error fetching developer details:", err);
+            res.status(500).send("Internal Server Error");
+        } else {
+            if (result.length > 0) {
+                res.status(200).json(result[0]); // Send developer details as JSON response
+            } else {
+                res.status(404).send("developer not found");
+            }
+        }
+    });
 });
 
 app.get('/history/:userID', (req, res) => {

@@ -131,22 +131,23 @@ function UserProfile() {
     }
 
     return (
-        <div className="profile-card">
-            <div className="profile-image">
-                <img
-                    loading="lazy"
-                    srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/734ab845e17875a038275432e1c2502332f3743f3e3411b52e8f5b00c5163a32?apiKey=c7b8aa40bb064f6f8fcb00de2b00394b&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/734ab845e17875a038275432e1c2502332f3743f3e3411b52e8f5b00c5163a32?apiKey=c7b8aa40bb064f6f8fcb00de2b00394b&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/734ab845e17875a038275432e1c2502332f3743f3e3411b52e8f5b00c5163a32?apiKey=c7b8aa40bb064f6f8fcb00de2b00394b&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/734ab845e17875a038275432e1c2502332f3743f3e3411b52e8f5b00c5163a32?apiKey=c7b8aa40bb064f6f8fcb00de2b00394b&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/734ab845e17875a038275432e1c2502332f3743f3e3411b52e8f5b00c5163a32?apiKey=c7b8aa40bb064f6f8fcb00de2b00394b&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/734ab845e17875a038275432e1c2502332f3743f3e3411b52e8f5b00c5163a32?apiKey=c7b8aa40bb064f6f8fcb00de2b00394b&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/734ab845e17875a038275432e1c2502332f3743f3e3411b52e8f5b00c5163a32?apiKey=c7b8aa40bb064f6f8fcb00de2b00394b&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/734ab845e17875a038275432e1c2502332f3743f3e3411b52e8f5b00c5163a32?apiKey=c7b8aa40bb064f6f8fcb00de2b00394b&"
-                    className="profile-img"
-                    alt="Profile Image"
-                />
-            </div>
-            <div className='profile-details'>
+        <div className="userProfileMain">
+            <div className='profilePane'>
+                <div className="profileImage">
+                    <img
+                        loading="lazy"
+                        srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/734ab845e17875a038275432e1c2502332f3743f3e3411b52e8f5b00c5163a32?apiKey=c7b8aa40bb064f6f8fcb00de2b00394b&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/734ab845e17875a038275432e1c2502332f3743f3e3411b52e8f5b00c5163a32?apiKey=c7b8aa40bb064f6f8fcb00de2b00394b&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/734ab845e17875a038275432e1c2502332f3743f3e3411b52e8f5b00c5163a32?apiKey=c7b8aa40bb064f6f8fcb00de2b00394b&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/734ab845e17875a038275432e1c2502332f3743f3e3411b52e8f5b00c5163a32?apiKey=c7b8aa40bb064f6f8fcb00de2b00394b&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/734ab845e17875a038275432e1c2502332f3743f3e3411b52e8f5b00c5163a32?apiKey=c7b8aa40bb064f6f8fcb00de2b00394b&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/734ab845e17875a038275432e1c2502332f3743f3e3411b52e8f5b00c5163a32?apiKey=c7b8aa40bb064f6f8fcb00de2b00394b&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/734ab845e17875a038275432e1c2502332f3743f3e3411b52e8f5b00c5163a32?apiKey=c7b8aa40bb064f6f8fcb00de2b00394b&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/734ab845e17875a038275432e1c2502332f3743f3e3411b52e8f5b00c5163a32?apiKey=c7b8aa40bb064f6f8fcb00de2b00394b&"
+                        className="profileImageFile"
+                        alt="Profile Image"
+                    />
+                </div>
+                <div className='profileDetails'>
                 {user ? (
                     <>
                         {editMode ? (
                             <>
-                                <input type="text" value={newFirstName} onChange={handleFirstNameChange} />
-                                <input type="text" value={newLastName} onChange={handleLastNameChange} />
+                                <input type="profileText" value={newFirstName} onChange={handleFirstNameChange} />
+                                <input type="profileText" value={newLastName} onChange={handleLastNameChange} />
                             </>
                         ) : (
                             <p className="profile-name">{user.firstname} {user.lastname}</p>
@@ -155,11 +156,13 @@ function UserProfile() {
                 ) : (
                     <p>Loading...</p>
                 )}
-                <div className='profile-birthday'>
-                    <p>Birthday: {birthday}</p>
-                </div>
+
                 <div className='profile-email'>
                     <p>Email: {email}</p>
+                </div>
+
+                <div className='profile-birthday'>
+                    <p>Birthday: {birthday}</p>
                 </div>
                 {(user && user.email === email) && (
                     <div className="edit-profile-container">
@@ -177,30 +180,29 @@ function UserProfile() {
                     Names cannot be blank.
                     </div>
                 )}
-            </div>
-
-            <div className='preferences-column'>
-                    <div className='divider'></div>
                 </div>
-            <div className='preferences'>
-                <div className='prefer-genres'>
-                    <div className="preferences">
-                        <h3>User Preferences </h3>
+            </div>
+            
+            
+
+            <div className='preferencesMainPane'>
+                <div className='userInfoDetailsMainPane'>
+                    <div className="userPreferences">
+                        <h3>User Preferred Rating Score: </h3>
                         <UserPreferences userInfo={userData}/>
                     </div>
 
+                    <div className='userGaming'>
+                        <div className="GamingHistory">
+                            <h3>Gaming History</h3>
+                            <GamingHistory historyData={gamingHistory}/>
+                        </div>
 
-                    <div className="preferences">
-                        <h3>Gaming History</h3>
-                        <GamingHistory historyData={gamingHistory}/>
+                        <div className="GamingPreferences">
+                            <h3>Gaming Preferences</h3>
+                            <GamingPreferences preferences={gamingPreferences} />  
+                        </div>
                     </div>
-
-                    <div className="preferences">
-                        <h3>Gaming Preferences</h3>
-                        <GamingPreferences preferences={gamingPreferences} />  
-                    </div>
-
-                    <GamingHistory />
                 </div>
             </div>
         </div>

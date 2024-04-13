@@ -1,4 +1,4 @@
-/* Profile card container */
+/* Profile card container
 .profile-card {
   display: flex;
   flex-direction: row;
@@ -19,8 +19,8 @@
     align-items: center;
   }
 }
-
-/* Profile image */
+ 
+ Profile image 
 .profile-image {
   margin-bottom: 20px;
 }
@@ -32,11 +32,11 @@
   border-radius: 50%;
 }
 
-/* Profile details */
+ Profile details 
 .profile-details {
   display: flex;
   flex-direction: column;
-  margin-top: 50px; /* Adjust margin-top */
+  margin-top: 50px;  Adjust margin-top 
   margin-left: 50px;
 }
 
@@ -47,10 +47,9 @@
   }
 }
 
-/* Profile name */
 .profile-name {
   margin-bottom: 10px;
-  margin-top: -50px; /* Adjust margin-top */
+  margin-top: -50px;  Adjust margin-top 
   color: var(--Gray-3, #1b1b1b);
   white-space: nowrap;
   font: 700 40px/40px Roboto, -apple-system, Roboto, Helvetica, sans-serif;
@@ -64,16 +63,14 @@
   }
 }
 
-/* Profile email */
 .profile-email {
   margin-bottom: 10px;
   margin-top: 5px;
   color: var(--Gray-3, #828282);
   white-space: nowrap;
-  font-size: 1.2em; /* Adjust the font size as needed */
+  font-size: 1.2em;  Adjust the font size as needed 
 }
 
-/* Profile birthday */
 .profile-birthday {
   margin-top: 18px;
   white-space: nowrap;
@@ -87,7 +84,7 @@
   }
 }
 
-/* Editable fields */
+ Editable fields 
 .first-name-input,
 .last-name-input {
   width: 100%;
@@ -98,7 +95,7 @@
   font-size: 16px;
 }
 
-/* Container for edit profile button */
+ Container for edit profile button 
 .edit-profile-container {
   display: flex;
   justify-content: center;
@@ -106,7 +103,7 @@
   margin-left: -200px; 
 }
 
-/* Edit profile button */
+ Edit profile button 
 .edit-profile-button {
   background-color: #007bff;
   color: #fff;
@@ -121,13 +118,13 @@
   background-color: #0056b3;
 }
 
-/* Error message */
+ Error message 
 .error-message {
   color: red;
   font-size: 14px;
   margin-top: 10px;
 }
-
+ 
 .div-47 {
   gap: 20px;
   display: flex;
@@ -200,10 +197,8 @@
 }
 
 .preferences {
-  color: var(--Gray-3, #272727);
   white-space: nowrap;
   align-items: center;
-  font: 700 30px/40px Roboto, sans-serif;
 }
 
 @media (max-width: 991px) {
@@ -211,4 +206,104 @@
     max-width: 100%;
     white-space: initial;
   }
+}
+
+.userInfoDetailsMainPane {
+  display: flex;
+  flex-direction: column;
+}
+
+.userGaming {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.preferencesMainPane {
+  margin-top: 15%;
+}   */
+
+.userProfileMain {
+  display: flex;
+  flex-direction: column;
+}
+
+.profilePane {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.profileDetails {
+
+  display: flex;
+  flex-direction: column;
+}
+
+.profileImageFile {
+  width: 50%;
+  border-radius: 50%;
+
+}
+
+.profile-name, .text {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.profile-birthday, .profile-email {
+  font-size: 1.5em;
+
+}
+
+
+.edit-profile-container {
+  font-weight: bold;
+  background-color: rgb(84, 144, 233);
+  border-radius: 12px;
+  align-self: center;
+  padding: 5%;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.edit-profile {
+  font-size: 1.5em;
+}
+
+.edit-profile-container:hover {
+  background-color: rgb(124, 128, 146);
+}
+
+.preferencesMainPane {
+  display: flex;
+  flex-direction: column;
+}
+
+.userGaming {
+  display: flex;
+  flex-direction: row;
+}
+
+.GamingHistory,.GamingPreferences  {
+  flex: 1;
+  padding: 2%;
+}
+
+.GamingHistory h3, .GamingPreferences h3 {
+  font-size: 3em;
+}
+
+.userPreferences {
+  display: flex;
+  flex-direction: row;
+}
+
+.userPreferences h3 {
+  font-size: 2em;
+  margin-left: 5%;
 }

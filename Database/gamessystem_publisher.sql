@@ -16,29 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `developer`
+-- Table structure for table `publisher`
 --
 
-DROP TABLE IF EXISTS `developer`;
+DROP TABLE IF EXISTS `publisher`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `developer` (
-  `developerID` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `publisher` (
+  `publisherID` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `type` varchar(45) DEFAULT NULL,
   `location` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`developerID`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`publisherID`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `developer`
+-- Dumping data for table `publisher`
 --
 
-LOCK TABLES `developer` WRITE;
-/*!40000 ALTER TABLE `developer` DISABLE KEYS */;
-INSERT INTO `developer` VALUES (1,'Kamisawa Studios','Indie','Tokyo'),(2,'Katsuhira Kaisha','Corporation','Osaka'),(3,'Meio Cidade Co.','Corporation','Rio de Janeiro'),(4,'Big Hits Production','Corporation','Adelaide'),(5,'Blazing Studios','Corporation','New York'),(6,'Cosmic Creations','Corporation','Los Angeles'),(7,'Dreamland Games','Studio','London'),(8,'Neon Nebula','Corporation','Tokyo'),(9,'Phoenix Interactive','Studio','Sydney'),(10,'Sapphire Studios','Corporation','Toronto'),(11,'Thunder Byte Entertainment','Studio','Berlin'),(12,'Voltage Gaming','Corporation','Paris'),(13,'Wildfire Studios','Studio','Seoul'),(14,'Zenith GameWorks','Corporation','Moscow'),(15,'Enigma Games','Studio','Rio de Janeiro'),(16,'Galactic Gamers','Corporation','Singapore');
-/*!40000 ALTER TABLE `developer` ENABLE KEYS */;
+LOCK TABLES `publisher` WRITE;
+/*!40000 ALTER TABLE `publisher` DISABLE KEYS */;
+INSERT INTO `publisher` VALUES (1,'Infinite Publishing','Corporation','San Francisco'),(2,'Epic Games Co.','Corporation','Austin'),(3,'Golden Key Publishers','Company','Seattle'),(4,'Moonlight Publications','Corporation','Chicago'),(5,'Starbound Studios','Studio','Vancouver'),(6,'Sunrise Publishers','Corporation','Dubai'),(7,'Silver Lining Press','Company','Mumbai'),(8,'Lunar Enterprises','Corporation','Shanghai'),(9,'Radiant Games Inc.','Corporation','São Paulo'),(10,'Mystic Media Group','Company','Barcelona'),(11,'Aurora Publishing House','Corporation','Osaka'),(12,'Thunder Publishing Ltd.','Corporation','Bangkok'),(13,'Crimson Creative','Company','New Delhi'),(14,'Twilight Entertainment','Studio','Stockholm'),(15,'Midnight Media','Corporation','Berlin');
+/*!40000 ALTER TABLE `publisher` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

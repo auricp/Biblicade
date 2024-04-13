@@ -25,3 +25,15 @@ table {
     background-color: #f2f2f2;
   }
   
+
+  .buttons p {
+    background-color: rgb(84, 144, 233);
+    border-radius: 12px;
+    align-self: center;
+    padding: 3%;
+    text-align: center;
+  }
+
+  .buttons p:hover  {
+    background-color: rgb(124, 128, 146);
+  }

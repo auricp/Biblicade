@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Axios from "axios";
 import images from '../Components/images.js';
 import Nav from "../Components/navbar";
@@ -52,6 +52,31 @@ function GamePage () {
             });
     }, [title]);
 
+    useEffect(() => {
+        if (gameDetails) {
+            Axios.get(`http://localhost:3001/publisher/${gameDetails.publisherID}`)
+                .then(response => {
+                    setGameDetails(prevState => ({
+                        ...prevState,
+                        publisherName: response.data.name
+                    }));
+                })
+                .catch(error => {
+                    console.error("Error fetching publisher details:", error);
+                });
+
+            Axios.get(`http://localhost:3001/developer/${gameDetails.developerID}`)
+                .then(response => {
+                    setGameDetails(prevState => ({
+                        ...prevState,
+                        developerName: response.data.name
+                    }));
+                })
+                .catch(error => {
+                    console.error("Error fetching developer details:", error);
+                });
+        }
+    }, [gameDetails]);
 
     const handleCommentInputChange = (event) => {
         setCommentInput(event.target.value);
@@ -158,13 +183,13 @@ function GamePage () {
                     </div>
 
                     <div className="developerID">
-                        <p className="developerIDBold">Developer</p>
-                        <p>: {gameDetails.developerID}</p>
+                        <p className="developerIDBold">Developer: </p>
+                        <Link to={`/DeveloperPage/${gameDetails.developerID}`}><p>‎ {gameDetails.developerName}</p></Link>
                     </div>
 
                     <div className="publisherID">
-                        <p className="publisherIDBold">Publisher</p>
-                        <p>: {gameDetails.publisherID}</p>
+                        <p className="publisherIDBold">Publisher: </p>
+                        <Link to={`/PublisherPage/${gameDetails.publisherID}`}><p>‎  {gameDetails.publisherName}</p></Link>
                     </div>
                 </div>
             </div>
