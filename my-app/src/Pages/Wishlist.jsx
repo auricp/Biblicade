@@ -44,15 +44,29 @@ const Wishlists = () => {
             });
     }, [email]);
 
+    const deleteWishlistItem = (email, gameTitle) => {
+        const encodedTitle = encodeURIComponent(gameTitle);
+        Axios.delete(`http://localhost:3001/wishlist/${email}/${encodedTitle}`)
+            .then(() => {
+                // Perform any necessary update in the client-side state
+                console.log("Item deleted from wishlist successfully");
+            })
+            .catch(error => {
+                console.error('Could not delete item from wishlist:', error);
+            });
+    };
+    
+
     return (
         <div className="wishlist-container">
             <h2 className='wishlist-title'>{user ? user.firstname : ''}'s Wishlist</h2> {/* Display user's first name */}
-            <ul className="featured">
+            <ul className="wishlist-items">
                 {!isLoading &&
                     wishlist.map((game) => (
                         <li className="game-icon" key={game.gameID}>
                             <img src={images[game.decodedTitle]} alt={game.decodedTitle} className="game-image" />
                             <Link to={`/GamePage/${game.game}`} className="game-title">{game.decodedTitle}</Link>
+                            <button onClick={() => deleteWishlistItem(email, game.decodedTitle)}>Delete</button>
                         </li>
                     ))}
             </ul>

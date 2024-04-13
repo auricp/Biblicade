@@ -236,6 +236,22 @@ app.get('/wishlist/:email', (req, res) => {
     });
 });
 
+// Deletion route for wishlist items
+app.delete('/wishlist/:email/:gameTitle', (req, res) => {
+    const { email, gameTitle } = req.params;
+    const title = encodeURIComponent(gameTitle);
+
+    // Perform deletion from the wishlist
+    db.query('DELETE FROM wishlists WHERE email = ? AND game = ?', [email, title], (err, result) => {
+        if (err) {
+            console.error(err);
+            res.status(500).json({ error: 'Error deleting item from wishlist in database' });
+        } else {
+            console.log('Item deleted from wishlist successfully');
+            res.status(200).send('Item deleted from wishlist successfully');
+        }
+    });
+});
 
 app.listen(3001, ()=> {
     console.log("Server is working on port 3001");
