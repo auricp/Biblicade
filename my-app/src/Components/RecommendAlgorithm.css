@@ -46,18 +46,16 @@
 
 .recommendAlgoHeader {
     display: flex;
+    text-align: center;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    text-align: center;
-
     color: whitesmoke;
     font-size: 2em;
     margin: 0px;
 }
 
 .recommendAlgoHeader h2 {
-    margin: 0px;
+    padding-left: 30px;
 }
 
 .recommendAlgoHeader p {
@@ -109,3 +107,4 @@
     background-color: whitesmoke;
     color: rgb(84, 144, 233);
 }
+

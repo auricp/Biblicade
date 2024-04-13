@@ -27,10 +27,11 @@
     flex-direction: row;
     background-color: white;
     padding-bottom: 25%;
+    background: linear-gradient(to bottom right, #d3adf7, #ffffff);
 }
 
 .publisherLocation {
     font-size: 2em;
-    margin: 2% 0% 0% 11%;
+    margin: 2% 0% 0% 0%;
     
 }

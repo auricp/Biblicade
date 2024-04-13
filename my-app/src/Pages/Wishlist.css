@@ -1,8 +1,5 @@
 .wishlist-title{
-    font-size: 6rem;
-    margin-top: 100px;
-    margin-left: 600px;
-    align-items: center;
+    padding-left: 54%;
 }
 
 .wishlist-items {
@@ -10,11 +7,10 @@
 }
 
 .wishlist-items {
-    align-items: center;
     display: flex;
     flex-wrap: wrap;
     list-style: none;
-    margin-left: 300px;
+    margin-left: 30%;
     padding: 0;
 }
 
