@@ -3,11 +3,8 @@ import { Link } from "react-router-dom";
 import Axios from 'axios';
 import "./GamingPreferences.css";
 
-
-
-export default function GamingPreferences(props) {
-    // const [preferenceData, setPreferenceData] = useState(preference);
-    const preferenceData = props.preferences;
+export default function GamingHistory(props) {
+    const history = props.historyData;
     const [gamesList, setGamesList] = useState([]);
     
     // API Call to get user preferences
@@ -29,10 +26,10 @@ export default function GamingPreferences(props) {
 
 
     // handling logic
-    // Check if history is undefined before mapping over it
-    if (!preferenceData) {
-        return <div>Loading...</div>;
-    }
+// Check if history is undefined before mapping over it
+if (!history) {
+    return <div>Loading...</div>;
+}
 
   return (
     <div>
@@ -40,14 +37,16 @@ export default function GamingPreferences(props) {
       <thead>
         <tr>
           <th>Game Title</th>
-          <th>Opinion</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        {preferenceData.map((elt, ind) => (
+        {history.map((elt, ind) => (
           <tr key={ind}>
+            
             <td><Link to={`/GamePage/${gamesList.find(obj => obj.gameID === elt.gameID).title}`}>{gamesList.find(obj => obj.gameID === elt.gameID).title}</Link></td>
-            <td>{elt.opinion}</td>    
+    
+            <td><p>Mark as Unwatched</p></td>
           </tr>
         ))}
       </tbody>

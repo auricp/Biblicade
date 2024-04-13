@@ -220,30 +220,17 @@ export default function RecommendAlgorithm({ user, start }) {
 
     // first dial
     useEffect(() => {
-
       getGames();
-
-      // fetch gaming history data
       getHistory();
-      
-      // fetch gaming preferences data
       getPreferences();
-
-      // fetch user preferences data
       getUserData();       
     }, []);
 
     // consequent dials
     useEffect(() => {
       getGames();
-
-      // fetch gaming history data
       getHistory();
-      
-      // fetch gaming preferences data
       getPreferences();
-
-      // fetch user preferences data
       getUserData();    
       
       // setIsLoading(true);
@@ -462,7 +449,7 @@ export default function RecommendAlgorithm({ user, start }) {
         <div className="preferenceBot" onClick={() => { handleChanges('like') }}>
           <p>Like</p>
         </div>
-        <div className="preferenceBot" onClick={() => { handleChanges('') }}>
+        <div className="preferenceBot" onClick={() => { handleChanges('maybe') }}>
           <p>Maybe</p>
         </div>
         <div className="preferenceBot" onClick={() => { handleChanges('dislike') }}>

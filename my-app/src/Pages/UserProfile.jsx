@@ -2,7 +2,10 @@ import React, { useState, useEffect, useContext } from 'react';
 import "./UserProfile.css";
 import Axios from 'axios';
 import { Link, useParams } from "react-router-dom";
-import { UserContext } from "../Context/usercontext";
+import GamingPreferences from '../Components/GamingPreferences';
+import GamingHistory from '../Components/GamingHistory';
+import UserPreferences from '../Components/UserPreferences';
+
 
 // Define UserList as a function component
 function UserList() {
@@ -17,6 +20,13 @@ function UserProfile() {
     const [user, setUser] = useState(null);
     const [birthday, setBirthday] = useState(null); // Initialize birthday state
     const [genres, setGenres] = useState(null); // Initialize genre preferences
+    const [userID, setUserID] = useState(0);
+
+
+    const [userData, setUserData] = useState([]);
+    const [gamingPreferences, setGamingPreferences] = useState([]);
+    const [gamingHistory, setGamingHistory] = useState([]);
+
 
     useEffect(() => {
         // Fetch user list and find the current user
@@ -28,6 +38,18 @@ function UserProfile() {
             console.error("Error fetching user list:", error);
         });
     }, [email]);
+
+    useEffect(() => {
+        // Fetch user list and find the current user
+        UserList().then(userList => {
+            const foundUser = userList.find(u => u.email === email);
+            setUser(foundUser);
+            setUserID(foundUser.userID);
+            setBirthday(foundUser ? foundUser.birthday : null); // Set birthday if user is found
+        }).catch(error => {
+            console.error("Error fetching user list:", error);
+        });
+    }, []);
 
     const [newFirstName, setNewFirstName] = useState('First Name');
     const [newLastName, setNewLastName] = useState('Last Name');
@@ -66,6 +88,47 @@ function UserProfile() {
         // Toggle edit mode after saving (optional)
         toggleEditMode();
     };
+
+
+    // PREFERENCES HANDLING BY GAVIN
+    useEffect(() => {
+      getHistory();
+      getPreferences();
+      getUserData();  
+    }, [userID]);
+
+    const getUserData = () => {
+        Axios.get(`http://localhost:3001/userPreferences/${userID}`).then((response) => {
+          setUserData(response.data[0]);
+          console.log("working user data")
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.error("Error fetching data:", error);
+        });
+      }
+
+    const getHistory = () => {
+    Axios.get(`http://localhost:3001/history/${userID}`).then((response) => {
+        setGamingHistory(response.data);
+        console.log("working hist");
+        console.log(response.data);
+    })
+    .catch(error => {
+        console.error("Error fetching data:", error);
+    });
+    }
+    
+    const getPreferences = () => {
+    Axios.get(`http://localhost:3001/gamePreferences/${userID}`).then((response) => {
+        setGamingPreferences(response.data);
+        console.log("working pref")
+        console.log(response.data);
+    })
+    .catch(error => {
+        console.error("Error fetching data:", error);
+    });
+    }
 
     return (
         <div className="profile-card">
@@ -115,11 +178,30 @@ function UserProfile() {
                     </div>
                 )}
             </div>
+
             <div className='preferences-column'>
-                <div className='divider'></div>
-            </div>
-            <div className='prefer-genres'>
-                <div className="preferences">Preferred Genres</div>
+                    <div className='divider'></div>
+                </div>
+            <div className='preferences'>
+                <div className='prefer-genres'>
+                    <div className="preferences">
+                        <h3>User Preferences </h3>
+                        <UserPreferences userInfo={userData}/>
+                    </div>
+
+
+                    <div className="preferences">
+                        <h3>Gaming History</h3>
+                        <GamingHistory historyData={gamingHistory}/>
+                    </div>
+
+                    <div className="preferences">
+                        <h3>Gaming Preferences</h3>
+                        <GamingPreferences preferences={gamingPreferences} />  
+                    </div>
+
+                    <GamingHistory />
+                </div>
             </div>
         </div>
     );
