@@ -17,6 +17,7 @@ import { FormDataProvider } from "./Context/formdatacontext";
 import AssessmentPage from "./Pages/AssessmentPage";
 import PublisherPage from "./Pages/PublisherPage";
 import DeveloperPage from "./Pages/DeveloperPage";
+import SuggestedGames from "./Components/SuggestedGames";
 
 function App() {
   const [isPopOpen, setPopOpen] = useState(false);
@@ -64,7 +65,6 @@ function App() {
                   path={"/AssessmentPage/:email"}
                   element={<AssessmentPage/>}
               />
-              
             </Routes>
           </Router>
         </UserProvider>

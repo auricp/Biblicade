@@ -60,6 +60,11 @@ function Nav() {
     navigate(path);
   };
 
+  const handleButton = () => {
+    const path = `/SuggestedGames/${searchQuery}`;
+    navigate(path);
+  }
+
 
   const handleEnterPress = (event) => {
     if (event.key === "Enter") {
@@ -117,10 +122,7 @@ function Nav() {
                 )}
               </div>
             </div>
-            <button onClick={() => {
-              const gameSearchQuery = document.querySelector('.div-12').value;
-              handleSearch(`${gameSearchQuery}`);
-            }}>
+            <button onClick={handleButton}>
               <img
                 loading="lazy"
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/49e2106b4d2d73e8db380f38875f6e70f095001df80651b242f1e82da27ee13b?apiKey=c7b8aa40bb064f6f8fcb00de2b00394b&"
