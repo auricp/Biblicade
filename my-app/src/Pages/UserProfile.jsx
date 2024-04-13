@@ -189,7 +189,8 @@ function UserProfile() {
                 <div className='userInfoDetailsMainPane'>
                     <div className="userPreferences">
                         <h3>User Preferred Rating Score: </h3>
-                        <UserPreferences userInfo={userData}/>
+                        {/* <UserPreferences userInfo={userData} setUserInfo={setUserData} /> */}
+                        <UserPreferences userIDInfo={userID} />
                     </div>
 
                     <div className='userGaming'>

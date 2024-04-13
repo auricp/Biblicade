@@ -180,6 +180,22 @@ app.get('/userPreferences/:userID', (req, res) => {
     });
 });
 
+app.post('/userPreferences/:userID', (req, res) => {
+    const { userID } = req.params;
+    const { prefScore } = req.body;
+
+    db.query("UPDATE user_preferences SET preferredRatingScore = ? WHERE userID = ?", [prefScore, userID], (err, result) => {
+        if (err) {
+            console.error("Error updating user preference score:", err);
+            return res.status(500).json({ error: 'Error updating user preference score' });
+        } else {
+            console.log('User preference score updated successfully');
+            res.status(200).json({ message: 'User preference score updated successfully' });
+        }
+    });
+});
+
+
 app.post('/wishlist', (req, res) => {
     const game = req.body.game;
     const gameID = req.body.gameID;
