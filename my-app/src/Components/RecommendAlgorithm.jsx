@@ -391,7 +391,7 @@ export default function RecommendAlgorithm({ user, start }) {
       //console.log(title);
       return <div id="MainContainer_RecAlg">
           <div className="recommendAlgoHeader">
-            <h2>Recommend Algorithm (work in progress by Gavin)</h2>
+            <h2>Recommended for You</h2>
             <p>These games are suggested based on your gaming preferences and history</p>
           </div>
       <div>
@@ -422,7 +422,7 @@ export default function RecommendAlgorithm({ user, start }) {
   return (
     <div id="MainContainer_RecAlg">
         <div className="recommendAlgoHeader">
-            <h2>Recommend Algorithm (work in progress by Gavin)</h2>
+            <h2>Recommended for You</h2>
             <p>These games are suggested based on your gaming preferences and history</p>
           </div>
         <div className="preferenceButtons2">
