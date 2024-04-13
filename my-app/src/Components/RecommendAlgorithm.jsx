@@ -262,7 +262,13 @@ export default function RecommendAlgorithm({ user, start }) {
       const millisecondsInYear = 1000 * 60 * 60 * 24 * 365.25; 
       const ageLimit = Math.floor(differenceInMilliseconds / millisecondsInYear);
       // console.log(ageLimit);
-      const userLikedScore = userData.prefScore;
+      var userLikedScore;
+      if (!userData) {
+        userLikedScore = 50;
+      } else {
+        userLikedScore = userData.prefScore;
+      }
+      
       
       setCurrentStandards([ageLimit, userLikedScore, null, null, null, null, null]);
 
