@@ -76,7 +76,7 @@ function GamePage () {
                     console.error("Error fetching developer details:", error);
                 });
         }
-    }, [gameDetails]);
+    }, [isLoading]);
 
     const handleCommentInputChange = (event) => {
         setCommentInput(event.target.value);
@@ -189,7 +189,7 @@ function GamePage () {
 
                     <div className="publisherID">
                         <p className="publisherIDBold">Publisher: </p>
-                        <Link to={`/PublisherPage/${gameDetails.publisherID}`}><p>‎  {gameDetails.publisherName}</p></Link>
+                        <Link to={`/PublisherPage/${gameDetails.publisherID}`}><p>‎ {gameDetails.publisherName}</p></Link>
                     </div>
                 </div>
             </div>

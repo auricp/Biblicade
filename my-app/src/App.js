@@ -65,6 +65,8 @@ function App() {
                   path={"/AssessmentPage/:email"}
                   element={<AssessmentPage/>}
               />
+              <Route path="/" element={<Nav />} />
+              <Route path="/SuggestedGames/:searchQuery" element={<SuggestedGames />} />
               
             </Routes>
           </Router>

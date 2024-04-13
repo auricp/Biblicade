@@ -22,7 +22,11 @@ table {
   
   /* Alternate row background color */
   tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #cecece;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: #f1f1f1;
   }
   
 

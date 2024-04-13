@@ -84,6 +84,20 @@ app.get('/developer/:id', (req, res) => {
     });
 });
 
+app.post('/history', (req, res) => {
+    const game = req.body.gameID;
+    const user = req.body.userID;
+    
+    db.query('INSERT INTO gaming_history (userID,gameID) VALUES (?,?)', [user, game],
+    (err, result) => {
+        if (err) {
+            console.log(err)
+        }else {
+            res.send("Values Inserted successfully")
+        }
+    });
+});
+
 app.get('/history/:userID', (req, res) => {
     // const userID = req.body.userID;
     const userID = encodeURIComponent(req.params.userID);
@@ -102,6 +116,20 @@ app.get('/history/:userID', (req, res) => {
     });
 
 });
+
+app.delete('/gaming_history/:userID/:gameID', (req, res) => {
+    const { userID, gameID } = req.params;
+    db.query('DELETE FROM gaming_history WHERE userID = ? AND gameID = ?', [userID, gameID], (err, result) => {
+        if (err) {
+            console.error(err);
+            res.status(500).json({ error: 'Error deleting game from gaming history' });
+        } else {
+            console.log('Game marked as unplayed successfully');
+            res.status(200).send('Game marked as unplayed successfully');
+        }
+    });
+});
+
 
 app.get('/gamePreferences/:userID', (req, res) => {
     // const userID = req.body.userID;

@@ -26,10 +26,10 @@ export default function GamingPreferences(props) {
 
 
     
+    // handle delete logic
+    // table is named gaming_preferences with attributes (userID, gameID, opinion) userID is from table userID 
 
 
-    // handling logic
-    // Check if history is undefined before mapping over it
     if (!preferenceData) {
         return <div>Loading...</div>;
     }

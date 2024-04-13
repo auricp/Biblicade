@@ -195,7 +195,8 @@ function UserProfile() {
                     <div className='userGaming'>
                         <div className="GamingHistory">
                             <h3>Gaming History</h3>
-                            <GamingHistory historyData={gamingHistory}/>
+                            {/* <GamingHistory historyData={gamingHistory}/> */}
+                            <GamingHistory historyData={gamingHistory} setHistoryData={setGamingHistory} userIDInfo={userID} />
                         </div>
 
                         <div className="GamingPreferences">
