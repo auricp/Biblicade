@@ -94,7 +94,8 @@ app.get('/gamePreferences/:userID', (req, res) => {
             return res.status(500).json({ error: 'Error querying database' });
         } else {
             // Send all the results in the response
-            const titles = result.map(row => ({opinion: row.userRating, gameID: row.gameID, title: row.title, score: row.ratingScore, ageRest: row.ageRestriction, genre: row.genre}));
+            // const titles = result.map(row => ({opinion: row.userRating, gameID: row.gameID, title: row.title, score: row.ratingScore, ageRest: row.ageRestriction, genre: row.genre}));
+            const titles = result.map(row => ({userID: row.userID, gameID: row.gameID, opinion: row.userRating}));
             res.json(titles);
         }
     });

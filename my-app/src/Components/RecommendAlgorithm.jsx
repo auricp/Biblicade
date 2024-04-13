@@ -4,6 +4,7 @@ import "../Components/RecommendAlgorithm.css";
 import images from "./images";
 import { Link } from "react-router-dom";
 
+// CITATION: this helper code is generated with help of AI tools. this is a helper code and is not a crucial part of any rubric objectives of the project.
 class Histogram {
   constructor() {
     this.data = {};
@@ -50,6 +51,8 @@ class Histogram {
   }
 }
 
+
+// CITATION: this helper code is generated with help of AI tools. this is a helper code and is not a crucial part of any rubric objectives of the project.
 class MaxHeap {
   constructor() {
     this.heap = [];
@@ -105,25 +108,22 @@ class MaxHeap {
         maxIndex = rightChildIndex;
       }
       if (maxIndex !== currentIndex) {
-        // Swap current element with its larger child
         [this.heap[currentIndex], this.heap[maxIndex]] = [this.heap[maxIndex], this.heap[currentIndex]];
         currentIndex = maxIndex;
       } else {
-        break; // Heap property satisfied
+        break; 
       }
     }
   }
 
-  // Method to remove and return the maximum element from the heap
   extractMax() {
     if (this.heap.length === 0) {
-      return null; // Heap is empty
+      return null; 
     }
     if (this.heap.length === 1) {
-      return this.heap.pop(); // Only one element in the heap
+      return this.heap.pop(); 
     }
     const maxElement = this.heap[0];
-    // Replace the root with the last element
     this.heap[0] = this.heap.pop();
     this.heapifyDown();
     return maxElement;
@@ -149,29 +149,31 @@ class MaxHeap {
 }
 
 
-
-
-
 export default function RecommendAlgorithm({ user, start }) {
   const [gamingPreferences, setGamingPreferences] = useState([]);
   const [gamingHistory, setGamingHistory] = useState([]);
   const [userData, setUserData] = useState([]);
   const [gamesList, setGamesList] = useState([]);
-  // const [recommendHeap, setRecommendHeap] = useState(new MaxHeap());
+  const [recommendHeap, setRecommendHeap] = useState(new MaxHeap());
+  // const [recommendQueue, setRecommendQueue] = useState(new Queue());
   const [currentStandards, setCurrentStandards] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isNew, setIsNew] = useState(false);
   const [currentSuggestion, setCurrentSuggestion] = useState([]);
   const [alreadySuggested, setAlreadySuggested] = useState([]);
   const [updateChanges, setUpdateChanges] = useState(0);
   const [gameIDCounter, setGameIDCounter] = useState(2);
+  const [allGamesReviewed, setAllGamesReviewed] = useState(false);
+  const [retryLoadingFailed, setRetryLoadingFailed] = useState(false);
   const userID = user.userID;
   // const implicitPreferredGenres = new Histogram();
-  const recommendHeap = new MaxHeap();
-  // var currentGame = gamesList[Math.floor(Math.random()*gamesList.length)];
-  var randomNumber = Math.floor(Math.random()*gamesList.length);
-  var currentGame = gamesList[randomNumber];
-  var currentGameID = randomNumber;
+  // const recommendHeap = new MaxHeap();
+  // // var currentGame = gamesList[Math.floor(Math.random()*gamesList.length)];
+  // var randomNumber = Math.floor(Math.random()*gamesList.length);
+  // var currentBackUpGame = gamesList[randomNumber];
+  // var currentBackUpGameID = randomNumber;
+  
+  // console.log(gamingPreferences);
 
   const getHistory = () => {
     Axios.get(`http://localhost:3001/history/${userID}`).then((response) => {
@@ -218,6 +220,7 @@ export default function RecommendAlgorithm({ user, start }) {
 
     // first dial
     useEffect(() => {
+
       getGames();
 
       // fetch gaming history data
@@ -244,7 +247,7 @@ export default function RecommendAlgorithm({ user, start }) {
       getUserData();    
       
       // setIsLoading(true);
-    }, [updateChanges]);
+    }, [currentSuggestion]);
 
     useEffect(() => {
       userAssessment();
@@ -328,9 +331,9 @@ export default function RecommendAlgorithm({ user, start }) {
     };
 
     const sendOpinions = (opinion) => {
-      console.log(userID, currentGameID+1, opinion)
+      console.log(userID, currentSuggestion.gameID, opinion)
 
-      Axios.post(`http://localhost:3001/gamePreferences/${userID}`, { gameFK: currentGameID+1, userFK: userID, opinionFK: opinion }).then(() => {
+      Axios.post(`http://localhost:3001/gamePreferences/${userID}`, { gameFK: currentSuggestion.gameID, userFK: userID, opinionFK: opinion }).then(() => {
           console.log('Game added to preferences successfully');
       }).catch(error => {
           console.error('Error adding game to preferences:', error);
@@ -339,25 +342,48 @@ export default function RecommendAlgorithm({ user, start }) {
 
     const handleChanges = (opinion) => {
 
-      // setUpdateChanges(updateChanges+1);
+      if (recommendHeap.isEmpty()) {
+        setIsLoading(true);
+      } 
+
+      if (gamesList.length === gamingPreferences.length) {
+        setAllGamesReviewed(true);
+      }
+
       userAssessment();
       const startIndex = (gameIDCounter < 3) ? 0 : (gameIDCounter - 3);
       const endIndex = Math.min(gameIDCounter, gamesList.length);
       setGameIDCounter(gameIDCounter+3);
       gameAssessment(startIndex, endIndex);
-      // console.log(recommendHeap.extractMax());
-      // console.log(recommendHeap);
+
       try {
-        currentGame = recommendHeap.extractMax()[0];
-      } catch {
-        setIsLoading(false);
+        const toSuggest = recommendHeap.extractMax();
+        console.log(toSuggest[0]);
+        const suggestedGame = gamesList.find(elt => elt.gameID === toSuggest[0]);
+        setCurrentSuggestion(toSuggest);
+        console.log('extracted: ', currentSuggestion);
+        setCurrentSuggestion(suggestedGame);
+        console.log(recommendHeap);
+
+        sendOpinions(opinion);
+      } catch (error) {
+        console.log(error);      
+        if (gamesList.length-1 === gamingPreferences.length) {
+          setAllGamesReviewed(true);
+        }
+        
       }
-      setIsLoading(true);
-      if (currentGame === null) {
+
+      // console.log(gamesList.length, gamingPreferences.length);
+           
+
+      if (recommendHeap.isEmpty()) {
+        setIsLoading(true);
+      } else {
         setIsLoading(false);
+        console.log('toggle off loading!2')
       }
-      // sync with Servers
-      sendOpinions(opinion);
+      
     }
 
     const gameAssessment = (starting, ending) => {
@@ -365,6 +391,7 @@ export default function RecommendAlgorithm({ user, start }) {
         const game = gamesList[i];
         let likeliness = 0;
         if (currentStandards[0] > game.ageRestriction) {
+          console.log('i=', i)
           if ((game.ratingScore-15 < currentStandards[1]) && (currentStandards[1] < game.ratingScore+15)) {
             likeliness += (15-Math.abs(currentStandards[1]-game.ratingScore));
           } else {
@@ -378,58 +405,70 @@ export default function RecommendAlgorithm({ user, start }) {
             multiplier -= 2
           });
         }
-        // continue from here
-        const currentTuple = [game.gameID, likeliness];
-        recommendHeap.insert(currentTuple);
-        setUpdateChanges(updateChanges+1);
-        
+        console.log('i=', i, '& game=', game.gameID);
 
+        if (gamingPreferences.some(elt => (elt.gameID === game.gameID) && (elt.userID === userID))) {
+          console.log('already in preferences!');
+        } else {
+          recommendHeap.insert([game.gameID, likeliness]);
+          console.log('inserted: ', game.gameID, "!")
+        }
+        
       }
     };
 
-    if ((isLoading || !recommendHeap.isEmpty())) {
-      //console.log(title);
-      return <div id="MainContainer_RecAlg">
-          <div className="recommendAlgoHeader">
-            <h2>Recommended for You</h2>
-            <p>These games are suggested based on your gaming preferences and history</p>
-          </div>
-      <div>
-        <div className="gameSpecificItems">
-
-          <img className="gameImage" src={images[currentGame.title]} alt={currentGame.title} width={'250px'}/>
-          <Link to={`/GamePage/${currentGame.title}`} className='gameTitleH3'>{currentGame.title}</Link>
-          <p>{currentGame.genre}</p>
+  if (allGamesReviewed) {
+    return (
+      <div id="MainContainer_RecAlg">
+        <div className="recommendAlgoHeader">
+          <h2>You're such a Gamer!</h2>
+          <p>You have reviewed all the games available in our database.</p>
+          <p>Please come back next time, and maybe we have more games in our server by then!</p>
         </div>
       </div>
+    );
+  }
 
+  if (isLoading) {
+    return (
+      <div id="MainContainer_RecAlg">
+        <div className="recommendAlgoHeader">
+          <h2>Recommended for You</h2>
+          <p>These games are suggested based on your gaming preferences and history</p>
+        </div>
+        <div className="preferenceButtons2">
+          <div className="preferenceBot2" onClick={() => handleChanges()}>
+            <p>Assess my Preferences and Recommend me a Game!</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div id="MainContainer_RecAlg">
+      <div className="recommendAlgoHeader">
+        <h2>Recommended for You</h2>
+        <p>These games are suggested based on your gaming preferences and history</p>
+      </div>
+      <div>
+        <div className="gameSpecificItems">
+          <img className="gameImage" src={images[currentSuggestion.title]} alt={currentSuggestion.title} width={'250px'} />
+          <Link to={`/GamePage/${currentSuggestion.title}`} className='gameTitleH3'>{currentSuggestion.title}</Link>
+          <p>{currentSuggestion.genre}</p>
+        </div>
+      </div>
       <div className="preferenceButtons">
-        <div className="preferenceBot" onClick={() => {handleChanges('like')}}>
+        <div className="preferenceBot" onClick={() => { handleChanges('like') }}>
           <p>Like</p>
         </div>
-
-        <div className="preferenceBot" onClick={() => {handleChanges('')}}>
+        <div className="preferenceBot" onClick={() => { handleChanges('') }}>
           <p>Maybe</p>
         </div>
-
-        <div className="preferenceBot" onClick={() => {handleChanges('dislike')}}>
+        <div className="preferenceBot" onClick={() => { handleChanges('dislike') }}>
           <p>Dislike</p>
         </div>
       </div>
-  </div>
-    }
-  
-  return (
-    <div id="MainContainer_RecAlg">
-        <div className="recommendAlgoHeader">
-            <h2>Recommended for You</h2>
-            <p>These games are suggested based on your gaming preferences and history</p>
-          </div>
-        <div className="preferenceButtons2">
-          <div className="preferenceBot2" onClick={handleChanges}>
-            <p>Give me the First Game!</p>
-          </div>
-        </div>
     </div>
-  )
+  );
 }
