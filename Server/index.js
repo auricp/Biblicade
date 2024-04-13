@@ -10,7 +10,7 @@ const db = mysql.createConnection({
     user: 'root',
     host: 'localhost',
     // password is either '', 'password'. or '471sqlbackend'
-    password: 'root',
+    password: '',
     database: 'gamessystem',
 });
 
