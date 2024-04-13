@@ -36,7 +36,7 @@ CREATE TABLE `user_preferences` (
 
 LOCK TABLES `user_preferences` WRITE;
 /*!40000 ALTER TABLE `user_preferences` DISABLE KEYS */;
-INSERT INTO `user_preferences` VALUES (3,20);
+INSERT INTO `user_preferences` VALUES (1,52),(2,52),(3,92),(4,52),(5,52),(6,52),(7,52),(8,52),(9,52),(10,52),(11,52),(12,52),(13,52),(14,52),(15,52);
 /*!40000 ALTER TABLE `user_preferences` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-11 12:05:07
+-- Dump completed on 2024-04-13 13:22:02

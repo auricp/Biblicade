@@ -6,6 +6,7 @@ import Axios from 'axios'
 function RegistrationForm(){
     // Adding functionality for getting backend info to frontend
     const [userList, setUserList] = useState([]);
+    const [userIDInfo, setUserIdInfo] = useState([]);
     const navigate = useNavigate();
     const[emailColor,setEmailColor]=useState('#c2c2c2');
     const[fNameColor,setFNameColor]=useState('#c2c2c2');
@@ -106,15 +107,49 @@ const displayInfo = () => {
 
 // function to add a user 
 const addDeveloper = () => {
-    Axios.post('http://localhost:3001/create', {fname: formData.firstName, lname: formData.lastName, email: formData.email, password: formData.password, Birth: formData.birthday}).then(() => {
+    Axios.post('http://localhost:3001/create', {fname: formData.firstName, lname: formData.lastName, email: formData.email, password: formData.password, Birth: formData.birthday}).then(response => {
+        // Extract the data from the response
+        const responseData = response.data;
+        
+        // Log the success message sent by the backend
+        console.log(responseData);
+
+        // Access the inserted ID from the response data
+        const insertedId = responseData.insertedId;
+
+        // Now you can use the inserted ID as needed in your frontend
+        console.log("Inserted ID:", insertedId);
+        setUserIdInfo(insertedId);
+        
         console.log("Success!");
     });
 };
+
+// const addPrefScore = (userID, prefScore) => {
+//     Axios.post(`/userPreferences/${userID}`, { preferredRatingScore: 50 })
+//     .then(response => {
+//         console.log('Preferred rating score updated successfully:', response.data);
+//     })
+//     .catch(error => {
+//         console.error('Error updating preferred rating score:', error);
+//     });
+// }
 
 const handleCreateAccount = (e) => {
     e.preventDefault(); // Prevent default form submission behavior
     handleSubmit(e);
     addDeveloper();
+    // getUsers();
+    // // addPrefScore(userIDInfo, 50);
+    // console.log(userList);
+    // const lastIndex = userList.length - 1;
+    // const lastElement = userList[lastIndex];
+    // const user = userList.find((u)=> u.email === lastElement.email);
+    // if (user) {
+    //     console.log(lastElement.userID);
+    // } else {
+    //     console.log('no data found!')
+    // }
 };
 
 

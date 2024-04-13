@@ -10,7 +10,7 @@ const db = mysql.createConnection({
     user: 'root',
     host: 'localhost',
     // password is either '', 'password'. or '471sqlbackend'
-    password: '',
+    password: '',    
     database: 'gamessystem',
 });
 
@@ -210,6 +210,27 @@ app.get('/userPreferences/:userID', (req, res) => {
         }
     });
 });
+
+app.post('/userPreferences/:userID', (req, res) => {
+    const userID = encodeURIComponent(req.params.userID);
+    const newPreferredRatingScore = req.body.preferredRatingScore;
+
+    if (!newPreferredRatingScore) {
+        return res.status(400).json({ error: 'Preferred rating score is missing in the request body' });
+    }
+
+    db.query("INSERT INTO user_preferences (userID, preferredRatingScore) VALUES (?,?)", [userID, newPreferredRatingScore], (err, result) => {
+        if (err) {
+            console.error("Error updating database:", err);
+            return res.status(500).json({ error: 'Error updating database' });
+        } else {
+            res.json({ success: true });
+        }
+    });
+});
+
+
+
 
 app.post('/userPreferences/:userID', (req, res) => {
     const { userID } = req.params;

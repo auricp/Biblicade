@@ -265,6 +265,7 @@ export default function RecommendAlgorithm({ user, start }) {
       var userLikedScore;
       if (!userData) {
         userLikedScore = 50;
+        setUserData({userID: userID, prefScore: 50});
       } else {
         userLikedScore = userData.prefScore;
       }
@@ -315,8 +316,8 @@ export default function RecommendAlgorithm({ user, start }) {
           }
           
         }
-
-        const standardsRN = [ageLimit, userData.prefScore, ...topFiveGenres];
+        const standardsRN = [ageLimit, userLikedScore, ...topFiveGenres];
+        // const standardsRN = [ageLimit, userData.prefScore, ...topFiveGenres];
         setCurrentStandards(standardsRN);
       }
       // console.log("STANDARDS")
