@@ -23,7 +23,7 @@ app.post('/create', (req, res) => {
     const password = req.body.password;
     const birthday = req.body.birthday;
     
-    db.query('INSERT INTO registertest (firstname,lastname,email,password,birthday) VALUES (?,?,?,?,?)', [fname, lname, email, password, birthday], 
+    db.query('INSERT INTO profile (firstname,lastname,email,password,birthday) VALUES (?,?,?,?,?)', [fname, lname, email, password, birthday], 
     (err, result) => {
         if (err) {
             console.log(err)
@@ -317,7 +317,7 @@ app.delete('/comments/:email/:comment/:gameTitle', (req, res) => {
 });
 
 app.get('/users', (req, res) => {
-    db.query("SELECT * FROM registertest", (err,result) => {
+    db.query("SELECT * FROM profile", (err,result) => {
         if (err) {
             console.log(err)
         } else {
