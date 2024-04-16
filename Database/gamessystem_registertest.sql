@@ -29,8 +29,9 @@ CREATE TABLE `registertest` (
   `password` varchar(45) DEFAULT NULL,
   `birthday` varchar(45) DEFAULT NULL,
   `userID` int NOT NULL AUTO_INCREMENT,
+  `usertype` varchar(45) DEFAULT 'regular',
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +40,7 @@ CREATE TABLE `registertest` (
 
 LOCK TABLES `registertest` WRITE;
 /*!40000 ALTER TABLE `registertest` DISABLE KEYS */;
-INSERT INTO `registertest` VALUES ('Gojo','Ballin','gojoballin@gmail.com','thegoat','1989-12-07',1),('NewTest','Testy','try@gmail.com','1234',NULL,2),('Shadow','Headgehog','shadowdagoat@gmail.com','Yomama','1951-03-14',3),('Test','Test2','TEstytest@test.com','1234','2000-11-03',4);
+INSERT INTO `registertest` VALUES ('Gojo','Ballin','gojoballin@gmail.com','thegoat','1989-12-07',1,'regular'),('NewTest','Testy','try@gmail.com','1234',NULL,2,'regular'),('Shadow','Headgehog','shadowdagoat@gmail.com','Yomama','1951-03-14',3,'regular'),('Test','Test2','TEstytest@test.com','1234','2000-11-03',4,'regular'),('Admin','Account','admin@gmail.com','testing',NULL,5,'admin');
 /*!40000 ALTER TABLE `registertest` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-10 22:45:02
+-- Dump completed on 2024-04-15 20:11:08

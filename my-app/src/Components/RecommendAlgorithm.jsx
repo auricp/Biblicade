@@ -4,7 +4,6 @@ import "../Components/RecommendAlgorithm.css";
 import images from "./images";
 import { Link } from "react-router-dom";
 
-// CITATION: this helper code is generated with help of AI tools. this is a helper code and is not a crucial part of any rubric objectives of the project.
 class Histogram {
   constructor() {
     this.data = {};
@@ -51,8 +50,6 @@ class Histogram {
   }
 }
 
-
-// CITATION: this helper code is generated with help of AI tools. this is a helper code and is not a crucial part of any rubric objectives of the project.
 class MaxHeap {
   constructor() {
     this.heap = [];
