@@ -18,6 +18,7 @@ import AssessmentPage from "./Pages/AssessmentPage";
 import SuggestedGames from "./Components/SuggestedGames";
 import PublisherPage from "./Pages/PublisherPage";
 import DeveloperPage from "./Pages/DeveloperPage";
+import Dashboard from "./Pages/AdminDashboard";
 
 function App() {
   const [isPopOpen, setPopOpen] = useState(false);
@@ -45,6 +46,10 @@ function App() {
                 element={<Content openPopup={openPop} />}
               />
               <Route
+                path={"/Dashboard/:email"}
+                element={<Content openPopup={openPop} />}
+              />
+              <Route
                   path={"/Wishlist/:email"}
                   element={<Content openPopup={openPop} />}
               />
@@ -60,7 +65,6 @@ function App() {
                   path={"/DeveloperPage/:id"}
                   element={<DeveloperPage/>}
               />
-              {/* in progress right now */}
               <Route 
                   path={"/AssessmentPage/:email"}
                   element={<AssessmentPage/>}
@@ -99,6 +103,9 @@ function Content({ openPopup }) {
         <UserProfile openPopup={openPopup} />
       )}
       {location.pathname === `/Wishlist/${email}` && <Wishlist />}
+      {location.pathname === `/Dashboard/${email}` && (
+        <Dashboard openPopup={openPopup} />
+      )}
     </>
   );
 }

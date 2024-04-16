@@ -1,0 +1,8 @@
+.adminDashboard {
+    display: flex;
+    flex-direction: row; 
+}
+
+.dashboard-item {
+    margin-right: 40px; 
+}

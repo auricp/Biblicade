@@ -182,8 +182,6 @@ function UserProfile() {
                 )}
                 </div>
             </div>
-            
-            
 
             <div className='preferencesMainPane'>
                 <div className='userInfoDetailsMainPane'>
@@ -191,6 +189,15 @@ function UserProfile() {
                         <h3>User Preferred Rating Score: </h3>
                         {/* <UserPreferences userInfo={userData} setUserInfo={setUserData} /> */}
                         <UserPreferences userIDInfo={userID} />
+
+                        {/* Display "Admin Dashboard" text if the user is an admin */}
+                        {user && user.usertype === 'admin' && (
+                            <div className="adminDashboard">
+                                <Link to={`/Dashboard/${email}`} className="adminDashboard">
+                                    <h2>Admin Dashboard</h2>
+                                </Link>
+                            </div>
+                        )}
                     </div>
 
                     <div className='userGaming'>
