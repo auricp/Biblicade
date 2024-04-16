@@ -1,3 +1,30 @@
+# Biblicade
+
+### Course Information
+CPSC 471 Winter 2024
+
+Project Name: **Biblicade App**
+### Group Members:
+
+- Adubofour-Poku, Auric
+    
+    - UCID: 30143774 
+    
+    - Tutorial Number: T04
+- Rodriguez, Gabriel
+    
+    - UCID: 30162544 
+    
+    - Tutorial Number: T05
+- Tran, Angeline 
+    
+    - UCID: 30139846 
+    
+    - Tutorial Number: T04
+
+    
+
+
 # Setting Up Biblicade Project
 
 
