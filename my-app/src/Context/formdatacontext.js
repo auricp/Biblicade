@@ -2,14 +2,19 @@ import React,{createContext,useReducer,useContext} from 'react';
 const FormDataContext= createContext();
 const initialState={
     formData:{
-        gameTitle: '',
+        gameID: '',
+        title: '',
         description: '',
-        genre: '',
-        id:'',
+        releaseYear: '',
+        releaseMonth: '',
+        releaseDay: '',
+        ratingScore: '',
+        ageRestriction: '',
+        developerID: '',
+        publisherID: '',
+        genre: ''
     },
-    savedForms:[],
     duplicateTitleError:null,
-    pulledFormIndex: null,
 };
 const formReducer = (state,action)=>{
     switch(action.type){
@@ -60,30 +65,6 @@ const formReducer = (state,action)=>{
                     duplicateTitleError:null,
                 }
             }
-
-        case 'PULL_SAVED_FORM':
-            const index = action.payload;
-            const selectedForm = state.savedForms[index];
-            if(selectedForm){
-                return{
-                    ...state,
-                    formData:{...state.formData,...selectedForm},
-                    duplicateTitleError:null,
-                    pulledFormIndex: index,
-                }
-            }
-            else{
-                return state;
-            }
-        case 'REMOVE_SAVED_FORM':
-            const indexToRemove = action.payload;
-            const updatedSavedForms = state.savedForms.filter((form,index)=> index !== indexToRemove);
-            return{
-                ...state,
-                savedForms:updatedSavedForms,
-            };
-        default:
-            return state;
     }
 };
 const  FormDataProvider =({children}) =>{

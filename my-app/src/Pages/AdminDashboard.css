@@ -1,6 +1,7 @@
 .adminDashboard {
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
+    margin: 0; 
 }
 
 .dashboard-item {
