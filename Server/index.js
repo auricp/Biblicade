@@ -121,6 +121,17 @@ app.get('/publisher/:id', (req, res) => {
     });
 });
 
+app.get('/developers', (req, res) => {
+    db.query("SELECT * FROM developer", (err, result) => {
+        if (err) {
+            console.error("Error fetching developers:", err);
+            res.status(500).send("Internal Server Error");
+        } else {
+            res.status(200).json(result); // Send publisher details as JSON response
+        }
+    });
+});
+
 app.get('/developer/:id', (req, res) => {
     const id = encodeURIComponent(req.params.id); // Extract developer ID from URL parameter
     
@@ -135,6 +146,27 @@ app.get('/developer/:id', (req, res) => {
                 res.status(404).send("developer not found");
             }
         }
+    });
+});
+
+// Endpoint for adding a new publisher to the database
+app.post('/add-developer', (req, res) => {
+    // Extract data from the request body
+    const { name, type, location } = req.body;
+  
+    // Create a SQL query to insert the publisher into the database
+    const sql = 'INSERT INTO developer (name, type, location) VALUES (?, ?, ?)';
+    const values = [name, type, location];
+  
+    // Execute the query
+    db.query(sql, values, (err, result) => {
+      if (err) {
+        console.error('Error adding developer to the database:', err);
+        res.status(500).json({ error: 'An error occurred while adding the developer to the database' });
+      } else {
+        console.log('Developer added successfully');
+        res.status(200).json({ message: 'Developer added successfully' });
+      }
     });
 });
 

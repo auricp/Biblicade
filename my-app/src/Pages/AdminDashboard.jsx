@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import GamesForm from "../Components/GamesForm";
 import PublishersForm from "../Components/PublishersForm";
+import DevelopersForm from "../Components/DevelopersForm";
 
 const Dashboard = () => {
     const [showAddGamesModal, setShowAddGamesModal] = useState(false);
     const [showAddPublishersModal, setShowAddPublishersModal] = useState(false);
+    const [showAddDevelopersModal, setShowAddDevelopersModal] = useState(false);
 
     const toggleAddGamesModal = () => {
         setShowAddGamesModal(!showAddGamesModal);
@@ -13,6 +15,10 @@ const Dashboard = () => {
 
     const toggleAddPublishers = () => {
         setShowAddPublishersModal(!showAddPublishersModal);
+    }
+
+    const toggleAddDevelopers = () => {
+        setShowAddDevelopersModal(!showAddDevelopersModal);
     }
 
     return (
@@ -26,7 +32,8 @@ const Dashboard = () => {
                 {showAddPublishersModal && <PublishersForm onClose={toggleAddPublishers} />}
             </div>
             <div className="dashboard-item">
-                <h2>Add Developers</h2>
+                <h2 onClick={toggleAddDevelopers}>Add Developers</h2>
+                {showAddDevelopersModal && <DevelopersForm onClose={toggleAddDevelopers} />}
             </div>
         </div>
     );
