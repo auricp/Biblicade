@@ -6,7 +6,6 @@ import "./GamesForm.css";
 function GamesForm({ isOpen, onClose }) {
     const[error,setError] = useState('');
     const [games, setGames] = useState([]);
-    const navigate = useNavigate();
     const[gameIDColor,setGameIDColor]=useState('#c2c2c2');
     const[titleColor,setTitleColor]=useState('#c2c2c2');
     const[descriptionColor,setDescriptionColor]=useState('#c2c2c2');
@@ -215,7 +214,6 @@ function GamesForm({ isOpen, onClose }) {
             // Handle success response
             console.log('Game added successfully:', response.data);
             setError('');
-            navigate('../');
         })
         .catch(error => {
             // Handle error

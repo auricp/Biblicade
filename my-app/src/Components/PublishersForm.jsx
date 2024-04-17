@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 function PublishersForm ({ isOpen, onClose }){
     const[error,setError] = useState('');
-    const navigate = useNavigate();
     const [publisher, setPublisher] = useState(null);
     const[publisherIDColor,setPublisherIDColor]=useState('#c2c2c2');
     const[nameColor,setNameColor]=useState('#c2c2c2');
@@ -102,7 +101,6 @@ function PublishersForm ({ isOpen, onClose }){
             // Handle success response
             console.log('Publisher added successfully:', response.data);
             setError('');
-            navigate('../');
         })
         .catch(error => {
             // Handle error

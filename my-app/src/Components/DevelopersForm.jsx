@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 function DevelopersForm ({ isOpen, onClose }){
     const[error,setError] = useState('');
-    const navigate = useNavigate();
     const [developer, setDeveloper] = useState(null);
     const[developerIDColor,setDeveloperIDColor]=useState('#c2c2c2');
     const[nameColor,setNameColor]=useState('#c2c2c2');
@@ -102,7 +101,6 @@ function DevelopersForm ({ isOpen, onClose }){
             // Handle success response
             console.log('Developer added successfully:', response.data);
             setError('');
-            navigate('../');
         })
         .catch(error => {
             // Handle error
