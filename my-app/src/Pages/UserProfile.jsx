@@ -83,6 +83,12 @@ function UserProfile() {
             lastname: newLastName
         }));
 
+        // post the new user to edit it
+        console.log(newFirstName);
+        console.log(newLastName);
+        Axios.post('http://localhost:3001/editUser', {newFirst: newFirstName, newLast: newLastName, email: email}).then(response => {
+        });
+
         // If the save logic is successful, you can reset the error state
         setError(false);
         // Toggle edit mode after saving (optional)

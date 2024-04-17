@@ -44,6 +44,7 @@ function RegistrationForm(){
         });
     }
     
+    
     const handleSubmit=(e)=>{
         e.preventDefault();
         if(formData.email.length ===0 || formData.firstName.length ===0 || formData.lastName.length ===0 || formData.password.length ===0 || formData.reEnterPassword.length ===0 || formData.birthday.length ===0){
@@ -125,32 +126,64 @@ const addDeveloper = () => {
     });
 };
 
-// const addPrefScore = (userID, prefScore) => {
-//     Axios.post(`/userPreferences/${userID}`, { preferredRatingScore: 50 })
-//     .then(response => {
-//         console.log('Preferred rating score updated successfully:', response.data);
-//     })
-//     .catch(error => {
-//         console.error('Error updating preferred rating score:', error);
-//     });
-// }
+const addPrefScore = (userID, prefScore) => {
+    const lastIndex = userList.length - 1;
+    const lastElement = userList[lastIndex];
+    getUsers();
+    Axios.post(`http://localhost:3001/userPreferences/${lastElement.userID}`, { preferredRatingScore: prefScore })
+    .then(response => {
+        console.log('Preferred rating score updated successfully:', response.data);
+    })
+    .catch(error => {
+        console.error('Error updating preferred rating score:', error);
+    });
+}
 
 const handleCreateAccount = (e) => {
     e.preventDefault(); // Prevent default form submission behavior
     handleSubmit(e);
+    getUsers();
     addDeveloper();
-    // getUsers();
-    // // addPrefScore(userIDInfo, 50);
-    // console.log(userList);
-    // const lastIndex = userList.length - 1;
-    // const lastElement = userList[lastIndex];
-    // const user = userList.find((u)=> u.email === lastElement.email);
-    // if (user) {
-    //     console.log(lastElement.userID);
-    // } else {
-    //     console.log('no data found!')
-    // }
+
+    getUsers();
+    
+    const lastIndex = userList.length - 1;
+    const lastElement = userList[lastIndex];
+    const user = userList.find((u)=> u.email === lastElement.email);
+    if (user) {
+        // console.log(lastElement.userID);
+        if (!lastElement.userID) {
+            addPrefScore(lastElement.userID, 50);
+        } else {
+            addPrefScore(userList.length-1, 50);
+        }
+        
+    } else {
+        console.log('no data found!')
+    }
 };
+
+const handleTest = () => {
+
+    getUsers();
+    
+    const lastIndex = userList.length - 1;
+    const lastElement = userList[lastIndex];
+    const user = userList.find((u)=> u.email === lastElement.email);
+    if (user) {
+        // console.log(lastElement.userID);
+        if (!lastElement.userID) {
+            addPrefScore(lastElement.userID, 50);
+        } else {
+            addPrefScore(userList.length, 50);
+        }
+        
+        // addPrefScore(lastElement.userID, 50);
+    } else {
+        console.log('no data found!')
+    }
+    
+}
 
 
 // function to get all users
@@ -212,10 +245,12 @@ const getUsers = () => {
 <span class="error-register">{error}</span>
 <p>-------------------------------</p>
 
-<button onClick={getUsers}>Show all Users</button>
+{/* <button onClick={getUsers}>Show all Users</button>
 {userList.map((val, key) => {
     return <div> {val.firstname}</div>
-})}
+})} */}
+
+<button onClick={handleTest}>Test</button>
 
 </div>
     );
