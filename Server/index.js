@@ -71,6 +71,39 @@ app.post('/comments', (req, res) => {
 
 });
 
+// Endpoint for adding a new publisher to the database
+app.post('/add-publisher', (req, res) => {
+    // Extract data from the request body
+    const { name, type, location } = req.body;
+  
+    // Create a SQL query to insert the publisher into the database
+    const sql = 'INSERT INTO publisher (name, type, location) VALUES (?, ?, ?)';
+    const values = [name, type, location];
+  
+    // Execute the query
+    db.query(sql, values, (err, result) => {
+      if (err) {
+        console.error('Error adding publisher to the database:', err);
+        res.status(500).json({ error: 'An error occurred while adding the publisher to the database' });
+      } else {
+        console.log('Publisher added successfully');
+        res.status(200).json({ message: 'Publisher added successfully' });
+      }
+    });
+});
+
+app.get('/publishers', (req, res) => {
+    db.query("SELECT * FROM publisher", (err, result) => {
+        if (err) {
+            console.error("Error fetching publishers:", err);
+            res.status(500).send("Internal Server Error");
+        } else {
+            res.status(200).json(result); // Send publisher details as JSON response
+        }
+    });
+});
+
+
 app.get('/publisher/:id', (req, res) => {
     const id = encodeURIComponent(req.params.id); // Extract publisher ID from URL parameter
     

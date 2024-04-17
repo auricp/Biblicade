@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
-import Modal from 'react-modal';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./GamesForm.css";
 
 function GamesForm({ isOpen, onClose }) {
@@ -210,7 +209,6 @@ function GamesForm({ isOpen, onClose }) {
 
     // Function to add the game to the database
     const addGameToDatabase = () => {
-        // Implement your logic to add the game to the database
         Axios.post('http://localhost:3001/add-game', {gameID: formData.gameID, title: formData.title, description: formData.description, genre: formData.genre, releaseYear: formData.releaseYear, releaseMonth: formData.releaseMonth, 
         releaseDay: formData.releaseDay, ratingScore: formData.ratingScore, ageRestriction: formData.ageRestriction, developerID: formData.developerID, publisherID: formData.publisherID})
         .then(response => {
@@ -270,27 +268,27 @@ function GamesForm({ isOpen, onClose }) {
         <input className="email-input" id="30:2357" name="releaseMonth" placeholder="MM" value={formData.releaseMonth} onChange={handleTextInput}></input>
         </div>
 
-        <div class ="search-bar-reg-5" style={{borderColor: releaseMonthColor}}>
+        <div class ="search-bar-reg-5" style={{borderColor: releaseYearColor}}>
         <p class="inputfields">Release Day</p>
         <input className="email-input" id="30:2357" name="releaseDay" placeholder="DD" value={formData.releaseDay} onChange={handleTextInput}></input>
         </div>
 
-        <div class ="search-bar-reg-5" style={{borderColor: releaseMonthColor}}>
+        <div class ="search-bar-reg-5" style={{borderColor: ratingColor}}>
         <p class="inputfields">Rating Score</p>
         <input className="email-input" id="30:2357" name="ratingScore" placeholder="EX: 50" value={formData.ratingScore} onChange={handleTextInput}></input>
         </div>
         
-        <div class ="search-bar-reg-5" style={{borderColor: releaseMonthColor}}>
+        <div class ="search-bar-reg-5" style={{borderColor: ageColor}}>
         <p class="inputfields">Age Restriction</p>
         <input className="email-input" id="30:2357" name="ageRestriction" placeholder="EX: 17" value={formData.ageRestriction} onChange={handleTextInput}></input>
         </div>
 
-        <div class ="search-bar-reg-5" style={{borderColor: releaseMonthColor}}>
+        <div class ="search-bar-reg-5" style={{borderColor: developColor}}>
         <p class="inputfields">Developer ID</p>
         <input className="email-input" id="30:2357" name="developerID" placeholder="EX: 6" value={formData.developerID} onChange={handleTextInput}></input>
         </div>
 
-        <div class ="search-bar-reg-5" style={{borderColor: releaseMonthColor}}>
+        <div class ="search-bar-reg-5" style={{borderColor: publishColor}}>
         <p class="inputfields">Publisher ID</p>
         <input className="email-input" id="30:2357" name="publisherID" placeholder="EX: 6" value={formData.publisherID} onChange={handleTextInput}></input>
         </div>
