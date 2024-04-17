@@ -34,6 +34,27 @@ app.post('/create', (req, res) => {
     
 });
 
+// Endpoint for adding a new game to the database
+app.post('/add-game', (req, res) => {
+    // Extract data from the request body
+    const { title, description, releaseYear, releaseMonth, releaseDay, ratingScore, ageRestriction, developerID, publisherID, genre, imageLocation } = req.body;
+  
+    // Create a SQL query to insert the game into the database
+    const sql = 'INSERT INTO game (title, description, releaseYear, releaseMonth, releaseDay, ratingScore, ageRestriction, developerID, publisherID, genre, imageLocation) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    const values = [title, description, releaseYear, releaseMonth, releaseDay, ratingScore, ageRestriction, developerID, publisherID, genre, imageLocation];
+  
+    // Execute the query
+    db.query(sql, values, (err, result) => {
+      if (err) {
+        console.error('Error adding game to the database:', err);
+        res.status(500).json({ error: 'An error occurred while adding the game to the database' });
+      } else {
+        console.log('Game added successfully');
+        res.status(200).json({ message: 'Game added successfully' });
+      }
+    });
+});
+
 app.post('/comments', (req, res) => {
     const game = req.body.game;
     const comment = req.body.comment;

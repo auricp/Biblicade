@@ -1,0 +1,104 @@
+
+.add-game-container {
+    
+    .search-bar-eGA {
+      background-color: #ffffff;
+      font-family: Roboto, 'Source Sans Pro';
+      border: solid 0.0645rem #c2c2c2;
+      border-radius: 1.2896rem;
+      box-sizing: border-box;
+      height: 13.7338rem;
+      width: 31.9165rem;
+      position: relative;
+      top: -10px; /* Adjust this value */
+      padding: 1.2896rem 1.9988rem;
+    }
+    
+    .search-bar-3LE {
+      cursor:pointer;
+      background-color: #ffffff;
+      border: solid 0.0645rem #c2c2c2;
+      border-radius: 1.2896rem;
+      box-sizing: border-box;
+      display: flex;
+      height: 5.9964rem;
+      left: 3.2884rem;
+      padding: 1.612rem 9.162rem 1.58rem 10.188rem;
+      top: 31.6502rem;
+      width: 31.9165rem;
+    }
+
+    .upload-photos-t5x {
+      cursor: pointer;
+      color: #4f4f4f;
+      flex-shrink: 0;
+      font-family: Roboto, 'Source Sans Pro';
+      font-size: 0.9721rem;
+      font-weight: 400;
+      line-height: 1.1725;
+      margin: 0.072rem 0.886rem 0rem 0rem;
+      white-space: nowrap;
+    }
+    .group-52-MVL {
+      border-radius: 0.3224rem;
+      flex-shrink: 0;
+      height: 2.8048rem;
+      object-fit: contain;
+      vertical-align: top;
+      width: 5.2812rem;
+    }
+    .uploads{
+      align-items: center;
+      background-color: #ffffff;
+      border: solid 0.0645rem #c2c2c2;
+      border-radius: 1.2896rem;
+      box-sizing: border-box;
+      display: flex;
+      height: 2.9964rem;
+      left: 4.2884rem;
+      margin-top:0.5rem;
+      position: absolute;
+      top: 53.6502rem;
+      width: 11.9165rem;
+      .view-photos {
+        color: #4f4f4f;
+        flex-shrink: 0;
+        font-family: Roboto, 'Source Sans Pro';
+        font-size: 0.9721rem;
+        font-weight: 400;
+        line-height: 1.1725;
+        margin: 0.072rem 2.886rem 0rem 3.3rem;
+        white-space: nowrap;
+      }
+    }
+    .downloads{
+      align-items: center;
+      background-color: #ffffff;
+      border: solid 0.0645rem #c2c2c2;
+      border-radius: 1.2896rem;
+      box-sizing: border-box;
+      display: flex;
+      height: 2.9964rem;
+      left: 23.2884rem;
+      position: absolute;
+      top: 53.6502rem;
+      width: 11.9165rem;
+      .download-photos {
+        color: #4f4f4f;
+        flex-shrink: 0;
+        font-family: Roboto, 'Source Sans Pro';
+        font-size: 0.9721rem;
+        font-weight: 400;
+        line-height: 1.1725;
+        margin: 0.072rem 2.886rem 0rem 3.3rem;
+        white-space: nowrap;
+      }
+    }
+    .group-53-1Zt {
+      height: 8.0089rem;
+      left: 3.1595rem;
+      position: absolute;
+      top: 57.581rem;
+      width: 29.1439rem;
+    }
+}

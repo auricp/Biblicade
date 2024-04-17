@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import AddGames from "../Components/AddGames";
+import GamesForm from "../Components/GamesForm";
 
-const Dashboard = ({ email }) => {
+const Dashboard = () => {
     const [showAddGamesModal, setShowAddGamesModal] = useState(false);
 
     const toggleAddGamesModal = () => {
@@ -13,7 +13,7 @@ const Dashboard = ({ email }) => {
         <div className="adminDashboard">
             <div className="dashboard-item">
                 <h2 onClick={toggleAddGamesModal}>Add Games</h2>
-                {showAddGamesModal && <AddGames onClose={toggleAddGamesModal} />}
+                {showAddGamesModal && <GamesForm onClose={toggleAddGamesModal} />}
             </div>
             <div className="dashboard-item">
                 <h2>Add Publishers</h2>
