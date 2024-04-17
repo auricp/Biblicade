@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `registertest`
+-- Table structure for table `profile`
 --
 
-DROP TABLE IF EXISTS `registertest`;
+DROP TABLE IF EXISTS `profile`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `registertest` (
+CREATE TABLE `profile` (
   `firstname` varchar(45) DEFAULT NULL,
   `lastname` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
@@ -35,13 +35,13 @@ CREATE TABLE `registertest` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `registertest`
+-- Dumping data for table `profile`
 --
 
-LOCK TABLES `registertest` WRITE;
-/*!40000 ALTER TABLE `registertest` DISABLE KEYS */;
-INSERT INTO `registertest` VALUES ('Gojo','Ballin','gojoballin@gmail.com','thegoat','1989-12-07',1,'regular'),('NewTest','Testy','try@gmail.com','1234',NULL,2,'regular'),('Shadow','Headgehog','shadowdagoat@gmail.com','Yomama','1951-03-14',3,'regular'),('Test','Test2','TEstytest@test.com','1234','2000-11-03',4,'regular'),('Admin','Account','admin@gmail.com','testing',NULL,5,'admin');
-/*!40000 ALTER TABLE `registertest` ENABLE KEYS */;
+LOCK TABLES `profile` WRITE;
+/*!40000 ALTER TABLE `profile` DISABLE KEYS */;
+INSERT INTO `profile` VALUES ('NewGojo','NewBallin','gojoballin@gmail.com','thegoat','1989-12-07',1,'regular'),('NewTest','Testy','try@gmail.com','1234',NULL,2,'regular'),('Shadow','Headgehog','shadowdagoat@gmail.com','Yomama','1951-03-14',3,'regular'),('Test','Test2','TEstytest@test.com','1234','2000-11-03',4,'regular'),('Admin','Account','admin@gmail.com','testing',NULL,5,'admin');
+/*!40000 ALTER TABLE `profile` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-15 20:11:08
+-- Dump completed on 2024-04-16 22:04:16
