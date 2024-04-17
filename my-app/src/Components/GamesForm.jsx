@@ -249,7 +249,7 @@ function GamesForm({ isOpen, onClose }) {
         </div>
         <div class ="search-bar-reg-2" style={{borderColor: titleColor}}>
         <p class="inputfields">Game Title</p>
-        <input class="email-input" id="30:2361" name="gameTitle" placeholder="Game Title" value={formData.title} onChange={handleTextInput}></input>
+        <input class="email-input" id="30:2361" name="title" placeholder="Game Title" value={formData.title} onChange={handleTextInput}></input>
         </div>
         <div class ="add-game-container" style={{borderColor: descriptionColor}}>
         <input placeholder="Description (Max 600 characters)" name="description" value={formData.description} onChange={handleTextInput} className="search-bar-eGA"></input>
