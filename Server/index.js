@@ -23,7 +23,7 @@ app.post('/create', (req, res) => {
     const password = req.body.password;
     const birthday = req.body.birthday;
     
-    db.query('INSERT INTO registertest (firstname,lastname,email,password,birthday) VALUES (?,?,?,?,?)', [fname, lname, email, password, birthday], 
+    db.query('INSERT INTO profile (firstname,lastname,email,password,birthday) VALUES (?,?,?,?,?)', [fname, lname, email, password, birthday], 
     (err, result) => {
         if (err) {
             console.log(err)
@@ -32,6 +32,27 @@ app.post('/create', (req, res) => {
         }
     });
     
+});
+
+// Endpoint for adding a new game to the database
+app.post('/add-game', (req, res) => {
+    // Extract data from the request body
+    const { title, description, releaseYear, releaseMonth, releaseDay, ratingScore, ageRestriction, developerID, publisherID, genre, imageLocation } = req.body;
+  
+    // Create a SQL query to insert the game into the database
+    const sql = 'INSERT INTO game (title, description, releaseYear, releaseMonth, releaseDay, ratingScore, ageRestriction, developerID, publisherID, genre, imageLocation) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    const values = [title, description, releaseYear, releaseMonth, releaseDay, ratingScore, ageRestriction, developerID, publisherID, genre, imageLocation];
+  
+    // Execute the query
+    db.query(sql, values, (err, result) => {
+      if (err) {
+        console.error('Error adding game to the database:', err);
+        res.status(500).json({ error: 'An error occurred while adding the game to the database' });
+      } else {
+        console.log('Game added successfully');
+        res.status(200).json({ message: 'Game added successfully' });
+      }
+    });
 });
 
 app.post('/comments', (req, res) => {
@@ -179,6 +200,23 @@ app.post('/updateOpinion', (req, res) => {
     });
 });
 
+// editing user information
+app.post('/editUser', (req, res) => {
+    const firstName = req.body.newFirst;
+    const lastName = req.body.newLast;
+    const email = req.body.email;
+    db.query('UPDATE profile SET firstname = ?,lastname = ? WHERE email = ?', [firstName, lastName, email], (err, result) => {
+        if (err) {
+            console.error('Error updating opinion:', err);
+            res.status(500).json({ error: 'Error updating opinion in database' });
+        } else {
+            console.log(firstName);
+            console.log(lastName);
+            res.status(200).json({ message: 'Opinion updated successfully' });
+        }
+    });
+});
+
 // DELETE endpoint to remove preference from gaming_preferences table
 app.delete('/gaming_preferences/:userID/:gameID', (req, res) => {
     const { userID, gameID } = req.params;
@@ -317,7 +355,7 @@ app.delete('/comments/:email/:comment/:gameTitle', (req, res) => {
 });
 
 app.get('/users', (req, res) => {
-    db.query("SELECT * FROM registertest", (err,result) => {
+    db.query("SELECT * FROM profile", (err,result) => {
         if (err) {
             console.log(err)
         } else {
